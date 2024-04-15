@@ -1,9 +1,10 @@
-import { Post } from "./Post.jsx";
+import { Post } from "./components/Post.jsx";
 import { Header } from "./components/Header.jsx";
+import { Sidebar } from "./components/Sidebar.jsx";
 
 import styles from "./App.module.css";
 import "./global.css";
-import { Sidebar } from "./components/Sidebar.jsx";
+
 
 // JSX = JavaScript + XML
 export function App() {
