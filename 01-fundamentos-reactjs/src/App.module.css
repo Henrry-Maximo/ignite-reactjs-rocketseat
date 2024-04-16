@@ -8,3 +8,18 @@
   gap: 2rem;
   align-items: flex-start;
 }
+
+/* responsividade baseando-se na relatividade */
+@media (max-width: 768px) {
+  html {
+    font-size: 87.5%;
+    /* 
+    16 --> 100%
+    14 --> x
+    */
+  }
+
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}
