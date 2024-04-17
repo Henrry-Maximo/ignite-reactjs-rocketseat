@@ -2,7 +2,29 @@ import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 
-export function Post() {
+import { format, formatDistanceToNow } from 'date-fns';
+import { ptBR } from 'date-fns/locale/pt-BR';
+
+export function Post({ author, publishedAt, content }) {
+  // manipulação de datas
+  // const publishedDateFormatted = new Intl.DateTimeFormat('pt-BR', {
+  //   day: '2-digit',
+  //   month: 'long',
+  //   hour: '2-digit',
+  //   minute: '2-digit',
+  // }).format(publishedAt);
+
+  // maniupalação de datas com date-fns
+  const publishedDateFormatted = format(publishedAt, "dd 'de' LLLL 'às' HH:mm'h'", {
+    locale: ptBR,
+  });
+  
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  })
+
+
   return (
     <article className={styles.post}>
       <header>
@@ -10,39 +32,35 @@ export function Post() {
           <Avatar
             // hasBorder={true}
             className={styles.avatar}
-            src="https://github.com/diego3g.png"
+            src={author.avatarUrl}
           />
           <div className={styles.authorInfo}>
-            <strong>Henrique Maximo</strong>
-            <span>Web Developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
 
         {/* obs.: atributo do HTML com mais que uma palavra. No react, será um CAMELCASE. */}
         {/* tag time: permite a propriedade dateTime */}
         {/* tag title: orientar o usuário sobre datas longas */}
-        <time title="11 de Maio às 08:13h" dateTime="2022-05-11 08:13:30">
-          Publicado há 1h
+        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>
+         {/* intl: formtação de data / numéro / pluralização /  listas */}
+         {publishedDateRelativeToNow}
         </time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa!</p>
-        <p>Lorem ipsum dolor sit amet. </p>
-        <p>
-          Os operadores gráficos e tipográficos sabem disso bem, na realidade,
-          todas as profissões que lidam com o{" "}
-        </p>
-        <p>
-          universo da comunicação têm um relacionamento estável com essas
-          <a href="#">{' '}palavras</a>, mas o que é?{" "}
-        </p>
-        <p><a href="#">Lorem ipsum é um texto fofo sem qualquer sentido.</a></p>
-        <p>
-          <a href="#">#novoprojeto</a>{' '}
-          <a href="#">#nlw</a>{' '}
-          <a href="#">#rocketseat</a>
-        </p>
+        {content.map(item => {
+          if (item.type === "paragraph") {
+            return (
+              <p>{item.content}</p>
+            )
+          } else if (item.link === "link") {
+            return (
+              <p><a href="">{item.content}</a></p>
+            )
+          }
+        })}
       </div>
 
       <form className={styles.commentForm}>
