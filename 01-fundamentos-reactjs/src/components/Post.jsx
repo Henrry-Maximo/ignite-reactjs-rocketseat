@@ -1,9 +1,18 @@
+import { useState } from "react";
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 
 import { format, formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale/pt-BR';
+
+// não seria performático para o react ficar observando a variável
+// const comments = [
+//   1,
+//   2,
+// ];
+
+// estado = variáveis que eu quero que o componente monitore
 
 export function Post({ author, publishedAt, content }) {
   // manipulação de datas
@@ -14,6 +23,8 @@ export function Post({ author, publishedAt, content }) {
   //   minute: '2-digit',
   // }).format(publishedAt);
 
+  const [comments, setComments ] = useState([0]);
+
   // maniupalação de datas com date-fns
   const publishedDateFormatted = format(publishedAt, "dd 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
@@ -23,6 +34,16 @@ export function Post({ author, publishedAt, content }) {
     locale: ptBR,
     addSuffix: true,
   })
+
+  function handleCreateNewComment() {
+    event.preventDefault();
+    
+    // imutabilidade: passar um novo valor
+    // setComments([1, 2, 3, 4, 5]);
+
+    // spread operator: copiar os valores existentes
+    setComments([...comments, comments.length + 1])
+  }
 
 
   return (
@@ -63,16 +84,16 @@ export function Post({ author, publishedAt, content }) {
         })}
       </div>
 
-      <form className={styles.commentForm}>
+      <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Deixe deu feedback</strong>
         <textarea placeholder="Deixe um comentário"></textarea>
         <footer><button type="submit">Publicar</button></footer>
       </form>
 
       <div className={styles.commentList}>
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments.map((comment) => {
+          return (<Comment />)
+        })}
       </div>
     </article>
   );
