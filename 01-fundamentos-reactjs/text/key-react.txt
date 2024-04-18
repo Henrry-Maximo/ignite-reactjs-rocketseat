@@ -1,0 +1,57 @@
+# Key no React:
+
+## Por que única?
+### 3 momentos em que um componente é renderizado novamente no React
+
+1. Quando o estado altera, tudo é executado novamente;
+2. Quando a propriedade altera, tudo é executado novamente;
+3. Quando um componente pai renderiza novamente.
+
+--------------
+
+Id (key={posts.id}):
+1, 2, 3, 4
+
+--------------
+
+1, 2, 3, 4, 5
+
+Contexto --> a key ajuda o react a entender o que já existe e
+a dar seguimento no próximo, até encontrar o que não existe, uma
+especie de comparação. 
+
+## Por que não posso usar o índice do array?
+
+```js
+const posts = [1, 2, 3, 4, 5]
+const posts = [1, 2, 5, 4, 3] - troca de posts
+// 0, 1, 2, 3, 4 - índice do array
+// 0, 1, 2, 3, 4 - id do array
+```
+
+Obs.: no caso de usar o índice, fazendo a troca de posts,
+a postagem que fosse de valor 5 passaria para o valor 3:
+
+```js
+const posts = [1, 2, 5, 4, 3]
+// 0, 1, 2, 3, 4 - índice do array
+```
+- O react saberá que houve uma modificação nos posts,
+e irá inicializar tudo novamente, deve ser evitado.
+
+
+```js
+const posts = [1, 2, 5, 4, 3]
+// 0, 1, 4, 3, 2 - id do array
+```
+- O react saberá que houve uma modificação nos posts;
+porém só irá atualizar aqueles que foram modificados. 
+Ou seja, ele consegue determinar o que atualizar.
+
+
+
+Conceitos aprendidos:
+
+- Estados;
+- Propriedades;
+- Componentes.

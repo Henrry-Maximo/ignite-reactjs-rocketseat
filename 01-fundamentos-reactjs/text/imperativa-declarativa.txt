@@ -1,0 +1,28 @@
+# Programação Imperativa:
+
+- O que deve ser feito (passo-a-passo).
+## Receita de bolo
+
+1. Ligar o forno a 180°;
+2. Abrir a porta do forno;
+3. Colocar a massa numa forma;
+4. Colocar a forma com a massa dentro do forno.
+
+## Contexto: 
+- Na aula, o professor Diego Fernandes, está referindo-se ao método adotado
+no desenvolvimento do front-end, em especial, o funcionamento dos comentários. Onde 
+seguimos basicamente uma receita de bolo, pois obtemos o valor através do formulário, 
+inserimos e limpamos a caixa aonde o comentário foi digitalizado. No caso, uma 
+programação imperativa, pois está dizendo que PRECISA limpar o valor.
+
+
+# Programação Declarativa:
+
+- Quais as condições para eu ter o resultado final.
+
+## Receita de bolo
+
+1. O forno precisa estar a 180°;
+2. Quando o forno estiver quente, eu posso colocar a massa para assar;
+3. Quando a massa estiver pronta, eu posso retira-la do forno.
+

@@ -8,4 +8,5 @@
 .header img {
   /* 32px */
   height: 2rem; 
+  list-style: none;
 }
