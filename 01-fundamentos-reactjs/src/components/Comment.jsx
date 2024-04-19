@@ -3,7 +3,13 @@ import { Trash } from "phosphor-react";
 import { ThumbsUp } from "phosphor-react";
 import { Avatar } from "./Avatar";
 
-export function Comment({ content }) {
+export function Comment({ content, onDeleteComment }) {
+
+  // deletar comentário do componente pai
+  function handleDeleteComment() {
+    onDeleteComment(content);
+  }
+
   return (
     <div className={styles.comment}>
       {/* utilizar chaves em volta / booleano não existe no html */}
@@ -18,7 +24,7 @@ export function Comment({ content }) {
                 Cerca de 1h atrás
               </time>
             </div>
-            <button title="Deletar Comentário">
+            <button onClick={handleDeleteComment} title="Deletar Comentário">
               <Trash size={24} />
             </button>
           </header>

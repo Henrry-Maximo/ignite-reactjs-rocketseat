@@ -26,9 +26,9 @@ export function Post({ author, publishedAt, content }) {
   const [comments, setComments] = useState(["Post muito bacana, hein?!"]);
 
   // padrão: nome da variável anterior + "set em camelCase"
-  // obs.: usar estado, siginifica inicializar com o formato 
+  // obs.: usar estado, siginifica inicializar com o formato
   // que os dados posteriores viram.
-  const [newCommentText, setNewCommentText] = useState('');
+  const [newCommentText, setNewCommentText] = useState("");
 
   // maniupalação de datas com date-fns
   const publishedDateFormatted = format(
@@ -59,7 +59,7 @@ export function Post({ author, publishedAt, content }) {
     // spread operator: copiar os valores existentes
     // manter os valores e inserir os novos.
     setComments([...comments, newCommentText]);
-    setNewCommentText('');
+    setNewCommentText("");
 
     // limpar box
     // event.target.comment.value = '';
@@ -67,9 +67,28 @@ export function Post({ author, publishedAt, content }) {
 
   // capturando alterações no textarea
   function handleNewCommentChange() {
+    event.target.setCustomValidity('');
+
     // console.log(event.target.value);
     setNewCommentText(event.target.value);
   }
+
+  function handleNewConnectInvalid() {
+    event.target.setCustomValidity('Campo obrigatório para envio.');
+  }
+
+  // obs.: se pode passar funções em componentes
+  function deleteComment(commentToDelete) {
+    const commentsWithoutDeletedOne = comments.filter(comment=> {
+      return comment != commentToDelete;
+    });
+
+    // imutabilidade --> as variáveis não sofrem mutação, nós criamos um novo valor (um novo espaço na memória)
+    // nunca alterando, sempre criando
+    setComments(commentsWithoutDeletedOne)
+  }
+
+  const isNewCommentEmpty = newCommentText.length === 0;
 
   return (
     <article className={styles.post}>
@@ -114,15 +133,31 @@ export function Post({ author, publishedAt, content }) {
 
       <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Deixe deu feedback</strong>
-        <textarea name="comment" value={newCommentText} onChange={handleNewCommentChange} placeholder="Deixe um comentário"></textarea>
+        <textarea
+          name="comment"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+          placeholder="Deixe um comentário"
+          // chamado quando o HTML identificar um submit; porém o texto é inválido
+          onInvalid={handleNewConnectInvalid}
+          required
+        ></textarea>
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={isNewCommentEmpty}>Publicar</button>
         </footer>
       </form>
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment key={comment} content={comment} />;
+          return (
+            <Comment
+              key={comment}
+              content={comment}
+              // permitir o filho executar uma função do pai
+              // obs.: adicionado "on" para simbolizar 
+              onDeleteComment={deleteComment}
+            />
+          );
         })}
       </div>
     </article>
