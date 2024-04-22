@@ -1,5 +1,6 @@
 TypeScript:
-- Superset;
+- É um Superset;
+- Nasceu da linguagem JavaScript, possibilitando tipagem estática;
 
 Motivo:
 - Nasceu porque o JS tem tipagem dinâmica, prejudicial ao desenvolvimento,

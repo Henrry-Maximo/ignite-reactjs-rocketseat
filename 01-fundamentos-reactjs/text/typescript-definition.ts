@@ -1,9 +1,13 @@
+
+// tipagem estática de usuários
 interface User {
   name: string;
   bio: string;
   age: number;
 }
 
+// function sumAge(users: Array<User>) 
+// function sumAge(users: User[]) 
 function sumAge(users: User[]) {
   let sum = 0;
 
