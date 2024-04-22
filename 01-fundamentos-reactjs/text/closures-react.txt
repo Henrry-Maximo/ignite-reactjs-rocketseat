@@ -1,0 +1,35 @@
+# Closures no React
+
+```
+- Componente:
+function Comment(props) {
+  Estado:
+  const [likes, setLikes] = useState(0);
+
+  Função:
+  function addLike() {
+    setLikes(likes + 1);
+  }
+}
+
+Para o React (debaixo dos panos):
+- execução da função, passa como se fosse
+um parâmetro, o valor novo;
+
+Em um primeiro momento, executou com
+o valor 0:
+Comment(props, 0);
+
+Quando utilizo o setLikes, a variável é atualizada:
+Comment(props, 1);
+
+Ou seja, existem duas versões. A versão com o valor original e
+a versão modificada, e neste sentido, não é possível gerar um
+novo valor baseando-se na versão original, pois essa se mantem 
+com o valor 0
+
+obs.: tentar utilizar o valor atualizado de uma variável do 
+estado, logo após atualizar este valor. No entanto, a variável
+irá retornar o valor antigo.
+
+```

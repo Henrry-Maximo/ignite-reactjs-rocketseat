@@ -30,6 +30,9 @@ export function Post({ author, publishedAt, content }) {
   // que os dados posteriores viram.
   const [newCommentText, setNewCommentText] = useState("");
 
+  // visualizar recalculo do código, cada digitação, um console.log
+  // console.log(newCommentText);
+
   // maniupalação de datas com date-fns
   const publishedDateFormatted = format(
     publishedAt,
@@ -74,6 +77,8 @@ export function Post({ author, publishedAt, content }) {
   }
 
   function handleNewConnectInvalid() {
+    // event.targer: buscando textarea
+    // setCustomValidity: método utilizado para atribuir messagem de validação
     event.target.setCustomValidity('Campo obrigatório para envio.');
   }
 
@@ -143,6 +148,7 @@ export function Post({ author, publishedAt, content }) {
           required
         ></textarea>
         <footer>
+          {/* disabled: desabilitar botão se textarea estiver vazia */}
           <button type="submit" disabled={isNewCommentEmpty}>Publicar</button>
         </footer>
       </form>

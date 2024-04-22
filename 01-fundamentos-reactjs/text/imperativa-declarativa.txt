@@ -26,3 +26,7 @@ programação imperativa, pois está dizendo que PRECISA limpar o valor.
 2. Quando o forno estiver quente, eu posso colocar a massa para assar;
 3. Quando a massa estiver pronta, eu posso retira-la do forno.
 
+Obs.:
+
+Declarativa: etapas estabelecidas para um resultado;
+Imperativa: fluxo de condições para um resultado acontecer;

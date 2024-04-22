@@ -1,0 +1,71 @@
+TypeScript:
+- Superset;
+
+Motivo:
+- Nasceu porque o JS tem tipagem dinâmica, prejudicial ao desenvolvimento,
+apesar de facilitar;
+
+# Em Javascript (tipagem dinâmica):
+const name = "Diego";
+name = 1;
+
+Obs.: enviando uma informação no formato errado.
+function sumAge(users) {
+  // obs.: prestar atenção na declaração das variáveis
+  // let: deixe mudar
+  // const: deixe assim
+
+  let sum = 0;
+
+  for (const user of users) {
+    sum += user.age;
+  }
+  return sum;
+}
+
+sumAge("teste");
+- Só saberemos que deu erro quando executarmos a aplicação.
+
+# Em Typescript (tipagem estática):
+- Carrega inteligência para o nosso código.
+
+Explicação: cada usuário da aplicação tem um nome, bio e age.
+interface User {
+  name: string;
+  bio: string;
+  age: number;
+}
+
+Obs.: se for um array de usuário (+de um), utilizar [] ou Array<User>
+function sumAge(users: User[]) {
+  let sum = 0;
+
+  for (const user of users) {
+    sum += user.age;
+  }
+  return sum;
+}
+
+- Ao chamar a função, o Typescript proibi o envio de um booleano,
+o envio de uma string, o envio de um número. Só é possível enviar
+um array de usuários;
+sumAge(true)
+
+- Chamada da função de forma correta:
+sumAge([{
+  name: 'Diego',
+  bio: 'CTO @Rocketseat',
+  age: 27,
+}])
+
+- Não há necessidade de declarar tipo para tudo:
+const sumOfAllUserAges = sumAge([{
+  name: 'Diego',
+  bio: 'CTO @Rocketseat',
+  age: 27,
+}])
+
+inferência de tipos: o typescript conseguiu entender automaticamente
+o tipo de uma informação. No contexto, a função sumAge vai retornar
+um número. Então, já é identificável qual deve ser o tipo da 
+variável sumOfAllUserAges.
