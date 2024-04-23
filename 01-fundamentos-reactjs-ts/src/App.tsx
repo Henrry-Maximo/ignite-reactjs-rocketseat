@@ -1,6 +1,7 @@
 import { Post } from "./components/Post.jsx";
 import { Header } from "./components/Header.jsx";
 import { Sidebar } from "./components/Sidebar.jsx";
+import { PostType } from "./components/Post.jsx";
 
 import styles from "./App.module.css";
 import "./global.css";
@@ -9,21 +10,29 @@ import "./global.css";
 // publishedAt: Date
 // content: String
 
-interface PostsProps {
-  id: number;
-  author: {
-    avatarUrl: string;
-    name: string;
-    role: string;
-  };
-  content: {
-    type: "paragraph" | "link";
-    content: string;
-  }[];
-  publishedAt: Date;
-}
+// interface PostsProps {
+//   id: number;
+//   author: {
+//     avatarUrl: string;
+//     name: string;
+//     role: string;
+//   };
+//   content: {
+//     type: "paragraph" | "link";
+//     content: string;
+//   }[];
+//   publishedAt: Date;
+// }
 
-const posts:PostsProps[] = [
+
+/*
+## extensão de interfaces:
+- Criar interface e atribuir os tipo;
+ou
+- reutilizar a interface do post.tsx
+*/
+
+const posts:PostType[] = [
   {
     id: 1,
     author: {
@@ -81,9 +90,8 @@ export function App() {
             return (
               <Post
                 key={post.id}
-                author={post.author}
-                content={post.content}
-                publishedAt={post.publishedAt}
+                // obter todas as informações pela propriedade: post
+                post={post}
               />
             );
           })}

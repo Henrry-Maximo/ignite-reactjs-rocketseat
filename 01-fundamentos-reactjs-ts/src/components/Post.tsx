@@ -18,10 +18,16 @@ interface Content {
 }
 
 // O objeto corresponde as propriedades do post
-interface PostProps {
+export interface PostType {
+  id: number;
   author: Author;
   publishedAt: Date;
   content: Content[];
+}
+
+// reaproveitamento de código - interface (posts):
+interface PostProps {
+  post: PostType;
 }
 
 
@@ -37,20 +43,28 @@ interface PostProps {
  Ex.: function handleCreateNewComment(event: FormEvent) {}
 */ 
 
+/*
+## extensão de interfaces - reutilização de tipo:
+- Eliminar argumentos do PostProps, e estabelecer que recebe
+somente uma propriedade: "posts" da interface PostType.
+- A interface PostType mantem as propriedades utilizadas e
+seus respectivos tipos. 
+*/
 
-export function Post({ author, publishedAt, content }: PostProps) {
+
+export function Post({ post }: PostProps) {
   const [comments, setComments] = useState(["Post muito bacana, hein?!"]);
   const [newCommentText, setNewCommentText] = useState("");
 
   const publishedDateFormatted = format(
-    publishedAt,
+    post.publishedAt,
     "dd 'de' LLLL 'às' HH:mm'h'",
     {
       locale: ptBR,
     }
   );
 
-  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+  const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
     locale: ptBR,
     addSuffix: true,
   });
@@ -91,23 +105,23 @@ export function Post({ author, publishedAt, content }: PostProps) {
         <div className={styles.author}>
           <Avatar
             // className={styles.avatar}
-            src={author.avatarUrl}
+            src={post.author.avatarUrl}
           />
           <div className={styles.authorInfo}>
-            <strong>{author.name}</strong>
-            <span>{author.role}</span>
+            <strong>{post.author.name}</strong>
+            <span>{post.author.role}</span>
           </div>
         </div>
         <time
           title={publishedDateFormatted}
-          dateTime={publishedAt.toISOString()}
+          dateTime={post.publishedAt.toISOString()}
         >
           {publishedDateRelativeToNow}
         </time>
       </header>
 
       <div className={styles.content}>
-        {content.map((item) => {
+        {post.content.map((item) => {
           if (item.type === "paragraph") {
             return <p key={item.content}>{item.content}</p>;
           } else if (item.type === "link") {

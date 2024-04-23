@@ -1,12 +1,19 @@
+import { ImgHTMLAttributes } from "react";
 import styles from "./Avatar.module.css";
 
 // Obs.: utilizar "?" para tornar o tipo opcional no objeto
 
-interface AvatarProps {
+/*
+Remoção das propriedades devido à extensão ImgHTMLAttributes 
+(carrega todos os elementos da img)
+src: string;
+alt?: string;
+title?: string
+
+obs.: é necessário especificar o "generics", impotar o html.
+*/
+interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
   hasBorder?: boolean;
-  src: string;
-  alt?: string;
-  title?: string
 }
 
 /*
@@ -14,11 +21,17 @@ interface AvatarProps {
   componentes, precisamos declarar as proriedades para uso. Então, quer dizer,
   que vamos ter que criar cada um?
 
-  Interfaces de atributos do TypeScript:
+  Interfaces de atributos do TypeScript (extensão):
   ## ImgHTMLAttributes
+
+  ## Rest Operator: 
+  - eliminar os argumentos e inserir: "...props". 
+  Compreensão: retornar o resto dos dados do componente (retornar as propriedades)
+  Obs.: no caso, remover "hasBorder" do objeto e me 
+  retorna o restante em "...props".
 */
 
-export function Avatar({ hasBorder = true, src, alt, title }: AvatarProps) {
+export function Avatar({ hasBorder = true, ...props }: AvatarProps) {
   // const hasBorder = props.hasBorder !== false;
 
   // arrancar o dado de dentro deste objeto
@@ -28,10 +41,19 @@ export function Avatar({ hasBorder = true, src, alt, title }: AvatarProps) {
     <div>
       <img
         className={hasBorder ? styles.avatarWithBorder : styles.avatar}
+        /*
+        // propriedade:
         // src={props.src}
-        src={src}
-        alt={alt}
-        title={title}
+
+        // desestruturando propriedade:
+        // src={src}
+        // alt={alt}
+        // title={title}
+
+        // rest operator:
+        {...props}
+        */
+        {...props}
       />
     </div>
   );

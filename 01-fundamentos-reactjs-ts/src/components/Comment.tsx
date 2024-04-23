@@ -33,6 +33,9 @@ export function Comment({ content, onDeleteComment }: CommentProps) {
         hasBorder={false}
         src="https://avatars.githubusercontent.com/u/99754637?v=4"
         alt="teste"
+        onClick={() => {
+          alert("Test of Rest Operator!")
+        }}
       />
 
       <div className={styles.commentBox}>
