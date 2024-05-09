@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./global.css";
 import { Header } from "./components/Header/Header";
+import { Task } from "./components/Task/Task";
 
 function App() {
   const [newTextTask, setNewTextTask] = useState([""]);
 
   return (
+    // sintaxe mais limpa no HTML
     <React.Fragment>
       <Header />
       <div>
@@ -20,9 +22,10 @@ function App() {
                 Tarefas criadas <strong>5</strong>
               </p>
               <p>
-                Tarefas concluídas <strong>2 de 5</strong>
+                Concluídas <strong>2 de 5</strong>
               </p>
             </div>
+            <Task />
             {/* <textarea name="task" value={newTextTask}></textarea> */}
           </article>
         </main>
