@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ClipboardText, PlusCircle } from "phosphor-react";
+import React from "react";
+import { PlusCircle } from "phosphor-react";
 
 import "./global.css";
 import styles from "./App.module.css";
@@ -7,10 +7,12 @@ import styles from "./App.module.css";
 import { Header } from "./components/Header/Header";
 import { Task } from "./components/Task/Task";
 
-function App() {
-  const [newTextTask, setNewTextTask] = useState([""]);
+import Clipboard from "./assets/Clipboard.png";
 
-  const postTask = "";
+function App() {
+  // const [newTextTask, setNewTextTask] = useState([""]);
+
+  const postTask = null;
   // [
   //   {
   //     // id: 1,
@@ -23,7 +25,7 @@ function App() {
     // sintaxe mais limpa no HTML
     <React.Fragment>
       <Header />
-      <main>
+      <main className={styles.formTask}>
         <div className={styles.sendTask}>
           <input
             type="text"
@@ -34,14 +36,14 @@ function App() {
             Criar <PlusCircle className={styles.imgAddTask} size={19} />
           </button>
         </div>
-        <article>
+        <article className={styles.postTask}>
           <div className={styles.listTasks}>
             <p>
               <span className={styles.countTaskCreated}>Tarefas criadas</span>
               <strong>5</strong>
             </p>
             <p>
-              <span>Concluídas</span>
+              <span className={styles.countTaskCompleted}>Concluídas</span>
               <strong>2 de 5</strong>
             </p>
           </div>
@@ -50,11 +52,12 @@ function App() {
               <Task />
             ) : (
               <>
+                <div></div>
                 <div>
-                  <ClipboardText size={64} />
+                  <img className={styles.logoTask} src={Clipboard} />
                 </div>
                 <div>
-                  <span>Você ainda não tem tarefas cadastradas.</span>
+                  <span><strong>Você ainda não tem tarefas cadastradas.</strong></span>
                   <br />
                   <span>Crie tarefas e organize seus itens a fazer.</span>
                 </div>

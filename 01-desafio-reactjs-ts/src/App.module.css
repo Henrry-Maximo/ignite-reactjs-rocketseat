@@ -1,3 +1,10 @@
+.formTask {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* margin: 0rem 22.188rem; */
+}
+
 .sendTask {
   display: flex;
   align-items: center;
@@ -37,6 +44,12 @@
   color: var(--gray-100);
 }
 
+.postTask {
+  gap: 1.5rem;
+  display: inline-grid;
+  margin: 4.063rem 0px 0px 0px;
+}
+
 .listTasks {
   display: flex;
   justify-content: space-around;
@@ -47,13 +60,33 @@
   gap: 0.5rem;
 }
 
-.countTaskCreated {
-  color: var(blue);
+.listTasks .countTaskCreated {
+  color: var(--blue);
+}
+
+.listTasks .countTaskCompleted {
+  color: var(--purple);
+}
+
+.listTasks p strong {
+  border-radius: 999px;
+  padding: 2px 8px;
+  background-color: var(--gray-400);
 }
 
 .postAllTask {
-  display: block;
-  /* justify-content: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   align-items: center;
+  gap: 1rem;
+  padding: 2rem 0rem 0rem 0rem;
+  border-top: 2px solid var(--gray-400);
+  border-radius: 8px;
+}
+
+.logoTask {
+  width: 56px;
+  height: 56px;
 }
