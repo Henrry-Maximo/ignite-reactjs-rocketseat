@@ -39,15 +39,14 @@ import { Fragment } from "react";
 //   },
 // ];
 
-export const Task = () => {
+export function Task({ title }) {
   return (
     <Fragment>
       <header>
         <div>
           <input type="checkbox" />
           <p>
-            Não vou copiar código nenhum já pronto! Vai ser tudo do jeito
-            antigo, apenas documentação e oração.
+            {title}
           </p>
         </div>
         <button title="Deletar Tarefa!">

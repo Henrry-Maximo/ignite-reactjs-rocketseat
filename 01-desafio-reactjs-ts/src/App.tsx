@@ -12,14 +12,30 @@ import Clipboard from "./assets/Clipboard.png";
 function App() {
   // const [newTextTask, setNewTextTask] = useState([""]);
 
-  const postTask = null;
-  // [
-  //   {
-  //     // id: 1,
-  //     // description:
-  //     //   "Não vou copiar código nenhum já pronto! Vai ser tudo do jeito antigo, apenas documentação e oração.",
-  //   },
-  // ];
+  
+
+  const postTask = [{
+    id: 1,
+    task: {
+      isFalse: false,
+      description: "Estudar ReactJS para construir aplicações."
+    }
+  },
+  {
+    id: 2,
+    task: {
+      isFalse: false,
+      description: "Não usar chatGPT."
+    }
+  },
+  {
+    id: 3,
+    task: {
+      isFalse: false,
+      description: "Apenas usar projetos da aula."
+    }
+  }
+];
 
   return (
     // sintaxe mais limpa no HTML
@@ -48,21 +64,9 @@ function App() {
             </p>
           </div>
           <div className={styles.postAllTask}>
-            {postTask ? (
-              <Task />
-            ) : (
-              <>
-                <div></div>
-                <div>
-                  <img className={styles.logoTask} src={Clipboard} />
-                </div>
-                <div>
-                  <span><strong>Você ainda não tem tarefas cadastradas.</strong></span>
-                  <br />
-                  <span>Crie tarefas e organize seus itens a fazer.</span>
-                </div>
-              </>
-            )}
+            {postTask.map((line) => {
+              return (<Task key={line.id} title={line.task.description}></Task>)
+            })}
           </div>
         </article>
       </main>
