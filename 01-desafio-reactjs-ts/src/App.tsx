@@ -12,9 +12,8 @@ import Clipboard from "./assets/Clipboard.png";
 function App() {
   // const [newTextTask, setNewTextTask] = useState([""]);
 
-  
-
-  const postTask = [{
+  const postTask = [
+  {
     id: 1,
     task: {
       isFalse: false,

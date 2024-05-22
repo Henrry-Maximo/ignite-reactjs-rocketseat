@@ -1,6 +1,8 @@
 import { Trash } from "phosphor-react";
 import { Fragment } from "react";
 
+import styles from "./Task.module.css";
+
 // const posts = [
 //   {
 //     id: 1,
@@ -41,18 +43,14 @@ import { Fragment } from "react";
 
 export function Task({ title }) {
   return (
-    <Fragment>
-      <header>
-        <div>
-          <input type="checkbox" />
-          <p>
-            {title}
-          </p>
-        </div>
-        <button title="Deletar Tarefa!">
-          <Trash size={24} />
-        </button>
-      </header>
-    </Fragment>
+    <div className={styles.boxTask}>
+      <div className={styles.content}>
+        <input type="checkbox" />
+        <p>{title}</p>
+      </div>
+      <button title="Deletar Tarefa!" className={styles.trashBtn}>
+        <Trash size={24} />
+      </button>
+    </div>
   );
-};
+}
