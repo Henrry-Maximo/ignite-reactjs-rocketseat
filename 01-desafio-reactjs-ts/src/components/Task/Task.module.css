@@ -18,9 +18,13 @@
   gap: 15px;
 }
 
-.boxTask .trashBtn {
-  /* display: flex; */
-  border-radius: 4px;
-  /* background-color: none; */
-  /* justify-content: space-around; */
+.boxTask button {
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
 }
