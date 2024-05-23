@@ -48,6 +48,7 @@
   gap: 1.5rem;
   display: inline-grid;
   margin: 4.063rem 0px 0px 0px;
+  justify-content: center;
 }
 
 .listTasks {
@@ -84,6 +85,7 @@
   padding: 2rem 0rem 0rem 0rem;
   border-top: 2px solid var(--gray-400);
   border-radius: 8px;
+  width: 60rem;
 }
 
 .logoTask {

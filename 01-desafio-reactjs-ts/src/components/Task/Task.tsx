@@ -45,7 +45,7 @@ export function Task({ title }) {
   return (
     <div className={styles.boxTask}>
       <div className={styles.content}>
-        <input type="checkbox" />
+        <input type="checkbox" className={styles.boxCheck}/>
         <p>{title}</p>
       </div>
       <button title="Deletar Tarefa!" className={styles.trashBtn}>
