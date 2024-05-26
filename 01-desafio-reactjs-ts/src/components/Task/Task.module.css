@@ -17,11 +17,34 @@
   gap: 15px;
 }
 
-.boxTask .content .boxCheck {
-  background-color: rgb(122, 46, 46);
+.boxCheck {
+  appearance: none;
+  background-color: var(--blue-dark);
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  border: 5px solid #ddd;
+  border: 2px solid var(--blue-dark);
+  position: relative;
   cursor: pointer;
+  background-color: transparent;
+}
+
+.boxCheck:checked {
+  background-color: var(--purple-dark); 
+  border: none;
+}
+
+.boxCheck:checked::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid var(--gray-200);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
 }
 
 .boxTask button {
@@ -29,7 +52,6 @@
   border: 0;
   color: var(--gray-300);
   cursor: pointer;
-
   display: flex;
   align-items: center;
   border-radius: 2px;
