@@ -7,12 +7,15 @@ import styles from "./App.module.css";
 import { Header } from "./components/Header/Header";
 import { Task } from "./components/Task/Task";
 
-import Clipboard from "./assets/Clipboard.png";
+interface TasksProps {
+  id: number;
+  task: {
+    isFalse: boolean;
+    description: string;
+  }
+}
 
-function App() {
-  // const [newTextTask, setNewTextTask] = useState([""]);
-
-  const postTask = [
+const postTask:TasksProps[] = [
   {
     id: 1,
     task: {
@@ -36,6 +39,12 @@ function App() {
   }
 ];
 
+
+function App() {
+  // const [newTextTask, setNewTextTask] = useState([""]);
+
+
+
   return (
     // sintaxe mais limpa no HTML
     <React.Fragment>
@@ -52,16 +61,7 @@ function App() {
           </button>
         </div>
         <article className={styles.postTask}>
-          <div className={styles.listTasks}>
-            <p>
-              <span className={styles.countTaskCreated}>Tarefas criadas</span>
-              <strong>5</strong>
-            </p>
-            <p>
-              <span className={styles.countTaskCompleted}>Concluídas</span>
-              <strong>2 de 5</strong>
-            </p>
-          </div>
+          
           <div className={styles.postAllTask}>
             {postTask.map((line) => {
               return (<Task key={line.id} title={line.task.description}></Task>)

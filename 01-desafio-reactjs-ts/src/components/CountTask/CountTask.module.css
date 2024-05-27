@@ -1,0 +1,23 @@
+.listTasks {
+  display: flex;
+  justify-content: space-around;
+}
+
+.listTasks p {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.listTasks .countTaskCreated {
+  color: var(--blue);
+}
+
+.listTasks .countTaskCompleted {
+  color: var(--purple);
+}
+
+.listTasks p strong {
+  border-radius: 999px;
+  padding: 2px 8px;
+  background-color: var(--gray-400);
+}
