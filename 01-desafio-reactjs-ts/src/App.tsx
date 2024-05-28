@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PlusCircle } from "phosphor-react";
 
 import "./global.css";
@@ -6,47 +6,43 @@ import styles from "./App.module.css";
 
 import { Header } from "./components/Header/Header";
 import { Task } from "./components/Task/Task";
+import { TasksProps } from "./components/Task/Task.jsx";
 
-interface TasksProps {
-  id: number;
-  task: {
-    isFalse: boolean;
-    description: string;
-  }
-}
-
-const postTask:TasksProps[] = [
+const postTask: TasksProps[] = [
   {
     id: 1,
     task: {
-      isFalse: false,
-      description: "Estudar ReactJS para construir aplicações."
-    }
+      status: false,
+      description: "Estudar ReactJS para construir aplicações.",
+    },
   },
   {
     id: 2,
     task: {
-      isFalse: false,
-      description: "Não usar chatGPT."
-    }
+      status: false,
+      description: "Não usar chatGPT.",
+    },
   },
   {
     id: 3,
     task: {
-      isFalse: false,
-      description: "Apenas usar projetos da aula."
-    }
-  }
+      status: false,
+      description: "Apenas usar projetos da aula.",
+    },
+  },
 ];
 
-
 function App() {
-  // const [newTextTask, setNewTextTask] = useState([""]);
+  const [newTask, setNewTask] = useState([""]);
 
-
+  function deleteTask(taskToDelete: string) {
+    const tasksWithoutDeletedOne = newTask.filter(row => {
+      return row != taskToDelete;
+    });
+    setNewTask(tasksWithoutDeletedOne);
+  }
 
   return (
-    // sintaxe mais limpa no HTML
     <React.Fragment>
       <Header />
       <main className={styles.formTask}>
@@ -61,10 +57,9 @@ function App() {
           </button>
         </div>
         <article className={styles.postTask}>
-          
           <div className={styles.postAllTask}>
             {postTask.map((line) => {
-              return (<Task key={line.id} title={line.task.description}></Task>)
+              return <Task key={line.id} rows={line} onDeleteTask={deleteTask}></Task>;
             })}
           </div>
         </article>
