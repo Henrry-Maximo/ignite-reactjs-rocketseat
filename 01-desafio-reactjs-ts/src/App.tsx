@@ -79,8 +79,8 @@ function App() {
             Criar <PlusCircle className={styles.imgAddTask} size={19} />
           </button>
         </form>
-        <CountTask />
         <article className={styles.postTask}>
+        <CountTask />
           <div className={styles.postAllTask}>
             {newTask.map((line) => {
               return <Task key={line.id} rows={line} onDeleteTask={deleteTask}></Task>;
