@@ -7,6 +7,7 @@ import styles from "./App.module.css";
 import { Header } from "./components/Header/Header";
 import { Task } from "./components/Task/Task";
 import { TasksProps } from "./components/Task/Task.jsx";
+import { CountTask } from "./components/CountTask/CountTask.js";
 
 const postTask: TasksProps[] = [
   {
@@ -23,17 +24,12 @@ const postTask: TasksProps[] = [
       description: "Não usar chatGPT.",
     },
   },
-  {
-    id: 3,
-    task: {
-      status: false,
-      description: "Apenas usar projetos da aula.",
-    },
-  },
 ];
 
 function App() {
-  const [newTask, setNewTask] = useState([""]);
+  const [newTask, setNewTask] = useState<TasksProps[]>(postTask);
+
+  const [getNewTask, setGetNewTask] = useState(['']);
 
   function deleteTask(taskToDelete: string) {
     const tasksWithoutDeletedOne = newTask.filter(row => {
@@ -42,23 +38,51 @@ function App() {
     setNewTask(tasksWithoutDeletedOne);
   }
 
+  // handle -> disparado pelo usuário
+  function handleCreateNewTask() {
+    event?.preventDefault();
+
+    // elemento que tá recebendo aquele evento
+    // event.target
+    const newTaskTest = event?.target.task.value;
+    // console.log(event?.target.task.value)
+
+    setNewTask([
+    ...newTask, {
+      id: newTask.length + 1,
+      task: {
+        status: false,
+        description: newTaskTest,
+      },
+    }]);
+    setGetNewTask([''])
+  }
+
+  function handleNewTask() {
+    setGetNewTask(event?.target.value)
+  }
+
   return (
     <React.Fragment>
       <Header />
       <main className={styles.formTask}>
-        <div className={styles.sendTask}>
+        <form onSubmit={handleCreateNewTask} className={styles.sendTask}>
           <input
             type="text"
+            name="task"
+            value={getNewTask}
+            onChange={handleNewTask}
             placeholder="Adicione uma nova tarefa"
             className={styles.inputTask}
           />
           <button className={styles.buttonCreatedTask}>
             Criar <PlusCircle className={styles.imgAddTask} size={19} />
           </button>
-        </div>
+        </form>
+        <CountTask />
         <article className={styles.postTask}>
           <div className={styles.postAllTask}>
-            {postTask.map((line) => {
+            {newTask.map((line) => {
               return <Task key={line.id} rows={line} onDeleteTask={deleteTask}></Task>;
             })}
           </div>
