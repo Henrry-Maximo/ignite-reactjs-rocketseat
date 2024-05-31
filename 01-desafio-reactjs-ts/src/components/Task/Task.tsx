@@ -24,8 +24,8 @@ interface TaskProps {
 
 export const Task = ({rows, onDeleteTask}: TaskProps) => {
 
-  function handleDeleteComment() {
-    // onDeleteTask();
+  function handleDeleteTask() {
+    onDeleteTask(rows.id);
   }
 
   return (
@@ -34,7 +34,7 @@ export const Task = ({rows, onDeleteTask}: TaskProps) => {
         <input type="checkbox" className={styles.boxCheck}/>
         <p>{rows.task.description}</p>
       </div>
-      <button onClick={handleDeleteComment} title="Deletar Tarefa!" className={styles.trashBtn}>
+      <button onClick={handleDeleteTask} title="Deletar Tarefa!" className={styles.trashBtn}>
         <Trash size={24} />
       </button>
     </div>

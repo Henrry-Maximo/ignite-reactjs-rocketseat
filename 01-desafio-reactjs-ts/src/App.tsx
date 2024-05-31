@@ -29,12 +29,17 @@ const postTask: TasksProps[] = [
 function App() {
   const [newTask, setNewTask] = useState<TasksProps[]>(postTask);
 
-  const [getNewTask, setGetNewTask] = useState(['']);
+  const [getNewTask, setGetNewTask] = useState([""]);
 
-  function deleteTask(taskToDelete: string) {
-    const tasksWithoutDeletedOne = newTask.filter(row => {
-      return row != taskToDelete;
+  function deleteTask(taskToDelete: number) {
+    // console.log(`Deletar task: ${taskToDelete}`);
+
+    // filter -> se for false, não retorna
+    // retornar em uma nova lista aquilo que não foi selecionado
+    const tasksWithoutDeletedOne = newTask.filter((row) => {
+      return row.id !== taskToDelete;
     });
+
     setNewTask(tasksWithoutDeletedOne);
   }
 
@@ -48,18 +53,20 @@ function App() {
     // console.log(event?.target.task.value)
 
     setNewTask([
-    ...newTask, {
-      id: newTask.length + 1,
-      task: {
-        status: false,
-        description: newTaskTest,
+      ...newTask,
+      {
+        id: newTask.length + 1,
+        task: {
+          status: false,
+          description: newTaskTest,
+        },
       },
-    }]);
-    setGetNewTask([''])
+    ]);
+    setGetNewTask([""]);
   }
 
   function handleNewTask() {
-    setGetNewTask(event?.target.value)
+    setGetNewTask(event?.target.value);
   }
 
   return (
@@ -80,10 +87,17 @@ function App() {
           </button>
         </form>
         <article className={styles.postTask}>
-        <CountTask />
+          <CountTask />
           <div className={styles.postAllTask}>
             {newTask.map((line) => {
-              return <Task key={line.id} rows={line} onDeleteTask={deleteTask}></Task>;
+              return (
+                <Task
+                  key={line.id}
+                  rows={line}
+                  // on => quando
+                  onDeleteTask={deleteTask}
+                ></Task>
+              );
             })}
           </div>
         </article>
