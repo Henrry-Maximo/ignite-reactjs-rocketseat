@@ -33,7 +33,6 @@ function App() {
 
   function deleteTask(taskToDelete: number) {
     // console.log(`Deletar task: ${taskToDelete}`);
-
     // filter -> se for false, não retorna
     // retornar em uma nova lista aquilo que não foi selecionado
     const tasksWithoutDeletedOne = newTask.filter((row) => {
@@ -44,7 +43,7 @@ function App() {
   }
 
   // handle -> disparado pelo usuário
-  function handleCreateNewTask() {
+  function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event?.preventDefault();
 
     // elemento que tá recebendo aquele evento
@@ -65,8 +64,14 @@ function App() {
     setGetNewTask([""]);
   }
 
-  function handleNewTask() {
+  function handleNewTask(event: React.InvalidEvent<HTMLInputElement>) {
+    event?.target.setCustomValidity("")
     setGetNewTask(event?.target.value);
+  }
+
+  function handleNewTaskInvalid(event: React.InvalidEvent<HTMLInputElement>) {
+    // prototype > propriedade: customizar título do inValid
+    event?.target.setCustomValidity("Esse campo é obrigatório.");
   }
 
   return (
@@ -75,12 +80,14 @@ function App() {
       <main className={styles.formTask}>
         <form onSubmit={handleCreateNewTask} className={styles.sendTask}>
           <input
-            type="text"
             name="task"
+            type="text"
             value={getNewTask}
             onChange={handleNewTask}
-            placeholder="Adicione uma nova tarefa"
+            placeholder="Adicione uma Nova Tarefa"
+            onInvalid={handleNewTaskInvalid}
             className={styles.inputTask}
+            required
           />
           <button className={styles.buttonCreatedTask}>
             Criar <PlusCircle className={styles.imgAddTask} size={19} />
