@@ -27,29 +27,13 @@ const postTask: TasksProps[] = [
 ];
 
 function App() {
-  const [newTask, setNewTask] = useState<TasksProps[]>(postTask);
-
-  const [getNewTask, setGetNewTask] = useState([""]);
-
-  function deleteTask(taskToDelete: number) {
-    // console.log(`Deletar task: ${taskToDelete}`);
-    // filter -> se for false, não retorna
-    // retornar em uma nova lista aquilo que não foi selecionado
-    const tasksWithoutDeletedOne = newTask.filter((row) => {
-      return row.id !== taskToDelete;
-    });
-
-    setNewTask(tasksWithoutDeletedOne);
-  }
+  const [newTask, setNewTask] = useState<TasksProps[]>(postTask); // valor local
+  const [getNewTask, setGetNewTask] = useState(""); // valor digitado
 
   // handle -> disparado pelo usuário
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event?.preventDefault();
-
-    // elemento que tá recebendo aquele evento
-    // event.target
     const newTaskTest = event?.target.task.value;
-    // console.log(event?.target.task.value)
 
     setNewTask([
       ...newTask,
@@ -61,7 +45,15 @@ function App() {
         },
       },
     ]);
-    setGetNewTask([""]);
+    setGetNewTask("");
+  }
+
+  function deleteTask(taskToDelete: number) {
+    const tasksWithoutDeletedOne = newTask.filter((row) => {
+      return row.id !== taskToDelete;
+    });
+
+    setNewTask(tasksWithoutDeletedOne);
   }
 
   function handleNewTask(event: React.InvalidEvent<HTMLInputElement>) {
