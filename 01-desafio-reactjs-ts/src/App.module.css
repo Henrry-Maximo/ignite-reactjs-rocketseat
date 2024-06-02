@@ -24,7 +24,7 @@
   width: 39.813rem;
 }
 
-.buttonCreatedTask {
+.sendTask button[type=submit] {
   background-color: var(--blue-dark);
   color: var(--gray-100);
   display: flex;
@@ -39,9 +39,15 @@
   transition: background-color 0.6s ease;
 }
 
-.buttonCreatedTask:hover {
+.sendTask button[type=submit]:not(:disabled):hover {
   background-color: var(--purple-dark);
   color: var(--gray-100);
+  cursor: pointer;
+}
+
+.sendTask button[type=submit]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .postTask {

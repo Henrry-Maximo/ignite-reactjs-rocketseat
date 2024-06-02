@@ -56,7 +56,7 @@ function App() {
     setNewTask(tasksWithoutDeletedOne);
   }
 
-  function handleNewTask(event: React.InvalidEvent<HTMLInputElement>) {
+  function handleNewTaskChange(event: React.InvalidEvent<HTMLInputElement>) {
     event?.target.setCustomValidity("")
     setGetNewTask(event?.target.value);
   }
@@ -65,6 +65,9 @@ function App() {
     // prototype > propriedade: customizar título do inValid
     event?.target.setCustomValidity("Esse campo é obrigatório.");
   }
+
+  // variáveis auxiliares
+  const isNewTaskEmpty = getNewTask.length === 0;
 
   return (
     <React.Fragment>
@@ -75,13 +78,13 @@ function App() {
             name="task"
             type="text"
             value={getNewTask}
-            onChange={handleNewTask}
+            onChange={handleNewTaskChange}
             placeholder="Adicione uma Nova Tarefa"
             onInvalid={handleNewTaskInvalid}
             className={styles.inputTask}
             required
           />
-          <button className={styles.buttonCreatedTask}>
+          <button type="submit" disabled={isNewTaskEmpty}>
             Criar <PlusCircle className={styles.imgAddTask} size={19} />
           </button>
         </form>
