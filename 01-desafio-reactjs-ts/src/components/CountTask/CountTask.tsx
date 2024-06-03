@@ -1,12 +1,12 @@
 import styles from "./CountTask.module.css"
 
-export const CountTask = () => {
+export const CountTask = ({onCountTask}) => {
   return (
     <>
       <div className={styles.listTasks}>
         <p>
           <span className={styles.countTaskCreated}>Tarefas criadas</span>
-          <strong>5</strong>
+          <strong>{onCountTask}</strong>
         </p>
         <p>
           <span className={styles.countTaskCompleted}>Concluídas</span>

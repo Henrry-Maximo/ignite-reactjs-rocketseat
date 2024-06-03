@@ -66,6 +66,10 @@ function App() {
     event?.target.setCustomValidity("Esse campo é obrigatório.");
   }
 
+  function onAmountTask() {
+    return newTask.length;
+  }
+
   // variáveis auxiliares
   const isNewTaskEmpty = getNewTask.length === 0;
 
@@ -89,7 +93,7 @@ function App() {
           </button>
         </form>
         <article className={styles.postTask}>
-          <CountTask />
+          <CountTask onCountTask={onAmountTask()}/>
           <div className={styles.postAllTask}>
             {newTask.map((line) => {
               return (
