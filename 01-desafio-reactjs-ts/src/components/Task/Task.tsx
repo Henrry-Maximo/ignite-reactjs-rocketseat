@@ -19,7 +19,7 @@ estrutura de dados em diferentes níveis
 */
 interface TaskProps {
   rows: TasksProps
-  onDeleteTask: (task: string) => void;
+  onDeleteTask: (id: number) => void;
 }
 
 export const Task = ({rows, onDeleteTask}: TaskProps) => {

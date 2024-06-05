@@ -1,6 +1,10 @@
 import styles from "./CountTask.module.css"
 
-export const CountTask = ({onCountTask}) => {
+interface countTask {
+  onCountTask: number
+}
+
+export const CountTask = ({onCountTask}:countTask) => {
   return (
     <>
       <div className={styles.listTasks}>

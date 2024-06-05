@@ -32,8 +32,7 @@ function App() {
 
   // handle -> disparado pelo usuário
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
-    event?.preventDefault();
-    const newTaskTest = event?.target.task.value;
+    event.preventDefault();
 
     setNewTask([
       ...newTask,
@@ -41,7 +40,7 @@ function App() {
         id: newTask.length + 1,
         task: {
           status: false,
-          description: newTaskTest,
+          description: getNewTask,
         },
       },
     ]);
@@ -57,13 +56,13 @@ function App() {
   }
 
   function handleNewTaskChange(event: React.InvalidEvent<HTMLInputElement>) {
-    event?.target.setCustomValidity("")
-    setGetNewTask(event?.target.value);
+    event.target.setCustomValidity("")
+    setGetNewTask(event.target.value);
   }
 
   function handleNewTaskInvalid(event: React.InvalidEvent<HTMLInputElement>) {
     // prototype > propriedade: customizar título do inValid
-    event?.target.setCustomValidity("Esse campo é obrigatório.");
+    event.target.setCustomValidity("Esse campo é obrigatório.");
   }
 
   function onAmountTask() {
