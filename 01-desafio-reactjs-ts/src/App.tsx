@@ -9,25 +9,16 @@ import { Task } from "./components/Task/Task";
 import { TasksProps } from "./components/Task/Task.jsx";
 import { CountTask } from "./components/CountTask/CountTask.js";
 
-// const postTask: TasksProps[] = [
-//   {
-//     id: 1,
-//     task: {
-//       status: false,
-//       description: "Estudar ReactJS para construir aplicações.",
-//     },
-//   },
-//   {
-//     id: 2,
-//     task: {
-//       status: false,
-//       description: "Não usar chatGPT.",
-//     },
-//   },
-// ];
+const postTask: TasksProps[] = [
+  {
+    id: 1,
+    status: false,
+    description: "Estudar ReactJS para construir aplicações.",
+  },
+];
 
 function App() {
-  const [newTask, setNewTask] = useState<TasksProps[]>([]); // valor local
+  const [newTask, setNewTask] = useState<TasksProps[]>(postTask); // valor local
   const [getNewTask, setGetNewTask] = useState(""); // valor digitado
 
   // handle -> disparado pelo usuário
@@ -38,10 +29,8 @@ function App() {
       ...newTask,
       {
         id: newTask.length + 1,
-        task: {
-          status: false,
-          description: getNewTask,
-        },
+        status: false,
+        description: getNewTask,
       },
     ]);
     setGetNewTask("");
@@ -67,6 +56,11 @@ function App() {
 
   function onAmountTask() {
     return newTask.length;
+  }
+
+  function completedTask(taskId: number, completed:boolean) {
+    setNewTask(newTask.map(row => row.id === taskId ? { ...row, status: completed} : row))
+    console.log(newTask);
   }
 
   // variáveis auxiliares
@@ -102,6 +96,7 @@ function App() {
                     rows={line}
                     // on => quando
                     onDeleteTask={deleteTask}
+                    onCompletedTask={completedTask}
                   ></Task>
                 );
               })) || (
