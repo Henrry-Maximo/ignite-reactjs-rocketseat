@@ -42,7 +42,7 @@ export const Task = ({ rows, onDeleteTask, onCompletedTask }: TaskProps) => {
       <div className={styles.content}>
         <input
           type="checkbox"
-          // className={styles.boxCheck}
+          className={styles.boxCheck}
           onChange={isTrueOrFalse}
           name="box"
         />
