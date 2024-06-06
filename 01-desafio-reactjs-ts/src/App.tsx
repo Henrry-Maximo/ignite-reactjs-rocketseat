@@ -9,25 +9,25 @@ import { Task } from "./components/Task/Task";
 import { TasksProps } from "./components/Task/Task.jsx";
 import { CountTask } from "./components/CountTask/CountTask.js";
 
-const postTask: TasksProps[] = [
-  {
-    id: 1,
-    task: {
-      status: false,
-      description: "Estudar ReactJS para construir aplicações.",
-    },
-  },
-  {
-    id: 2,
-    task: {
-      status: false,
-      description: "Não usar chatGPT.",
-    },
-  },
-];
+// const postTask: TasksProps[] = [
+//   {
+//     id: 1,
+//     task: {
+//       status: false,
+//       description: "Estudar ReactJS para construir aplicações.",
+//     },
+//   },
+//   {
+//     id: 2,
+//     task: {
+//       status: false,
+//       description: "Não usar chatGPT.",
+//     },
+//   },
+// ];
 
 function App() {
-  const [newTask, setNewTask] = useState<TasksProps[]>(postTask); // valor local
+  const [newTask, setNewTask] = useState<TasksProps[]>([]); // valor local
   const [getNewTask, setGetNewTask] = useState(""); // valor digitado
 
   // handle -> disparado pelo usuário
@@ -56,7 +56,7 @@ function App() {
   }
 
   function handleNewTaskChange(event: React.InvalidEvent<HTMLInputElement>) {
-    event.target.setCustomValidity("")
+    event.target.setCustomValidity("");
     setGetNewTask(event.target.value);
   }
 
@@ -92,18 +92,25 @@ function App() {
           </button>
         </form>
         <article className={styles.postTask}>
-          <CountTask onCountTask={onAmountTask()}/>
+          <CountTask onCountTask={onAmountTask()} />
           <div className={styles.postAllTask}>
-            {newTask.map((line) => {
-              return (
-                <Task
-                  key={line.id}
-                  rows={line}
-                  // on => quando
-                  onDeleteTask={deleteTask}
-                ></Task>
-              );
-            })}
+            {(newTask.length > 0 &&
+              newTask.map((line) => {
+                return (
+                  <Task
+                    key={line.id}
+                    rows={line}
+                    // on => quando
+                    onDeleteTask={deleteTask}
+                  ></Task>
+                );
+              })) || (
+              <div>
+                <h2>Você ainda não tem tarefas cadastradas</h2>
+                <br />
+                <p>Crie tarefas e organize seus itens a fazer</p>
+              </div>
+            )}
           </div>
         </article>
       </main>
