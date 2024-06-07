@@ -77,3 +77,15 @@
   width: 56px;
   height: 56px;
 }
+
+.withoutTasks {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 4rem 2rem 4rem 2rem;
+  gap: 1rem;
+}
+
+.withoutTasks div p span {
+  font-weight: bold;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PlusCircle } from "phosphor-react";
+import { ClipboardText, PlusCircle } from "phosphor-react";
 
 import "./global.css";
 import styles from "./App.module.css";
@@ -18,7 +18,7 @@ const postTask: TasksProps[] = [
 ];
 
 function App() {
-  const [newTask, setNewTask] = useState<TasksProps[]>(postTask); // valor local
+  const [newTask, setNewTask] = useState<TasksProps[]>([]); // valor local
   const [getNewTask, setGetNewTask] = useState(""); // valor digitado
 
   // handle -> disparado pelo usuário
@@ -58,8 +58,12 @@ function App() {
     return newTask.length;
   }
 
-  function completedTask(taskId: number, completed:boolean) {
-    setNewTask(newTask.map(row => row.id === taskId ? { ...row, status: completed} : row))
+  function completedTask(taskId: number, completed: boolean) {
+    setNewTask(
+      newTask.map((row) =>
+        row.id === taskId ? { ...row, status: completed } : row
+      )
+    );
     console.log(newTask);
   }
 
@@ -100,10 +104,14 @@ function App() {
                   ></Task>
                 );
               })) || (
-              <div>
-                <h2>Você ainda não tem tarefas cadastradas</h2>
-                <br />
-                <p>Crie tarefas e organize seus itens a fazer</p>
+              <div className={styles.withoutTasks}>
+                <span>
+                  <ClipboardText size={62} />
+                </span>
+                <div>
+                  <p><span>Você ainda não tem tarefas cadastradas</span></p>
+                  <p>Crie tarefas e organize seus itens a fazer</p>
+                </div>
               </div>
             )}
           </div>
