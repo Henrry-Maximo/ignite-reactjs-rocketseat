@@ -9,13 +9,13 @@ import { Task } from "./components/Task/Task";
 import { TasksProps } from "./components/Task/Task.jsx";
 import { CountTask } from "./components/CountTask/CountTask.js";
 
-const postTask: TasksProps[] = [
-  {
-    id: 1,
-    status: false,
-    description: "Estudar ReactJS para construir aplicações.",
-  },
-];
+// const postTask: TasksProps[] = [
+//   {
+//     id: 1,
+//     status: false,
+//     description: "Estudar ReactJS para construir aplicações.",
+//   },
+// ];
 
 function App() {
   const [newTask, setNewTask] = useState<TasksProps[]>([]); // valor local
