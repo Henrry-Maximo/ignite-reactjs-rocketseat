@@ -54,18 +54,18 @@ function App() {
     event.target.setCustomValidity("Esse campo é obrigatório.");
   }
 
-  function onAmountTask() {
-    return newTask.length;
+  function completedTask(taskId: number, completed: boolean) {
+    const updatedTasks = newTask.map((row) =>
+      row.id === taskId ? { ...row, status: completed } : row
+    );
+    setNewTask(updatedTasks);
   }
 
-  function completedTask(taskId: number, completed: boolean) {
-    setNewTask(
-      newTask.map((row) =>
-        row.id === taskId ? { ...row, status: completed } : row
-      )
-    );
-    console.log(newTask);
-  }
+  // Calcular o total de tarefas
+  const totalTasks = newTask.length;
+
+  // Calcular o total de tarefas concluídas
+  const completedTasks = newTask.filter(task => task.status).length;
 
   // variáveis auxiliares
   const isNewTaskEmpty = getNewTask.length === 0;
@@ -90,7 +90,7 @@ function App() {
           </button>
         </form>
         <article className={styles.postTask}>
-          <CountTask onCountTask={onAmountTask()} />
+        <CountTask totalTasks={totalTasks} completedTasks={completedTasks} />
           <div className={styles.postAllTask}>
             {(newTask.length > 0 &&
               newTask.map((line) => {

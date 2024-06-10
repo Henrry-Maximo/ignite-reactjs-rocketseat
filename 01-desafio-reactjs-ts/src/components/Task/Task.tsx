@@ -8,11 +8,6 @@ export interface TasksProps {
   description: string;
 }
 
-// export interface CompletedTask {
-//   id: number, 
-//   completed: boolean
-// }
-
 export type OnCompletedTask = (taskId: number, completed: boolean) => void;
 
 /* 
@@ -22,6 +17,7 @@ post : informação
 tasksprops : tipo
 estrutura de dados em diferentes níveis
 */
+
 interface TaskProps {
   rows: TasksProps;
   onDeleteTask: (id: number) => void;
@@ -35,6 +31,8 @@ export const Task = ({ rows, onDeleteTask, onCompletedTask }: TaskProps) => {
 
   function isTrueOrFalse(event: React.ChangeEvent<HTMLInputElement>) {
     onCompletedTask(rows.id, event.target.checked);
+    // console.log(rows.id)
+    // console.log(event.target.checked)
   }
 
   return (
