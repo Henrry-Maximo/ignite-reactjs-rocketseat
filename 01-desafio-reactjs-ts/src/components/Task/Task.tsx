@@ -33,7 +33,10 @@ export const Task = ({ rows, onDeleteTask, onCompletedTask }: TaskProps) => {
     onCompletedTask(rows.id, event.target.checked);
     // console.log(rows.id)
     // console.log(event.target.checked)
+    return event.target.checked;
   }
+
+  const lineDeactivatedWhenCheck = rows.status ? styles.completed : '';
 
   return (
     <div className={styles.boxTask}>
@@ -46,7 +49,7 @@ export const Task = ({ rows, onDeleteTask, onCompletedTask }: TaskProps) => {
             name="box"
           />
         </div>
-        <p>{rows.description}</p>
+        <p className={lineDeactivatedWhenCheck}>{rows.description}</p>
       </div>
       <button
         onClick={handleDeleteTask}

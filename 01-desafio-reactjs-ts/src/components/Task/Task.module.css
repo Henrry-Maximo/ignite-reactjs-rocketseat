@@ -21,6 +21,10 @@
   text-align: justify;
 }
 
+.completed {
+  text-decoration: line-through;
+}
+
 .boxCheck {
   appearance: none;
   background-color: var(--blue-dark);
