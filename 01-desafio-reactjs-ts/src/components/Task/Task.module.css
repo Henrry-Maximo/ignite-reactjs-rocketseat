@@ -9,13 +9,16 @@
   padding: 16px;
   width: 100%;
   max-width: 46rem;
-  height: 4.5rem;
   justify-content: space-between;
 }
 
 .boxTask .content {
   display: flex;
   gap: 15px;
+}
+
+.boxTask .content p {
+  text-align: justify;
 }
 
 .boxCheck {
@@ -40,7 +43,6 @@
   display: block;
   width: 6px;
   height: 10px;
-  display: flex;
   margin: auto;
   border: solid var(--gray-200);
   border-width: 0 2px 2px 0;

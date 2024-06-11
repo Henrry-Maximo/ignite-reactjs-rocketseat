@@ -38,12 +38,14 @@ export const Task = ({ rows, onDeleteTask, onCompletedTask }: TaskProps) => {
   return (
     <div className={styles.boxTask}>
       <div className={styles.content}>
-        <input
-          type="checkbox"
-          className={styles.boxCheck}
-          onChange={isTrueOrFalse}
-          name="box"
-        />
+        <div>
+          <input
+            type="checkbox"
+            className={styles.boxCheck}
+            onChange={isTrueOrFalse}
+            name="box"
+          />
+        </div>
         <p>{rows.description}</p>
       </div>
       <button
