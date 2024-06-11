@@ -21,8 +21,8 @@
 .boxCheck {
   appearance: none;
   background-color: var(--blue-dark);
-  width: 20px;
-  height: 20px;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
   border: 2px solid var(--blue-dark);
   position: relative;
@@ -38,14 +38,13 @@
 .boxCheck:checked::before {
   content: '';
   display: block;
-  width: 5px;
+  width: 6px;
   height: 10px;
+  display: flex;
+  margin: auto;
   border: solid var(--gray-200);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
-  position: absolute;
-  top: 2px;
-  left: 6px;
 }
 
 .boxTask button {
