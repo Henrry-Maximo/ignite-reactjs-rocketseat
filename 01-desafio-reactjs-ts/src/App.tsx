@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ClipboardText, PlusCircle } from "phosphor-react";
+// import Cookies from "js-cookie";
 
 import "./global.css";
 import styles from "./App.module.css";
@@ -21,6 +22,14 @@ function App() {
   const [newTask, setNewTask] = useState<TasksProps[]>([]); // valor local
   const [getNewTask, setGetNewTask] = useState(""); // valor digitado
 
+  // Tarefas dos cookies
+  // useEffect(() => {
+  //   const cookieTasks = Cookies.get("tasks");
+  //   if (cookieTasks) {
+  //     setNewTask(JSON.parse(cookieTasks));
+  //   }
+  // }, []);
+
   // handle -> disparado pelo usuário
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,6 +42,7 @@ function App() {
         description: getNewTask,
       },
     ]);
+    // Cookies.set("tasks", JSON.stringify([...newTask, { id: newTask.length + 1, status: false, description: getNewTask }]));
     setGetNewTask("");
   }
 
@@ -40,7 +50,7 @@ function App() {
     const tasksWithoutDeletedOne = newTask.filter((row) => {
       return row.id !== taskToDelete;
     });
-
+    // Cookies.set("tasks", JSON.stringify(tasksWithoutDeletedOne));
     setNewTask(tasksWithoutDeletedOne);
   }
 
@@ -58,14 +68,15 @@ function App() {
     const updatedTasks = newTask.map((row) =>
       row.id === taskId ? { ...row, status: completed } : row
     );
+    // Cookies.set("tasks", JSON.stringify(updatedTasks));
     setNewTask(updatedTasks);
   }
 
-  // Calcular o total de tarefas
+  // calcular o total de tarefas
   const totalTasks = newTask.length;
 
-  // Calcular o total de tarefas concluídas
-  const completedTasks = newTask.filter(task => task.status).length;
+  // calcular o total de tarefas concluídas
+  const completedTasks = newTask.filter((task) => task.status).length;
 
   // variáveis auxiliares
   const isNewTaskEmpty = getNewTask.length === 0;
@@ -90,7 +101,7 @@ function App() {
           </button>
         </form>
         <article className={styles.postTask}>
-        <CountTask totalTasks={totalTasks} completedTasks={completedTasks} />
+          <CountTask totalTasks={totalTasks} completedTasks={completedTasks} />
           <div className={styles.postAllTask}>
             {(newTask.length > 0 &&
               newTask.map((line) => {
@@ -109,7 +120,9 @@ function App() {
                   <ClipboardText size={62} />
                 </span>
                 <div>
-                  <p><span>Você ainda não tem tarefas cadastradas</span></p>
+                  <p>
+                    <span>Você ainda não tem tarefas cadastradas</span>
+                  </p>
                   <p>Crie tarefas e organize seus itens a fazer</p>
                 </div>
               </div>
