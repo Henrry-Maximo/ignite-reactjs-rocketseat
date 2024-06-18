@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ClipboardText, PlusCircle } from "phosphor-react";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
+// import { v4 as uuidv4 } from 'uuid';
 
 import "./global.css";
 import styles from "./App.module.css";
@@ -23,26 +24,27 @@ function App() {
   const [getNewTask, setGetNewTask] = useState(""); // valor digitado
 
   // Tarefas dos cookies
-  // useEffect(() => {
-  //   const cookieTasks = Cookies.get("tasks");
-  //   if (cookieTasks) {
-  //     setNewTask(JSON.parse(cookieTasks));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const cookieTasks = Cookies.get("tasks");
+    // console.log("2 vezes");
+    if (cookieTasks) {
+      setNewTask(JSON.parse(cookieTasks));
+    }
+  }, []);
 
   // handle -> disparado pelo usuário
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    setNewTask([
-      ...newTask,
-      {
-        id: newTask.length + 1,
-        status: false,
-        description: getNewTask,
-      },
-    ]);
-    // Cookies.set("tasks", JSON.stringify([...newTask, { id: newTask.length + 1, status: false, description: getNewTask }]));
+    const newTaskItem: TasksProps = {
+      id: Date.now(), // Gera um identificador único do tipo number
+      status: false,
+      description: getNewTask,
+    };
+
+    const updatedTasks = [...newTask, newTaskItem];
+    Cookies.set("tasks", JSON.stringify(updatedTasks));
+    setNewTask(updatedTasks);
     setGetNewTask("");
   }
 
@@ -50,7 +52,7 @@ function App() {
     const tasksWithoutDeletedOne = newTask.filter((row) => {
       return row.id !== taskToDelete;
     });
-    // Cookies.set("tasks", JSON.stringify(tasksWithoutDeletedOne));
+    Cookies.set("tasks", JSON.stringify(tasksWithoutDeletedOne));
     setNewTask(tasksWithoutDeletedOne);
   }
 
@@ -68,7 +70,8 @@ function App() {
     const updatedTasks = newTask.map((row) =>
       row.id === taskId ? { ...row, status: completed } : row
     );
-    // Cookies.set("tasks", JSON.stringify(updatedTasks));
+    // console.log(updatedTasks);
+    Cookies.set("tasks", JSON.stringify(updatedTasks));
     setNewTask(updatedTasks);
   }
 

@@ -33,6 +33,7 @@ export const Task = ({ rows, onDeleteTask, onCompletedTask }: TaskProps) => {
     onCompletedTask(rows.id, event.target.checked);
     // console.log(rows.id)
     // console.log(event.target.checked)
+    // console.log(rows.status)
     return event.target.checked;
   }
 
@@ -46,6 +47,7 @@ export const Task = ({ rows, onDeleteTask, onCompletedTask }: TaskProps) => {
             type="checkbox"
             className={styles.boxCheck}
             onChange={isTrueOrFalse}
+            checked={rows.status}
             name="box"
           />
         </div>
