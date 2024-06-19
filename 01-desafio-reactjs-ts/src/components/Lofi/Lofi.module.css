@@ -1,0 +1,25 @@
+
+.container {
+  display: flex;
+  margin: auto;
+}
+
+.container .wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  gap: 1rem;
+  margin: auto;
+}
+
+.container .wrapper .wrapperPlay{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.imageMusic {
+  background-color: black;
+  display: flex;
+  align-items: center;
+}

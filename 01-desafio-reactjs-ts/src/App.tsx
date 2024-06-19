@@ -10,6 +10,7 @@ import { Header } from "./components/Header/Header";
 import { Task } from "./components/Task/Task";
 import { TasksProps } from "./components/Task/Task.jsx";
 import { CountTask } from "./components/CountTask/CountTask.js";
+import Lofi from "./components/Lofi/Lofi.js";
 
 // const postTask: TasksProps[] = [
 //   {
@@ -103,6 +104,7 @@ function App() {
             Criar <PlusCircle className={styles.imgAddTask} size={19} />
           </button>
         </form>
+        <Lofi />
         <article className={styles.postTask}>
           <CountTask totalTasks={totalTasks} completedTasks={completedTasks} />
           <div className={styles.postAllTask}>
