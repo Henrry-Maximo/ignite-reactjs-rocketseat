@@ -26,3 +26,24 @@
   display: flex;
   align-items: center;
 }
+
+.wrapperPlay  {
+  gap: 10px;
+}
+
+.wrapperPlay button {
+  appearance: none;
+  background-color: var(--blue-dark);
+  width: 1.5rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--gray-100);
+}
+
+.wrapperPlay button:hover {
+  background-color: var(--purple);
+}
