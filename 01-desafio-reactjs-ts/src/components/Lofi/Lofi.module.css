@@ -27,23 +27,29 @@
   align-items: center;
 }
 
-.wrapperPlay  {
+.wrapperPlay {
   gap: 10px;
 }
 
 .wrapperPlay button {
-  appearance: none;
-  background-color: var(--blue-dark);
-  width: 1.5rem;
-  height: 1.4rem;
-  border-radius: 50%;
-  border: none;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--gray-100);
+  background-color: var(--gray-800);
+  color: var(--gray-100);
+  padding: 4px;
+  border-radius: 15px 15px 12px 12px;
+  cursor: pointer;
+  will-change: transform;
+  transition: all 0.1s ease-in-out 0s;
+  user-select: none;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0)
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  transform: perspective(70px) rotateX(5deg) rotateY(0deg);
 }
 
 .wrapperPlay button:hover {
-  background-color: var(--purple);
+  background-color: var(--blue-dark);
 }
