@@ -5,7 +5,7 @@ export default function chillHop() {
     {
       name: "Oasis",
       cover:
-        "https://chillhop.com/wp-content/uploads/2020/11/f78c39b4bb6313ddd0354bef896c591bfb490ff8-1024x1024.jpg",
+        "https://img.freepik.com/free-vector/gradient-lo-fi-illustrations_52683-82983.jpg?w=1380&t=st=1719782729~exp=1719783329~hmac=72683f63c1de751a379a3eb89143480c7b240d4aab80196bd4cf56cd027de7ee",
       artist: "Makzo",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=11768",
       color: ["#47609D", "#E88774"],

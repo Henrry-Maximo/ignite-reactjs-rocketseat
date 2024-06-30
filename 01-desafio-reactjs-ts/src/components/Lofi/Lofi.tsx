@@ -1,33 +1,42 @@
-import { FastForward, MusicNotes, Pause, Play, Rewind } from "phosphor-react";
+import { FastForward, Pause, Play, Rewind } from "phosphor-react";
 import styles from "./Lofi.module.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 // SONG DATA
-import chillHop from "../../playlist"
+import chillHop from "../../playlist";
 
 export default function Lofi() {
   const tracks = chillHop();
+  const audioRef = useRef<HTMLAudioElement>(null);
 
-  const [currentTrack, setCurrentTrack] = useState(tracks[0]);
+  const [currentTrack] = useState(tracks[0]);
   const [isPlaying, setIsPlaying] = useState(false);
 
   // função anônima que altera o valor booleano utilizado estado
   const togglePlayPause = () => {
-    setIsPlaying((prev) => !prev)
-  }
+    if (isPlaying) {
+      audioRef.current?.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current?.play();
+      setIsPlaying(true);
+    }
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.imageMusic}>
-        <MusicNotes size={32} />
+        <img src={currentTrack.cover} style={{ height: "3.70rem", width: "4rem" }} />
+        {/* <MusicNotes size={32} /> */}
       </div>
       <div className={styles.wrapper}>
         <div>
-          <p><strong>She Will Be Loved</strong></p>
-          <p>Maroon 5</p>
-          <audio src={currentTrack.audio} />
+          <p>
+            <strong>{currentTrack.name}</strong>
+          </p>
+          <p>{currentTrack.artist}</p>
+          <audio src={currentTrack.audio} ref={audioRef} />
         </div>
-        <audio />
         <div>
           <div className={styles.wrapperPlay}>
             <button>
@@ -36,7 +45,7 @@ export default function Lofi() {
             {/* executar função para altera resultado quando for clicado */}
             <button onClick={togglePlayPause}>
               {/* alternar entre diferentes icons */}
-              {isPlaying ? <Play size={16} /> : <Pause size={16} />}
+              {isPlaying ? <Pause size={16} />  : <Play size={16} /> }
             </button>
             <button>
               <FastForward size={16} />
