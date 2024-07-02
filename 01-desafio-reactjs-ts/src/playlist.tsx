@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from "uuid";
+import makzo from './assets/cover/Makzo.jpg'
 
 export default function chillHop() {
   return [
     {
       name: "Oasis",
-      cover:
-        "https://img.freepik.com/free-vector/gradient-lo-fi-illustrations_52683-82983.jpg?w=1380&t=st=1719782729~exp=1719783329~hmac=72683f63c1de751a379a3eb89143480c7b240d4aab80196bd4cf56cd027de7ee",
+      cover: makzo,
       artist: "Makzo",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=11768",
       color: ["#47609D", "#E88774"],
@@ -14,8 +14,7 @@ export default function chillHop() {
     },
     {
       name: "Beaver Creek",
-      cover:
-        "https://chillhop.com/wp-content/uploads/2020/09/0255e8b8c74c90d4a27c594b3452b2daafae608d-1024x1024.jpg",
+      cover: "",
       artist: "Aso, Middle School, Aviino",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10075",
       color: ["#205950", "#2ab3bf"],

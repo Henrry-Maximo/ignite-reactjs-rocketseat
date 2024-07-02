@@ -50,7 +50,8 @@ export default function Lofi() {
         {currentTrack.cover ? (
           <img
             src={currentTrack.cover}
-            style={{ height: "3.70rem", width: "4rem" }}
+            style={{ height: "100%", width: "4rem", border: "1px solid var(--gray-100)" }}
+            alt="audio avatar"
           />
         ) : (
           <MusicNotes size={32} />
@@ -61,7 +62,7 @@ export default function Lofi() {
           <p>
             <strong>{currentTrack.name}</strong>
           </p>
-          <p>{currentTrack.artist}</p>
+          <p style={{ color: "var(--danger)" }}>{currentTrack.artist}</p>
           {/* Utilizar "controls" para layout de controle padrão: <audio controls /> */}
           <audio src={currentTrack.audio} ref={audioRef} />
         </div>
@@ -80,8 +81,10 @@ export default function Lofi() {
               <FastForward size={16} />
             </button>
           </div>
-          <div>
-            <p>03:28 _______________________ 04:15</p>
+          <div className={styles.progress}>
+            <span className="time current">00:00</span>
+            <input type="range" />
+            <span className="time">03:34</span>
           </div>
         </div>
       </div>
