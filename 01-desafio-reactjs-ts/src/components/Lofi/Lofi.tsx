@@ -11,11 +11,15 @@ export default function Lofi() {
 
   // métodos e propriedades do elemento <audio> retornados pelo ref
   const audioRef = useRef<HTMLAudioElement>(null);
+  const progressBarRef = useRef<HTMLInputElement>(null);
 
   // Inicilizando primeira track da lista
   const [currentTrack] = useState(tracks[0]);
 
   const [isPlaying, setIsPlaying] = useState(false);
+
+  const [timeProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   /* 
   # função chamada ao botão de play/pause ser pressionado
@@ -36,6 +40,35 @@ export default function Lofi() {
     }
   };
 
+  const handleProgressChange = () => {
+    // console.log(progressBarRef.current?.value);
+    // console.log(audioRef.current?.currentTime)
+    if (audioRef.current && progressBarRef.current) {
+      audioRef.current.currentTime = parseInt(progressBarRef.current.value);
+    }
+  };
+
+  const onLoadedMetadata = () => {
+    const seconds = audioRef.current?.duration;
+    if (seconds && progressBarRef.current){
+      setDuration(seconds);
+      progressBarRef.current.max = seconds.toString();
+    }
+  };
+
+  const formatTime = (time: number) => {
+    if (time && !isNaN(time)) {
+      const minutes = Math.floor(time / 60);
+      const formatMinutes =
+        minutes < 10 ? `0${minutes}` : `${minutes}`;
+      const seconds = Math.floor(time % 60);
+      const formatSeconds =
+        seconds < 10 ? `0${seconds}` : `${seconds}`;
+      return `${formatMinutes}:${formatSeconds}`;
+    }
+    return '00:00';
+  };
+
   // useEffect(() => {
   //   if (isPlaying) {
   //     audioRef.current?.pause();
@@ -50,7 +83,11 @@ export default function Lofi() {
         {currentTrack.cover ? (
           <img
             src={currentTrack.cover}
-            style={{ height: "100%", width: "4rem", border: "1px solid var(--gray-100)" }}
+            style={{
+              height: "100%",
+              width: "4rem",
+              border: "1px solid var(--gray-100)",
+            }}
             alt="audio avatar"
           />
         ) : (
@@ -64,7 +101,7 @@ export default function Lofi() {
           </p>
           <p style={{ color: "var(--danger)" }}>{currentTrack.artist}</p>
           {/* Utilizar "controls" para layout de controle padrão: <audio controls /> */}
-          <audio src={currentTrack.audio} ref={audioRef} />
+          <audio src={currentTrack.audio} ref={audioRef} onLoadedMetadata={onLoadedMetadata}/>
         </div>
         <div>
           <div className={styles.wrapperPlay}>
@@ -82,9 +119,14 @@ export default function Lofi() {
             </button>
           </div>
           <div className={styles.progress}>
-            <span className="time current">00:00</span>
-            <input type="range" />
-            <span className="time">03:34</span>
+            <span className="time current">{formatTime(timeProgress)}</span>
+            <input
+              type="range"
+              ref={progressBarRef}
+              defaultValue="0"
+              onChange={handleProgressChange}
+            />
+            <span className="time">{formatTime(duration)}</span>
           </div>
         </div>
       </div>
