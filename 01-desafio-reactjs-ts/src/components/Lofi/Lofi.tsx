@@ -1,6 +1,6 @@
 import { FastForward, MusicNotes, Pause, Play, Rewind } from "phosphor-react";
 import styles from "./Lofi.module.css";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // SONG DATA
 import chillHop from "../../playlist";
@@ -20,6 +20,24 @@ export default function Lofi() {
 
   const [timeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
+
+  const playAnimationRef  = useRef(0)
+
+  const repeat = useCallback(() => {
+    console.log('run');
+  
+    playAnimationRef.current = requestAnimationFrame(repeat);
+    console.log(playAnimationRef)
+  }, []);
+
+  useEffect(() => {
+    if (isPlaying) {
+      playAnimationRef.current = requestAnimationFrame(repeat);
+    } else {
+      cancelAnimationFrame(playAnimationRef.current);
+    }
+    // return () => cancelAnimationFrame(playAnimationRef.current);
+  }, [isPlaying, repeat]);
 
   /* 
   # função chamada ao botão de play/pause ser pressionado
