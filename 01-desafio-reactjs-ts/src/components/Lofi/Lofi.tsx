@@ -18,17 +18,26 @@ export default function Lofi() {
 
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const [timeProgress] = useState(0);
+  const [timeProgress, setTimeProgress] = useState(0);
   const [duration, setDuration] = useState(0);
 
-  const playAnimationRef  = useRef(0)
+  const playAnimationRef = useRef(0);
 
   const repeat = useCallback(() => {
-    console.log('run');
-  
-    playAnimationRef.current = requestAnimationFrame(repeat);
-    console.log(playAnimationRef)
-  }, []);
+    // playAnimationRef.current = requestAnimationFrame(repeat);
+    const currentTime = audioRef.current?.currentTime;
+    if (currentTime !== undefined) {
+      setTimeProgress(currentTime);
+      if (progressBarRef.current) {
+        progressBarRef.current.value = currentTime.toString();
+        progressBarRef.current.style.setProperty(
+          '--range-progress',
+          `${(currentTime / duration) * 100}%`
+        );
+        playAnimationRef.current = requestAnimationFrame(repeat);
+      }
+    }
+  }, [audioRef, setTimeProgress, duration, progressBarRef]);
 
   useEffect(() => {
     if (isPlaying) {
@@ -68,7 +77,7 @@ export default function Lofi() {
 
   const onLoadedMetadata = () => {
     const seconds = audioRef.current?.duration;
-    if (seconds && progressBarRef.current){
+    if (seconds && progressBarRef.current) {
       setDuration(seconds);
       progressBarRef.current.max = seconds.toString();
     }
@@ -77,14 +86,12 @@ export default function Lofi() {
   const formatTime = (time: number) => {
     if (time && !isNaN(time)) {
       const minutes = Math.floor(time / 60);
-      const formatMinutes =
-        minutes < 10 ? `0${minutes}` : `${minutes}`;
+      const formatMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
       const seconds = Math.floor(time % 60);
-      const formatSeconds =
-        seconds < 10 ? `0${seconds}` : `${seconds}`;
+      const formatSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
       return `${formatMinutes}:${formatSeconds}`;
     }
-    return '00:00';
+    return "00:00";
   };
 
   // useEffect(() => {
@@ -119,7 +126,11 @@ export default function Lofi() {
           </p>
           <p style={{ color: "var(--danger)" }}>{currentTrack.artist}</p>
           {/* Utilizar "controls" para layout de controle padrão: <audio controls /> */}
-          <audio src={currentTrack.audio} ref={audioRef} onLoadedMetadata={onLoadedMetadata}/>
+          <audio
+            src={currentTrack.audio}
+            ref={audioRef}
+            onLoadedMetadata={onLoadedMetadata}
+          />
         </div>
         <div>
           <div className={styles.wrapperPlay}>
