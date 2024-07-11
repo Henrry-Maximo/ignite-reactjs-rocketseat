@@ -8,13 +8,15 @@ import chillHop from "../../playlist";
 export default function Lofi() {
   // Utilizando a função chillHop, recebendo os valores em Json (Array)
   const tracks = chillHop();
+  // rastrear índice da faixa em reprodução atual
+  const [trackIndex, setTrackIndex] = useState(0);
 
   // métodos e propriedades do elemento <audio> retornados pelo ref
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLInputElement>(null);
 
   // Inicilizando primeira track da lista
-  const [currentTrack] = useState(tracks[0]);
+  const [currentTrack, setCurrentTrack] = useState(tracks[trackIndex]);
 
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -31,7 +33,7 @@ export default function Lofi() {
       if (progressBarRef.current) {
         progressBarRef.current.value = currentTime.toString();
         progressBarRef.current.style.setProperty(
-          '--range-progress',
+          "--range-progress",
           `${(currentTime / duration) * 100}%`
         );
         playAnimationRef.current = requestAnimationFrame(repeat);
@@ -102,6 +104,38 @@ export default function Lofi() {
   //   }
   // }, [isPlaying, audioRef])
 
+  // const skipForward = () => {};
+
+  // const skipBackward = () => {};
+
+  /* 
+  whenever we click the “next” button, we check if we are in the last index — i.e., 
+  the last track. Then, we set the index to 0 — i.e., the first track — and reset 
+  the track to the first item in the playlist. Otherwise, we set the index and the 
+  track to the next one in the playlist.
+  */
+
+  const handlePrevious = () => {
+    if (trackIndex === 0) {
+      const lastTrackIndex = tracks.length - 1;
+      setTrackIndex(lastTrackIndex);
+      setCurrentTrack(tracks[lastTrackIndex]);
+    } else {
+      setTrackIndex((prev) => prev - 1);
+      setCurrentTrack(tracks[trackIndex - 1]);
+    }
+  };
+
+  const handleNext = () => {
+    if (trackIndex >= tracks.length - 1) {
+      setTrackIndex(0);
+      setCurrentTrack(tracks[0]);
+    } else {
+      setTrackIndex((prev) => prev + 1);
+      setCurrentTrack(tracks[trackIndex + 1]);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.imageMusic}>
@@ -134,7 +168,7 @@ export default function Lofi() {
         </div>
         <div>
           <div className={styles.wrapperPlay}>
-            <button>
+            <button onClick={handlePrevious}>
               <Rewind size={16} />
             </button>
             {/* executar função para altera resultado quando for clicado */}
@@ -143,7 +177,7 @@ export default function Lofi() {
               {/* verdadeiro: pause / falso: play */}
               {isPlaying ? <Pause size={16} /> : <Play size={16} />}
             </button>
-            <button>
+            <button onClick={handleNext}>
               <FastForward size={16} />
             </button>
           </div>
