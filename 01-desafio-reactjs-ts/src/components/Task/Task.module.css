@@ -21,6 +21,12 @@
   text-align: justify;
 }
 
+@media(max-width: 930px) {
+  .boxTask .content p {
+    text-align: left;
+  }
+}
+
 .completed {
   text-decoration: line-through;
 }

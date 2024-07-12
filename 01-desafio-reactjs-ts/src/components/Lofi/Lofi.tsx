@@ -130,6 +130,8 @@ export default function Lofi() {
     if (trackIndex >= tracks.length - 1) {
       setTrackIndex(0);
       setCurrentTrack(tracks[0]);
+      console.log("Executado!")
+      audioRef.current?.play();
     } else {
       setTrackIndex((prev) => prev + 1);
       setCurrentTrack(tracks[trackIndex + 1]);
