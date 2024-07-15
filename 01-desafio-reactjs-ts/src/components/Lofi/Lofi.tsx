@@ -1,4 +1,12 @@
-import { FastForward, MusicNotes, Pause, Play, Rewind } from "phosphor-react";
+import {
+  FastForward,
+  MusicNotes,
+  Pause,
+  Play,
+  Rewind,
+  SkipBack,
+  SkipForward,
+} from "phosphor-react";
 import styles from "./Lofi.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -130,11 +138,23 @@ export default function Lofi() {
     if (trackIndex >= tracks.length - 1) {
       setTrackIndex(0);
       setCurrentTrack(tracks[0]);
-      console.log("Executado!")
+      console.log("Executado!");
       audioRef.current?.play();
     } else {
       setTrackIndex((prev) => prev + 1);
       setCurrentTrack(tracks[trackIndex + 1]);
+    }
+  };
+
+  const skipForward = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime += 15;
+    }
+  };
+
+  const skipBackward = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime -= 15;
     }
   };
 
@@ -170,6 +190,9 @@ export default function Lofi() {
         </div>
         <div>
           <div className={styles.wrapperPlay}>
+            <button onClick={skipBackward}>
+              <SkipBack size={16} />
+            </button>
             <button onClick={handlePrevious}>
               <Rewind size={16} />
             </button>
@@ -182,6 +205,10 @@ export default function Lofi() {
             <button onClick={handleNext}>
               <FastForward size={16} />
             </button>
+            <button onClick={skipForward}>
+              <SkipForward size={16} />
+            </button>
+            
           </div>
           <div className={styles.progress}>
             <span className="time current">{formatTime(timeProgress)}</span>
