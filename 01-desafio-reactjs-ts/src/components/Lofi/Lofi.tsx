@@ -6,6 +6,7 @@ import {
   Rewind,
   SkipBack,
   SkipForward,
+  SpeakerSimpleHigh,
 } from "phosphor-react";
 import styles from "./Lofi.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -33,6 +34,10 @@ export default function Lofi() {
 
   const playAnimationRef = useRef(0);
 
+  // funcionalidade de volume inicializado com o valor 60
+  const [volume, setVolume] = useState(60);
+  console.log(volume);
+
   const repeat = useCallback(() => {
     // playAnimationRef.current = requestAnimationFrame(repeat);
     const currentTime = audioRef.current?.currentTime;
@@ -57,6 +62,12 @@ export default function Lofi() {
     }
     // return () => cancelAnimationFrame(playAnimationRef.current);
   }, [isPlaying, repeat]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume, audioRef]);
 
   /* 
   # função chamada ao botão de play/pause ser pressionado
@@ -208,17 +219,29 @@ export default function Lofi() {
             <button onClick={skipForward}>
               <SkipForward size={16} />
             </button>
-            
+            <div className={styles.volume} style={{ display: "flex", gap: "2px", alignItems: "center", margin: "auto" }}>
+              <SpeakerSimpleHigh size={16} />
+              <input
+                type="range"
+                min={0}
+                max={100}
+                style={{
+                  background: `linear-gradient(to right, var(--purple) ${volume}%, #ccc ${volume}%)`,
+                }}
+                value={volume}
+                onChange={(e) => setVolume(Number(e.target.value))}
+              />
+            </div>
           </div>
           <div className={styles.progress}>
-            <span className="time current">{formatTime(timeProgress)}</span>
+            <span>{formatTime(timeProgress)}</span>
             <input
               type="range"
               ref={progressBarRef}
               defaultValue="0"
               onChange={handleProgressChange}
             />
-            <span className="time">{formatTime(duration)}</span>
+            <span>{formatTime(duration)}</span>
           </div>
         </div>
       </div>
