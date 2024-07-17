@@ -35,8 +35,8 @@ export default function Lofi() {
   const playAnimationRef = useRef(0);
 
   // funcionalidade de volume inicializado com o valor 60
-  const [volume, setVolume] = useState(60);
-  console.log(volume);
+  const [volume, setVolume] = useState(50);
+  // console.log(volume);
 
   const repeat = useCallback(() => {
     // playAnimationRef.current = requestAnimationFrame(repeat);

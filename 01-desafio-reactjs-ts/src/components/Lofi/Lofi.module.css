@@ -94,24 +94,28 @@
   cursor: pointer;
 }
 
-.volume input[type="range"]{
+.wrapperPlay .volume input[type="range"]{
+  all:unset;
   appearance: none;
-  background: #d3d3d3;
+  -webkit-appearance: none;
 
   outline: none;
   width: 100%;
-  height: 20px;
+  height: 10px;
   border-radius: 9px;
 }
 
-.volume::-webkit-slider-thumb input[type="range"] {
-  width: 25px;
-  height: 25px;
+.wrapperPlay .volume input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
+  background: var(--purple-dark);
   cursor: pointer;
 }
 
-.volume::-moz-range-progress input[type="range"] {
+.wrapper .wrapperPlay .volume input[type="range"]::-moz-range-progress {
+  appearance: none;
   width: 25px;
   height: 25px;
   border-radius: 50%;
