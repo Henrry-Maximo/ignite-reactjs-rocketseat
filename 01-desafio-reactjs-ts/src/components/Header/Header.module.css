@@ -1,7 +1,13 @@
 .headerBackground {
   background-color: var(--gray-700);
-  height: 12.5rem;
+  
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  height: 12.50rem;
+
+  border-top: 1px solid var(--purple-dark);
+  border-left: 2px solid var(--purple-dark);
+  border-right: 2px solid var(--purple-dark);
+  border-radius: 5px;
 }

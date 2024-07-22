@@ -1,28 +1,23 @@
 import React, { useEffect, useState } from "react";
+
+// library
 import { ClipboardText, PlusCircle } from "phosphor-react";
 import Cookies from "js-cookie";
-// import { v4 as uuidv4 } from 'uuid';
 
+// styles
 import "./global.css";
 import styles from "./App.module.css";
 
+// type 
+import { TasksProps } from "./components/Task/Task";
+
+// components
 import { Header } from "./components/Header/Header";
 import { Task } from "./components/Task/Task";
-import { TasksProps } from "./components/Task/Task.jsx";
-import { CountTask } from "./components/CountTask/CountTask.js";
+import { CountTask } from "./components/CountTask/CountTask";
 import Lofi from "./components/Lofi/Lofi.js";
 
-
-
-// const postTask: TasksProps[] = [
-//   {
-//     id: 1,
-//     status: false,
-//     description: "Estudar ReactJS para construir aplicações.",
-//   },
-// ];
-
-function App() {
+export default function App() {
   const [newTask, setNewTask] = useState<TasksProps[]>([]); // valor local
   const [getNewTask, setGetNewTask] = useState(""); // valor digitado
 
@@ -140,5 +135,3 @@ function App() {
     </React.Fragment>
   );
 }
-
-export default App;
