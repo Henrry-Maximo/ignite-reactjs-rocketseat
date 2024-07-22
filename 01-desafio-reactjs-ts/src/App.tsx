@@ -24,7 +24,7 @@ export default function App() {
   // Tarefas dos cookies
   useEffect(() => {
     const cookieTasks = Cookies.get("tasks");
-    // console.log("2 vezes");
+    
     if (cookieTasks) {
       setNewTask(JSON.parse(cookieTasks));
     }
