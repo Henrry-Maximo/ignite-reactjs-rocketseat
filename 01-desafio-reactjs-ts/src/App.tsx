@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import "./global.css";
 import styles from "./App.module.css";
 
-// type 
+// type
 import { TasksProps } from "./components/Task/Task";
 
 // components
@@ -16,6 +16,8 @@ import { Header } from "./components/Header/Header";
 import { Task } from "./components/Task/Task";
 import { CountTask } from "./components/CountTask/CountTask";
 import Lofi from "./components/Lofi/Lofi.js";
+import Input from "./components/Input/Input.js";
+// import Button from "./components/Button/Button.js";
 
 export default function App() {
   const [newTask, setNewTask] = useState<TasksProps[]>([]); // valor local
@@ -24,7 +26,7 @@ export default function App() {
   // Tarefas dos cookies
   useEffect(() => {
     const cookieTasks = Cookies.get("tasks");
-    
+
     if (cookieTasks) {
       setNewTask(JSON.parse(cookieTasks));
     }
@@ -54,15 +56,15 @@ export default function App() {
     setNewTask(tasksWithoutDeletedOne);
   }
 
-  function handleNewTaskChange(event: React.InvalidEvent<HTMLInputElement>) {
-    event.target.setCustomValidity("");
-    setGetNewTask(event.target.value);
-  }
+  // function handleNewTaskChange(event: React.InvalidEvent<HTMLInputElement>) {
+  //   event.target.setCustomValidity("");
+  //   setGetNewTask(event.target.value);
+  // }
 
-  function handleNewTaskInvalid(event: React.InvalidEvent<HTMLInputElement>) {
-    // prototype > propriedade: customizar título do inValid
-    event.target.setCustomValidity("Esse campo é obrigatório.");
-  }
+  // function handleNewTaskInvalid(event: React.InvalidEvent<HTMLInputElement>) {
+  //   // prototype > propriedade: customizar título do inValid
+  //   event.target.setCustomValidity("Esse campo é obrigatório.");
+  // }
 
   function completedTask(taskId: number, completed: boolean) {
     const updatedTasks = newTask.map((row) =>
@@ -87,7 +89,11 @@ export default function App() {
       <Header />
       <main className={styles.formTask}>
         <form onSubmit={handleCreateNewTask} className={styles.sendTask}>
-          <input
+          <Input
+            onChange={(e) => setGetNewTask(e.target.value)}
+            value={getNewTask}
+          />
+          {/* <input
             name="task"
             type="text"
             value={getNewTask}
@@ -96,7 +102,8 @@ export default function App() {
             onInvalid={handleNewTaskInvalid}
             className={styles.inputTask}
             required
-          />
+          /> */}
+          {/* <Button /> */}
           <button type="submit" disabled={isNewTaskEmpty}>
             Criar <PlusCircle className={styles.imgAddTask} size={19} />
           </button>
