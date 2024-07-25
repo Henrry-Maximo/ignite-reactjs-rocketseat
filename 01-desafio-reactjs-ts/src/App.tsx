@@ -11,13 +11,21 @@ import styles from "./App.module.css";
 // type
 import { TasksProps } from "./components/Task/Task";
 
-// components
+// COMPONENTS
+
+// header 
 import { Header } from "./components/Header/Header";
-import { Task } from "./components/Task/Task";
-import { CountTask } from "./components/CountTask/CountTask";
-import Lofi from "./components/Lofi/Lofi.js";
+import { HeaderList } from "./components/List/Header/HeaderList"
+
+// registration task
 import Input from "./components/Input/Input.js";
 // import Button from "./components/Button/Button.js";
+
+
+import { Task } from "./components/Task/Task";
+import Lofi from "./components/Lofi/Lofi.js";
+
+
 
 export default function App() {
   const [newTask, setNewTask] = useState<TasksProps[]>([]); // valor local
@@ -110,7 +118,7 @@ export default function App() {
         </form>
         <Lofi />
         <article className={styles.postTask}>
-          <CountTask totalTasks={totalTasks} completedTasks={completedTasks} />
+          <HeaderList totalTasks={totalTasks} completedTasks={completedTasks} />
           <div className={styles.postAllTask}>
             {(newTask.length > 0 &&
               newTask.map((line) => {
