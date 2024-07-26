@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageMusic {
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+.coverAuthor {
+  height: 100%;
+  width: 4rem;
+  border: 1px solid var(--gray-100);
+}

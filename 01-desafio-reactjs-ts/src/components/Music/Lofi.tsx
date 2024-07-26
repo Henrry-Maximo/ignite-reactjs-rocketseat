@@ -1,6 +1,5 @@
 import {
   FastForward,
-  MusicNotes,
   Pause,
   Play,
   Rewind,
@@ -13,6 +12,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 // SONG DATA
 import chillHop from "../../playlist";
+import { Sidebar } from "./Sidebar/Sidebar";
 
 export default function Lofi() {
   // Utilizando a função chillHop, recebendo os valores em Json (Array)
@@ -171,35 +171,10 @@ export default function Lofi() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.imageMusic}>
-        {currentTrack.cover ? (
-          <img
-            src={currentTrack.cover}
-            style={{
-              height: "100%",
-              width: "4rem",
-              border: "1px solid var(--gray-100)",
-            }}
-            alt="audio avatar"
-          />
-        ) : (
-          <MusicNotes size={32} />
-        )}
-      </div>
       <div className={styles.wrapper}>
+      <Sidebar currentTrack={currentTrack} audioRef={audioRef} onLoadedMetadata={onLoadedMetadata} />
         <div>
-          <p>
-            <strong>{currentTrack.name}</strong>
-          </p>
-          <p style={{ color: "var(--danger)" }}>{currentTrack.artist}</p>
-          {/* Utilizar "controls" para layout de controle padrão: <audio controls /> */}
-          <audio
-            src={currentTrack.audio}
-            ref={audioRef}
-            onLoadedMetadata={onLoadedMetadata}
-          />
-        </div>
-        <div>
+          {/* toggle music */}
           <div className={styles.wrapperPlay}>
             <button onClick={skipBackward}>
               <SkipBack size={16} />
@@ -219,6 +194,7 @@ export default function Lofi() {
             <button onClick={skipForward}>
               <SkipForward size={16} />
             </button>
+            {/* volume */}
             <div className={styles.volume} style={{ display: "flex", gap: "2px", alignItems: "center", margin: "auto" }}>
               <SpeakerSimpleHigh size={16} />
               <input

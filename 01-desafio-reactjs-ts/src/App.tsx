@@ -23,7 +23,7 @@ import Input from "./components/Input/Input.js";
 
 
 import { Task } from "./components/Task/Task";
-import Lofi from "./components/Lofi/Lofi.js";
+import Lofi from "./components/Music/Lofi";
 
 
 
