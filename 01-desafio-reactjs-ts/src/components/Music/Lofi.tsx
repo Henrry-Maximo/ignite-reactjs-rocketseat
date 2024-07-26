@@ -13,6 +13,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 // SONG DATA
 import chillHop from "../../playlist";
 import { Sidebar } from "./Sidebar/Sidebar";
+// import { Progress } from "./Progress/Progress";
 
 export default function Lofi() {
   // Utilizando a função chillHop, recebendo os valores em Json (Array)
@@ -209,6 +210,7 @@ export default function Lofi() {
               />
             </div>
           </div>
+          {/* <Progress timeProgress={timeProgress} progressBarRef={progressBarRef} handleProgressChange={handleProgressChange} duration={duration} /> */}
           <div className={styles.progress}>
             <span>{formatTime(timeProgress)}</span>
             <input
