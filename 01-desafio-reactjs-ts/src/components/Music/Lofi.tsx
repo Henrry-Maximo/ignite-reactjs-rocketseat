@@ -5,7 +5,6 @@ import {
   Rewind,
   SkipBack,
   SkipForward,
-  SpeakerSimpleHigh,
 } from "phosphor-react";
 import styles from "./Lofi.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -13,7 +12,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 // SONG DATA
 import chillHop from "../../playlist";
 import { Sidebar } from "./Sidebar/Sidebar";
-// import { Progress } from "./Progress/Progress";
+import { Progress } from "./Progress/Progress";
+import { Volume } from "./Volume/Volume";
 
 export default function Lofi() {
   // Utilizando a função chillHop, recebendo os valores em Json (Array)
@@ -105,16 +105,16 @@ export default function Lofi() {
     }
   };
 
-  const formatTime = (time: number) => {
-    if (time && !isNaN(time)) {
-      const minutes = Math.floor(time / 60);
-      const formatMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-      const seconds = Math.floor(time % 60);
-      const formatSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-      return `${formatMinutes}:${formatSeconds}`;
-    }
-    return "00:00";
-  };
+  // const formatTime = (time: number) => {
+  //   if (time && !isNaN(time)) {
+  //     const minutes = Math.floor(time / 60);
+  //     const formatMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+  //     const seconds = Math.floor(time % 60);
+  //     const formatSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+  //     return `${formatMinutes}:${formatSeconds}`;
+  //   }
+  //   return "00:00";
+  // };
 
   // useEffect(() => {
   //   if (isPlaying) {
@@ -196,7 +196,8 @@ export default function Lofi() {
               <SkipForward size={16} />
             </button>
             {/* volume */}
-            <div className={styles.volume} style={{ display: "flex", gap: "2px", alignItems: "center", margin: "auto" }}>
+            <Volume volume={volume} onChange={(e) => setVolume(Number(e.target.value))} />
+            {/* <div className={styles.volume} style={{ display: "flex", gap: "2px", alignItems: "center", margin: "auto" }}>
               <SpeakerSimpleHigh size={16} />
               <input
                 type="range"
@@ -208,10 +209,10 @@ export default function Lofi() {
                 value={volume}
                 onChange={(e) => setVolume(Number(e.target.value))}
               />
-            </div>
+            </div> */}
           </div>
-          {/* <Progress timeProgress={timeProgress} progressBarRef={progressBarRef} handleProgressChange={handleProgressChange} duration={duration} /> */}
-          <div className={styles.progress}>
+          <Progress timeProgress={timeProgress} progressBarRef={progressBarRef} handleProgressChange={handleProgressChange} duration={duration} />
+          {/* <div className={styles.progress}>
             <span>{formatTime(timeProgress)}</span>
             <input
               type="range"
@@ -220,7 +221,7 @@ export default function Lofi() {
               onChange={handleProgressChange}
             />
             <span>{formatTime(duration)}</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

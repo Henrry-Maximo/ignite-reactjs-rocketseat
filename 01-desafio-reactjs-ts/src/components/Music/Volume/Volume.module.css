@@ -1,0 +1,27 @@
+ .volume input[type="range"]{
+  all:unset;
+  appearance: none;
+  -webkit-appearance: none;
+
+  outline: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 9px;
+}
+
+.volume input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--purple-dark);
+  cursor: pointer;
+}
+
+.volume input[type="range"]::-moz-range-progress {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+}
