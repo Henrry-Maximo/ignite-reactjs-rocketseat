@@ -14,6 +14,7 @@ import chillHop from "../../playlist";
 import { Sidebar } from "./Sidebar/Sidebar";
 import { Progress } from "./Progress/Progress";
 import { Volume } from "./Volume/Volume";
+import { Toggle } from "./Toggle/Toggle";
 
 export default function Lofi() {
   // Utilizando a função chillHop, recebendo os valores em Json (Array)
@@ -150,8 +151,7 @@ export default function Lofi() {
     if (trackIndex >= tracks.length - 1) {
       setTrackIndex(0);
       setCurrentTrack(tracks[0]);
-      console.log("Executado!");
-      audioRef.current?.play();
+      audioRef.current?.pause();
     } else {
       setTrackIndex((prev) => prev + 1);
       setCurrentTrack(tracks[trackIndex + 1]);
@@ -170,58 +170,22 @@ export default function Lofi() {
     }
   };
 
+  const toggleEventHandlerMusic = isPlaying ? <Pause size={16} /> : <Play size={16} />
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
       <Sidebar currentTrack={currentTrack} audioRef={audioRef} onLoadedMetadata={onLoadedMetadata} />
         <div>
-          {/* toggle music */}
           <div className={styles.wrapperPlay}>
-            <button onClick={skipBackward}>
-              <SkipBack size={16} />
-            </button>
-            <button onClick={handlePrevious}>
-              <Rewind size={16} />
-            </button>
-            {/* executar função para altera resultado quando for clicado */}
-            <button onClick={togglePlayPause}>
-              {/* alternar entre diferentes icons */}
-              {/* verdadeiro: pause / falso: play */}
-              {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-            </button>
-            <button onClick={handleNext}>
-              <FastForward size={16} />
-            </button>
-            <button onClick={skipForward}>
-              <SkipForward size={16} />
-            </button>
-            {/* volume */}
+            <Toggle HandlerEventMusic={skipBackward} icon={<SkipBack size={16}/>} />
+            <Toggle HandlerEventMusic={handlePrevious} icon={<Rewind size={16}/>} />
+            <Toggle HandlerEventMusic={togglePlayPause} icon={toggleEventHandlerMusic} />
+            <Toggle HandlerEventMusic={handleNext} icon={<FastForward size={16} />} />
+            <Toggle HandlerEventMusic={skipForward} icon={<SkipForward size={16} />} />
             <Volume volume={volume} onChange={(e) => setVolume(Number(e.target.value))} />
-            {/* <div className={styles.volume} style={{ display: "flex", gap: "2px", alignItems: "center", margin: "auto" }}>
-              <SpeakerSimpleHigh size={16} />
-              <input
-                type="range"
-                min={0}
-                max={100}
-                style={{
-                  background: `linear-gradient(to right, var(--purple) ${volume}%, #ccc ${volume}%)`,
-                }}
-                value={volume}
-                onChange={(e) => setVolume(Number(e.target.value))}
-              />
-            </div> */}
           </div>
           <Progress timeProgress={timeProgress} progressBarRef={progressBarRef} handleProgressChange={handleProgressChange} duration={duration} />
-          {/* <div className={styles.progress}>
-            <span>{formatTime(timeProgress)}</span>
-            <input
-              type="range"
-              ref={progressBarRef}
-              defaultValue="0"
-              onChange={handleProgressChange}
-            />
-            <span>{formatTime(duration)}</span>
-          </div> */}
         </div>
       </div>
     </div>
