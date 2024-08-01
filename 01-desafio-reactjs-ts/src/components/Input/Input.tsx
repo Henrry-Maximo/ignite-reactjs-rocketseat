@@ -1,7 +1,8 @@
 import styles from "./Input.module.css";
 
+
 export default function Input({
-  ...rest
+  type, placeholder, ...rest
 }: React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
@@ -9,8 +10,8 @@ export default function Input({
   return (
     <>
       <input
-        type="text"
-        placeholder="Adicione uma Nova Tarefa"
+        type={type}
+        placeholder={placeholder}
         className={styles.inputTask}
         {...rest}
         required

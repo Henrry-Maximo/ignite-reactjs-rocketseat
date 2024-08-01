@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // library
-import { ClipboardText, PlusCircle } from "phosphor-react";
+import { ClipboardText} from "phosphor-react";
 import Cookies from "js-cookie";
 
 // styles
@@ -19,7 +19,7 @@ import { HeaderList } from "./components/List/Header/HeaderList"
 
 // registration task
 import Input from "./components/Input/Input.js";
-// import Button from "./components/Button/Button.js";
+import Button from "./components/Button/Button.js";
 
 
 import { Task } from "./components/Task/Task";
@@ -100,21 +100,12 @@ export default function App() {
           <Input
             onChange={(e) => setGetNewTask(e.target.value)}
             value={getNewTask}
-          />
-          {/* <input
             name="task"
             type="text"
-            value={getNewTask}
-            onChange={handleNewTaskChange}
             placeholder="Adicione uma Nova Tarefa"
-            onInvalid={handleNewTaskInvalid}
-            className={styles.inputTask}
-            required
-          /> */}
-          {/* <Button /> */}
-          <button type="submit" disabled={isNewTaskEmpty}>
-            Criar <PlusCircle className={styles.imgAddTask} size={19} />
-          </button>
+            // onInvalid={handleNewTaskInvalid}
+          />
+          <Button activateTaskButton={isNewTaskEmpty} />
         </form>
         <Lofi />
         <article className={styles.postTask}>

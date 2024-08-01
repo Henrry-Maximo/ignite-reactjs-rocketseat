@@ -38,7 +38,6 @@ export default function Lofi() {
 
   // funcionalidade de volume inicializado com o valor 60
   const [volume, setVolume] = useState(50);
-  // console.log(volume);
 
   const repeat = useCallback(() => {
     // playAnimationRef.current = requestAnimationFrame(repeat);
@@ -72,7 +71,7 @@ export default function Lofi() {
   }, [volume, audioRef]);
 
   /* 
-  # função chamada ao botão de play/pause ser pressionado
+  função chamada ao botão de play/pause ser pressionado
   se valor do botão for false e for pressionado, executar
   instrução else para dar o play, atribuindo o valor de verdadeiro.
   se o valor do botão for verdadeiro e for pressionado, executar a
@@ -91,8 +90,6 @@ export default function Lofi() {
   };
 
   const handleProgressChange = () => {
-    // console.log(progressBarRef.current?.value);
-    // console.log(audioRef.current?.currentTime)
     if (audioRef.current && progressBarRef.current) {
       audioRef.current.currentTime = parseInt(progressBarRef.current.value);
     }
@@ -105,29 +102,6 @@ export default function Lofi() {
       progressBarRef.current.max = seconds.toString();
     }
   };
-
-  // const formatTime = (time: number) => {
-  //   if (time && !isNaN(time)) {
-  //     const minutes = Math.floor(time / 60);
-  //     const formatMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-  //     const seconds = Math.floor(time % 60);
-  //     const formatSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-  //     return `${formatMinutes}:${formatSeconds}`;
-  //   }
-  //   return "00:00";
-  // };
-
-  // useEffect(() => {
-  //   if (isPlaying) {
-  //     audioRef.current?.pause();
-  //   } else {
-  //     audioRef.current?.play();
-  //   }
-  // }, [isPlaying, audioRef])
-
-  // const skipForward = () => {};
-
-  // const skipBackward = () => {};
 
   /* 
   whenever we click the “next” button, we check if we are in the last index — i.e., 
