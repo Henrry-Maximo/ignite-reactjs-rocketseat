@@ -31,9 +31,6 @@ export function Task({ rows, onDeleteTask, onCompletedTask }: TaskProps) {
 
   function isTrueOrFalse(event: React.ChangeEvent<HTMLInputElement>) {
     onCompletedTask(rows.id, event.target.checked)
-    // console.log(rows.id)
-    // console.log(event.target.checked)
-    // console.log(rows.status)
     return event.target.checked
   }
 

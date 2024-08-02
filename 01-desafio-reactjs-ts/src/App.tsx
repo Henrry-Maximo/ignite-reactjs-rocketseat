@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from 'react'
-
-// library
 import Cookies from 'js-cookie'
 
-// styles
 import './global.css'
 import styles from './App.module.css'
 
-// type
-import { TasksProps } from './components/Task/Task'
-
-// COMPONENTS
-
-// header
+import { TasksProps, Task } from './components/List/Task/Task.js'
 import { Header } from './components/Header/Header'
 import { HeaderList } from './components/List/Header/HeaderList'
 
-// registration task
+import { NotTask } from './components/FormNotTask/NotTask.js'
 import Input from './components/Input/Input'
 import Button from './components/Button/Button'
-
-import { Task } from './components/Task/Task.js'
 import Lofi from './components/Music/Lofi'
-import { NotTask } from './components/FormNotTask/NotTask.js'
 
 export default function App() {
   const [newTask, setNewTask] = useState<TasksProps[]>([]) // valor local

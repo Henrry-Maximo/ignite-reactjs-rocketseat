@@ -1,15 +1,21 @@
-import { SpeakerSimpleHigh } from "phosphor-react";
-import styles from "./Volume.module.css";
+import { SpeakerSimpleHigh } from 'phosphor-react'
+import styles from './Volume.module.css'
 
 interface PropsType {
-  volume: number;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  volume: number
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export function Volume({ volume, onChange }: PropsType ) {
+export function Volume({ volume, onChange }: PropsType) {
   return (
     <div
-    className={styles.volume} style={{ display: "flex", gap: "2px", alignItems: "center", margin: "auto" }}
+      className={styles.volume}
+      style={{
+        display: 'flex',
+        gap: '2px',
+        alignItems: 'center',
+        margin: 'auto',
+      }}
     >
       <SpeakerSimpleHigh size={16} />
       <input
@@ -23,5 +29,5 @@ export function Volume({ volume, onChange }: PropsType ) {
         onChange={onChange}
       />
     </div>
-  );
+  )
 }

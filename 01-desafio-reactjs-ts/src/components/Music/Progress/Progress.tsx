@@ -1,23 +1,28 @@
-import styles from "./Progress.module.css";
+import styles from './Progress.module.css'
 
 interface TypeProps {
-  timeProgress: number,
-  progressBarRef: React.RefObject<HTMLInputElement>,
-  handleProgressChange: () => void,
+  timeProgress: number
+  progressBarRef: React.RefObject<HTMLInputElement>
+  handleProgressChange: () => void
   duration: number
 }
 
-export const Progress = ({ timeProgress, progressBarRef, handleProgressChange, duration }: TypeProps) => {
+export const Progress = ({
+  timeProgress,
+  progressBarRef,
+  handleProgressChange,
+  duration,
+}: TypeProps) => {
   const formatTime = (time: number) => {
     if (time && !isNaN(time)) {
-      const minutes = Math.floor(time / 60);
-      const formatMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-      const seconds = Math.floor(time % 60);
-      const formatSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-      return `${formatMinutes}:${formatSeconds}`;
+      const minutes = Math.floor(time / 60)
+      const formatMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`
+      const seconds = Math.floor(time % 60)
+      const formatSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
+      return `${formatMinutes}:${formatSeconds}`
     }
-    return "00:00";
-  };
+    return '00:00'
+  }
 
   return (
     <div className={styles.progress}>
@@ -30,5 +35,5 @@ export const Progress = ({ timeProgress, progressBarRef, handleProgressChange, d
       />
       <span>{formatTime(duration)}</span>
     </div>
-  );
-};
+  )
+}
