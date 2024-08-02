@@ -1,8 +1,9 @@
-import styles from "./Input.module.css";
-
+import styles from './Input.module.css'
 
 export default function Input({
-  type, placeholder, ...rest
+  type,
+  placeholder,
+  ...rest
 }: React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
@@ -17,5 +18,5 @@ export default function Input({
         required
       />
     </>
-  );
+  )
 }

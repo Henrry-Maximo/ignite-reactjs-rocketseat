@@ -1,9 +1,9 @@
-import styles from "./HeaderList.module.css";
+import styles from './HeaderList.module.css'
 
 // type => only number
 interface TypeTask {
-  totalTasks: number;
-  completedTasks: number;
+  totalTasks: number
+  completedTasks: number
 }
 
 export const HeaderList = ({ totalTasks, completedTasks }: TypeTask) => {
@@ -22,5 +22,5 @@ export const HeaderList = ({ totalTasks, completedTasks }: TypeTask) => {
         </aside>
       </header>
     </>
-  );
-};
+  )
+}

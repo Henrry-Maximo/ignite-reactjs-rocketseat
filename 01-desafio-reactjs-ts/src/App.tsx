@@ -1,67 +1,64 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
 // library
-import { ClipboardText} from "phosphor-react";
-import Cookies from "js-cookie";
+import { ClipboardText } from 'phosphor-react'
+import Cookies from 'js-cookie'
 
 // styles
-import "./global.css";
-import styles from "./App.module.css";
+import './global.css'
+import styles from './App.module.css'
 
 // type
-import { TasksProps } from "./components/Task/Task";
+import { TasksProps } from './components/Task/Task'
 
 // COMPONENTS
 
-// header 
-import { Header } from "./components/Header/Header";
-import { HeaderList } from "./components/List/Header/HeaderList"
+// header
+import { Header } from './components/Header/Header'
+import { HeaderList } from './components/List/Header/HeaderList'
 
 // registration task
-import Input from "./components/Input/Input.js";
-import Button from "./components/Button/Button.js";
+import Input from './components/Input/Input'
+import Button from './components/Button/Button'
 
-
-import { Task } from "./components/Task/Task";
-import Lofi from "./components/Music/Lofi";
-
-
+import { Task } from './components/Task/Task.js'
+import Lofi from './components/Music/Lofi'
 
 export default function App() {
-  const [newTask, setNewTask] = useState<TasksProps[]>([]); // valor local
-  const [getNewTask, setGetNewTask] = useState(""); // valor digitado
+  const [newTask, setNewTask] = useState<TasksProps[]>([]) // valor local
+  const [getNewTask, setGetNewTask] = useState('') // valor digitado
 
   // Tarefas dos cookies
   useEffect(() => {
-    const cookieTasks = Cookies.get("tasks");
+    const cookieTasks = Cookies.get('tasks')
 
     if (cookieTasks) {
-      setNewTask(JSON.parse(cookieTasks));
+      setNewTask(JSON.parse(cookieTasks))
     }
-  }, []);
+  }, [])
 
   // handle -> disparado pelo usuário
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+    event.preventDefault()
 
     const newTaskItem: TasksProps = {
       id: Date.now(), // Gera um identificador único do tipo number
       status: false,
       description: getNewTask,
-    };
+    }
 
-    const updatedTasks = [...newTask, newTaskItem];
-    Cookies.set("tasks", JSON.stringify(updatedTasks));
-    setNewTask(updatedTasks);
-    setGetNewTask("");
+    const updatedTasks = [...newTask, newTaskItem]
+    Cookies.set('tasks', JSON.stringify(updatedTasks))
+    setNewTask(updatedTasks)
+    setGetNewTask('')
   }
 
   function deleteTask(taskToDelete: number) {
     const tasksWithoutDeletedOne = newTask.filter((row) => {
-      return row.id !== taskToDelete;
-    });
-    Cookies.set("tasks", JSON.stringify(tasksWithoutDeletedOne));
-    setNewTask(tasksWithoutDeletedOne);
+      return row.id !== taskToDelete
+    })
+    Cookies.set('tasks', JSON.stringify(tasksWithoutDeletedOne))
+    setNewTask(tasksWithoutDeletedOne)
   }
 
   // function handleNewTaskChange(event: React.InvalidEvent<HTMLInputElement>) {
@@ -76,21 +73,21 @@ export default function App() {
 
   function completedTask(taskId: number, completed: boolean) {
     const updatedTasks = newTask.map((row) =>
-      row.id === taskId ? { ...row, status: completed } : row
-    );
+      row.id === taskId ? { ...row, status: completed } : row,
+    )
     // console.log(updatedTasks);
-    Cookies.set("tasks", JSON.stringify(updatedTasks));
-    setNewTask(updatedTasks);
+    Cookies.set('tasks', JSON.stringify(updatedTasks))
+    setNewTask(updatedTasks)
   }
 
   // calcular o total de tarefas
-  const totalTasks = newTask.length;
+  const totalTasks = newTask.length
 
   // calcular o total de tarefas concluídas
-  const completedTasks = newTask.filter((task) => task.status).length;
+  const completedTasks = newTask.filter((task) => task.status).length
 
   // variáveis auxiliares
-  const isNewTaskEmpty = getNewTask.length === 0;
+  const isNewTaskEmpty = getNewTask.length === 0
 
   return (
     <React.Fragment>
@@ -121,7 +118,7 @@ export default function App() {
                     onDeleteTask={deleteTask}
                     onCompletedTask={completedTask}
                   ></Task>
-                );
+                )
               })) || (
               <div className={styles.withoutTasks}>
                 <span>
@@ -139,5 +136,5 @@ export default function App() {
         </article>
       </main>
     </React.Fragment>
-  );
+  )
 }

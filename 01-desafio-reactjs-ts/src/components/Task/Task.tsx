@@ -1,14 +1,14 @@
-import { Trash } from "phosphor-react";
-import styles from "./Task.module.css";
+import { Trash } from 'phosphor-react'
+import styles from './Task.module.css'
 
 // declarando os tipos
 export interface TasksProps {
-  id: number;
-  status: boolean;
-  description: string;
+  id: number
+  status: boolean
+  description: string
 }
 
-export type OnCompletedTask = (taskId: number, completed: boolean) => void;
+export type OnCompletedTask = (taskId: number, completed: boolean) => void
 
 /* 
 Informações retidas em post usam a tipagem estática
@@ -19,25 +19,25 @@ estrutura de dados em diferentes níveis
 */
 
 interface TaskProps {
-  rows: TasksProps;
-  onDeleteTask: (id: number) => void;
-  onCompletedTask: OnCompletedTask;
+  rows: TasksProps
+  onDeleteTask: (id: number) => void
+  onCompletedTask: OnCompletedTask
 }
 
-export const Task = ({ rows, onDeleteTask, onCompletedTask }: TaskProps) => {
+export function Task({ rows, onDeleteTask, onCompletedTask }: TaskProps) {
   function handleDeleteTask() {
-    onDeleteTask(rows.id);
+    onDeleteTask(rows.id)
   }
 
   function isTrueOrFalse(event: React.ChangeEvent<HTMLInputElement>) {
-    onCompletedTask(rows.id, event.target.checked);
+    onCompletedTask(rows.id, event.target.checked)
     // console.log(rows.id)
     // console.log(event.target.checked)
     // console.log(rows.status)
-    return event.target.checked;
+    return event.target.checked
   }
 
-  const lineDeactivatedWhenCheck = rows.status ? styles.completed : '';
+  const lineDeactivatedWhenCheck = rows.status ? styles.completed : ''
 
   return (
     <div className={styles.boxTask}>
@@ -61,5 +61,5 @@ export const Task = ({ rows, onDeleteTask, onCompletedTask }: TaskProps) => {
         <Trash size={24} />
       </button>
     </div>
-  );
-};
+  )
+}
