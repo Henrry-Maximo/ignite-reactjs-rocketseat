@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 // library
-import { ClipboardText } from 'phosphor-react'
 import Cookies from 'js-cookie'
 
 // styles
@@ -23,6 +22,7 @@ import Button from './components/Button/Button'
 
 import { Task } from './components/Task/Task.js'
 import Lofi from './components/Music/Lofi'
+import { NotTask } from './components/FormNotTask/NotTask.js'
 
 export default function App() {
   const [newTask, setNewTask] = useState<TasksProps[]>([]) // valor local
@@ -119,19 +119,7 @@ export default function App() {
                     onCompletedTask={completedTask}
                   ></Task>
                 )
-              })) || (
-              <div className={styles.withoutTasks}>
-                <span>
-                  <ClipboardText size={62} />
-                </span>
-                <div>
-                  <p>
-                    <span>Você ainda não tem tarefas cadastradas</span>
-                  </p>
-                  <p>Crie tarefas e organize seus itens a fazer</p>
-                </div>
-              </div>
-            )}
+              })) || <NotTask />}
           </div>
         </article>
       </main>

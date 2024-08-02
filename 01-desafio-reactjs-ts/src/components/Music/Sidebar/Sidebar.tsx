@@ -1,16 +1,16 @@
-import { MusicNotes } from "phosphor-react";
-import styles from "./Sidebar.module.css";
+import { MusicNotes } from 'phosphor-react'
+import styles from './Sidebar.module.css'
 
 interface TypeProps {
   currentTrack: {
-    name: string;
-    cover: string;
-    artist: string;
-    audio: string;
-  };
+    name: string
+    cover: string
+    artist: string
+    audio: string
+  }
   // declaração do tipo -> propridade de audio HTML
-  audioRef: React.RefObject<HTMLAudioElement>;
-  onLoadedMetadata: () => void;
+  audioRef: React.RefObject<HTMLAudioElement>
+  onLoadedMetadata: () => void
 }
 
 export const Sidebar = ({
@@ -35,7 +35,7 @@ export const Sidebar = ({
         <p>
           <strong>{currentTrack.name}</strong>
         </p>
-        <p style={{ color: "var(--danger)" }}>{currentTrack.artist}</p>
+        <p style={{ color: 'var(--danger)' }}>{currentTrack.artist}</p>
         {/* Utilizar "controls" para layout de controle padrão: <audio controls /> */}
         <audio
           src={currentTrack.audio}
@@ -44,5 +44,5 @@ export const Sidebar = ({
         />
       </div>
     </div>
-  );
-};
+  )
+}
