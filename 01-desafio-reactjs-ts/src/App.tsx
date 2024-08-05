@@ -13,41 +13,50 @@ import Input from './components/Input/Input'
 import Button from './components/Button/Button'
 import Lofi from './components/Music/Lofi'
 
+/*
+  ## Anotações Importantes sobre o Código:
+
+  - estados (state hook - useState):
+    - inicializar um array vazio importando o tipo de task, aguardando por mais
+    - inicializar um valor do tipo string vazio, esperando o usuário digitar
+  - handle (disparo) -> usuário fez uma solicitação
+*/
+
 export default function App() {
-  const [newTask, setNewTask] = useState<TasksProps[]>([]) // valor local
-  const [getNewTask, setGetNewTask] = useState('') // valor digitado
+  const [tasksList, setTasksList] = useState<TasksProps[]>([])
+  const [taskDescription, setTaskDescription] = useState('')
+
+  function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
+    // evita recarregar a página:
+    event.preventDefault()
+
+    const newTaskItem: TasksProps = {
+      id: Date.now(), // Gera um identificador único do tipo number
+      status: false,
+      description: taskDescription,
+    }
+
+    const updatedTasks = [...tasksList, newTaskItem]
+    Cookies.set('tasks', JSON.stringify(updatedTasks))
+    setTasksList(updatedTasks)
+    setTaskDescription('')
+  }
 
   // Tarefas dos cookies
   useEffect(() => {
     const cookieTasks = Cookies.get('tasks')
 
     if (cookieTasks) {
-      setNewTask(JSON.parse(cookieTasks))
+      setTasksList(JSON.parse(cookieTasks))
     }
   }, [])
 
-  // handle -> disparado pelo usuário
-  function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    const newTaskItem: TasksProps = {
-      id: Date.now(), // Gera um identificador único do tipo number
-      status: false,
-      description: getNewTask,
-    }
-
-    const updatedTasks = [...newTask, newTaskItem]
-    Cookies.set('tasks', JSON.stringify(updatedTasks))
-    setNewTask(updatedTasks)
-    setGetNewTask('')
-  }
-
   function deleteTask(taskToDelete: number) {
-    const tasksWithoutDeletedOne = newTask.filter((row) => {
+    const tasksWithoutDeletedOne = tasksList.filter((row) => {
       return row.id !== taskToDelete
     })
     Cookies.set('tasks', JSON.stringify(tasksWithoutDeletedOne))
-    setNewTask(tasksWithoutDeletedOne)
+    setTasksList(tasksWithoutDeletedOne)
   }
 
   // function handleNewTaskChange(event: React.InvalidEvent<HTMLInputElement>) {
@@ -61,22 +70,22 @@ export default function App() {
   // }
 
   function completedTask(taskId: number, completed: boolean) {
-    const updatedTasks = newTask.map((row) =>
+    const updatedTasks = tasksList.map((row) =>
       row.id === taskId ? { ...row, status: completed } : row,
     )
     // console.log(updatedTasks);
     Cookies.set('tasks', JSON.stringify(updatedTasks))
-    setNewTask(updatedTasks)
+    setTasksList(updatedTasks)
   }
 
   // calcular o total de tarefas
-  const totalTasks = newTask.length
+  const totalTasks = tasksList.length
 
   // calcular o total de tarefas concluídas
-  const completedTasks = newTask.filter((task) => task.status).length
+  const completedTasks = tasksList.filter((task) => task.status).length
 
   // variáveis auxiliares
-  const isNewTaskEmpty = getNewTask.length === 0
+  const isNewTaskEmpty = taskDescription.length === 0
 
   return (
     <React.Fragment>
@@ -84,8 +93,8 @@ export default function App() {
       <main className={styles.formTask}>
         <form onSubmit={handleCreateNewTask} className={styles.sendTask}>
           <Input
-            onChange={(e) => setGetNewTask(e.target.value)}
-            value={getNewTask}
+            onChange={(e) => setTaskDescription(e.target.value)}
+            value={taskDescription}
             name="task"
             type="text"
             placeholder="Adicione uma Nova Tarefa"
@@ -97,8 +106,8 @@ export default function App() {
         <article className={styles.postTask}>
           <HeaderList totalTasks={totalTasks} completedTasks={completedTasks} />
           <div className={styles.postAllTask}>
-            {(newTask.length > 0 &&
-              newTask.map((line) => {
+            {(tasksList.length > 0 &&
+              tasksList.map((line) => {
                 return (
                   <Task
                     key={line.id}
