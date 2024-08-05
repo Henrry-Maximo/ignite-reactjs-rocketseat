@@ -20,6 +20,10 @@ import Lofi from './components/Music/Lofi'
     - inicializar um array vazio importando o tipo de task, aguardando por mais
     - inicializar um valor do tipo string vazio, esperando o usuário digitar
   - handle (disparo) -> usuário fez uma solicitação
+  - event: React.FormEvent<HTMLFormElement> -> lidando com eventos de formulário
+    (tipagem explícita, garantir o acesso as propriedades específicas do evento),
+    acessando diferentes tipos de propriedades do evento
+  - event.preventDefault() -> não recarregar a página ao realizar um submit
 */
 
 export default function App() {
@@ -27,11 +31,10 @@ export default function App() {
   const [taskDescription, setTaskDescription] = useState('')
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
-    // evita recarregar a página:
     event.preventDefault()
 
     const newTaskItem: TasksProps = {
-      id: Date.now(), // Gera um identificador único do tipo number
+      id: Date.now(),
       status: false,
       description: taskDescription,
     }
