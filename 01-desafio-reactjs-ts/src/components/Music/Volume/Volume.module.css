@@ -9,6 +9,16 @@
   border-radius: 9px;
 }
 
+.volume input[type="range"] {
+  display: none;
+  opacity: 0;
+}
+
+.volume:hover input[type="range"] {
+  display: block;
+  opacity: 1;
+}
+
 .volume input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 15px;

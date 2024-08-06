@@ -158,7 +158,7 @@ export default function Lofi() {
           audioRef={audioRef}
           onLoadedMetadata={onLoadedMetadata}
         />
-        <div>
+        <div className={styles.wrapperControls}>
           <div className={styles.wrapperPlay}>
             <Toggle
               HandlerEventMusic={skipBackward}
