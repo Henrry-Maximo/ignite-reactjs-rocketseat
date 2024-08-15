@@ -8,7 +8,7 @@ import { TasksProps, Task } from './components/List/Task/Task.js'
 import { Header } from './components/Header/Header'
 import { HeaderList } from './components/List/Header/HeaderList'
 
-import { NotTask } from './components/FormNotTask/NotTask.js'
+import { NotTask } from './components/List/Task/NotTask.js'
 import Input from './components/Input/Input'
 import Button from './components/Button/Button'
 import Lofi from './components/Music/Lofi'
