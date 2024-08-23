@@ -45,7 +45,6 @@ export default function App() {
     setTaskDescription('')
   }
 
-  // Tarefas dos cookies
   useEffect(() => {
     const cookieTasks = Cookies.get('tasks')
 
