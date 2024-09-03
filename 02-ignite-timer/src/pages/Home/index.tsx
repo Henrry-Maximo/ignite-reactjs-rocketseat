@@ -8,17 +8,51 @@ import {
   StartCountDownButton,
   TaskInput,
 } from "./styles";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as zod from 'zod';
+
+/* 
+Controlled vs Uncontrolled
+
+Controlled -> manter em tempo real a informação no estado
+Uncontrolled -> buscar somente quando necessário (funçao chamada somente quando enviado)
+
+function register(name: string) {
+  return {
+    onChange: () => void,
+    onBlur: () => void,
+    onFocus: () => void,
+  }
+}
+
+*/
 
 export function Home() {
+  const { register, handleSubmit, watch } = useForm({ resolver: zodResolver(), });
+  // const [task, setTask] = useState('');
+
+  function handleCreateNewCycle(data: any) {
+    console.log(data)
+  }
+
+  // valor do campo de task
+  const task = watch('task')
+  const isSubmitDisabled = !task
+
   return (
     <HomeContainer>
-      <form>
+      <form onSubmit={handleSubmit(handleCreateNewCycle)}>
         <FormContainer>
           <label htmlFor="task">Vou trabalhar em</label>
           <TaskInput 
             id="task" 
             list="task-suggestions"
-            placeholder="Dê um nome para o seu projeto" 
+            placeholder="Dê um nome para o seu projeto"
+            // onChange={(e) => setTask(e.target.value)}
+            // value={task}
+            // spread-operator
+            {...register('task')}
           />
 
           <datalist id="task-suggestions">
@@ -36,6 +70,7 @@ export function Home() {
             step={5}
             min={5}
             max={60}
+            {...register('minuteAmount', { valueAsNumber: true })}
           />
 
           <span>minutos.</span>
@@ -49,7 +84,7 @@ export function Home() {
           <span>0</span>
         </CountdownContainer>
 
-        <StartCountDownButton disabled type="submit">
+        <StartCountDownButton disabled={isSubmitDisabled} type="submit">
           <Play size={24} />
           Começar
         </StartCountDownButton>
