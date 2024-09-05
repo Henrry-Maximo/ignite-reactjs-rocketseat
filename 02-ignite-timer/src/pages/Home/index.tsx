@@ -8,9 +8,9 @@ import {
   StartCountDownButton,
   TaskInput,
 } from "./styles";
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as zod from 'zod';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
 
 /* 
 Controlled vs Uncontrolled
@@ -28,31 +28,49 @@ function register(name: string) {
 
 */
 
+interface NewCycleFormData {
+  task: string;
+  minutesAmount: number;
+}
+
+const newCycleFormValidationSchema = zod.object({
+  task: zod.string().min(1, "Informe a tarefa."),
+  minuteAmount: zod
+    .number()
+    .min(5, "o ciclo precisa ser de no mínimo 60 minutos.")
+    .max(60, "O intervalo precisa ser de no máximo 660 minutos."),
+});
+
 export function Home() {
-  const { register, handleSubmit, watch } = useForm({ resolver: zodResolver(), });
+  const { register, handleSubmit, watch } = useForm<NewCycleFormData>({
+    resolver: zodResolver(newCycleFormValidationSchema),
+    defaultValues: { task: "", minutesAmount: 0 },
+  });
   // const [task, setTask] = useState('');
 
-  function handleCreateNewCycle(data: any) {
-    console.log(data)
+  function handleCreateNewCycle(data: NewCycleFormData) {
+    console.log(data);
   }
 
+  // console.log(formState.errors)
+
   // valor do campo de task
-  const task = watch('task')
-  const isSubmitDisabled = !task
+  const task = watch("task");
+  const isSubmitDisabled = !task;
 
   return (
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)}>
         <FormContainer>
           <label htmlFor="task">Vou trabalhar em</label>
-          <TaskInput 
-            id="task" 
+          <TaskInput
+            id="task"
             list="task-suggestions"
             placeholder="Dê um nome para o seu projeto"
             // onChange={(e) => setTask(e.target.value)}
             // value={task}
             // spread-operator
-            {...register('task')}
+            {...register("task")}
           />
 
           <datalist id="task-suggestions">
@@ -70,7 +88,7 @@ export function Home() {
             step={5}
             min={5}
             max={60}
-            {...register('minuteAmount', { valueAsNumber: true })}
+            {...register("minutesAmount", { valueAsNumber: true })}
           />
 
           <span>minutos.</span>
