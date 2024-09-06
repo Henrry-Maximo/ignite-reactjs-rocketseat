@@ -11,6 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
+import { useState } from "react";
 
 /* 
 Controlled vs Uncontrolled
@@ -28,28 +29,46 @@ function register(name: string) {
 
 */
 
-interface NewCycleFormData {
-  task: string;
-  minutesAmount: number;
-}
+// interface NewCycleFormData {
+//   task: string;
+//   minutesAmount: number;
+// }
+
+type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>;
 
 const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, "Informe a tarefa."),
-  minuteAmount: zod
+  minutesAmount: zod
     .number()
     .min(5, "o ciclo precisa ser de no mínimo 60 minutos.")
     .max(60, "O intervalo precisa ser de no máximo 660 minutos."),
 });
 
+interface Cycle {
+  id: string;
+  task: string;
+  minutesAmount: number;
+}
+
 export function Home() {
-  const { register, handleSubmit, watch } = useForm<NewCycleFormData>({
+  const [cycles, setCycles] = useState<Cycle[]>([]);
+
+  const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
     defaultValues: { task: "", minutesAmount: 0 },
   });
   // const [task, setTask] = useState('');
 
   function handleCreateNewCycle(data: NewCycleFormData) {
+    const newCycle: Cycle = {
+      id: String(new Date().getTime()),
+      task: data.task,
+      minutesAmount: data.minutesAmount,
+    };
+
+    setCycles([...cycles, newCycle ])
     console.log(data);
+    reset();
   }
 
   // console.log(formState.errors)
