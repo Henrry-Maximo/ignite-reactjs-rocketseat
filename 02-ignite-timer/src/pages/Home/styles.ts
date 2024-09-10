@@ -24,7 +24,7 @@ export const FormContainer = styled.div`
   justify-content: center;
   gap: 0.5rem;
   color: ${(props) => props.theme['gray-100']};
-  font-size: 1.125rem;
+  /* font-size: 1.125rem; */
   font-weight: bold;
   flex-wrap: wrap;
 `;
@@ -51,6 +51,8 @@ const BaseInput = styled.input`
 
 export const TaskInput = styled(BaseInput)`
   flex: 1;
+
+
 
   &::-webkit-calendar-picker-indicator {
     display: none !important;

@@ -105,11 +105,12 @@ export function Home() {
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)}>
         <FormContainer>
-          <label htmlFor="task">Vou trabalhar em</label>
+          <label htmlFor="task"> Vou trabalhar em</label>
           <TaskInput
             id="task"
             list="task-suggestions"
             placeholder="Dê um nome para o seu projeto"
+            style={{ textOverflow: "ellipsis" }}
             // onChange={(e) => setTask(e.target.value)}
             // value={task}
             // spread-operator
