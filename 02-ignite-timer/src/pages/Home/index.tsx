@@ -49,30 +49,38 @@ interface Cycle {
   id: string;
   task: string;
   minutesAmount: number;
-  startDate: Date
+  startDate: Date;
   // isActive: boolean -> percorrer o ciclo e colocar como false
 }
 
 export function Home() {
   const [cycles, setCycles] = useState<Cycle[]>([]);
-  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
-  const [amountSecondsPassad, setAmountSecondsPassad] = useState(0)
+  const [activeCycleId, setActiveCycleId] = useState<string | null>(null);
+  const [amountSecondsPassad, setAmountSecondsPassad] = useState(0);
 
   const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
     defaultValues: { task: "", minutesAmount: 0 },
   });
-  
+
   // const [task, setTask] = useState('');
-  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
+  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
 
   useEffect(() => {
+    let interval: number;
+
     if (activeCycle) {
-      setInterval(() => {
-        setAmountSecondsPassad(differenceInSeconds(new Date(), activeCycle.startDate))
-      }, 1000)
+      interval = setInterval(() => {
+        setAmountSecondsPassad(
+          differenceInSeconds(new Date(), activeCycle.startDate)
+        );
+      }, 1000);
     }
-  }, [activeCycle])
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [activeCycle]);
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const id = String(new Date().getTime());
@@ -81,29 +89,34 @@ export function Home() {
       id,
       task: data.task,
       minutesAmount: data.minutesAmount,
-      startDate: new Date()
+      startDate: new Date(),
     };
 
     // closure
     setCycles((state) => [...state, newCycle]);
     setActiveCycleId(id);
+    setAmountSecondsPassad(0);
     // setCycles([...cycles, newCycle ])
-    // console.log(data);
     reset();
   }
 
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0;
-  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassad : 0
+  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassad : 0;
 
-  const minutesAmount = Math.floor(currentSeconds / 60)
-  const secondsAmount = currentSeconds % 60
+  const minutesAmount = Math.floor(currentSeconds / 60);
+  const secondsAmount = currentSeconds % 60;
   // floor => arredondar pra baixo
   // ceil => arredondar pra cima
   // round => arredondar acima/abaixo de 0.5
 
-  const minutes = String(minutesAmount).padStart(2, '0')
-  const seconds = String(secondsAmount).padStart(2, '0')
+  const minutes = String(minutesAmount).padStart(2, "0");
+  const seconds = String(secondsAmount).padStart(2, "0");
 
+  useEffect(() => {
+    if (activeCycle) {
+      document.title = `Pomodoro ${minutes}:${seconds}`;
+    }
+  }, [minutes, seconds, activeCycle]);
 
   // console.log(formState.errors)
 
