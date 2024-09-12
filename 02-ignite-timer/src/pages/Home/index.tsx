@@ -1,4 +1,4 @@
-import { Play } from "phosphor-react";
+import { HandPalm, Play } from "phosphor-react";
 import {
   CountdownContainer,
   FormContainer,
@@ -6,6 +6,7 @@ import {
   MinutesAmountInput,
   Separator,
   StartCountDownButton,
+  StopCountDownButton,
   TaskInput,
 } from "./styles";
 import { useForm } from "react-hook-form";
@@ -41,7 +42,7 @@ const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, "Informe a tarefa."),
   minutesAmount: zod
     .number()
-    .min(5, "o ciclo precisa ser de no mínimo 60 minutos.")
+    .min(1, "o ciclo precisa ser de no mínimo 60 minutos.")
     .max(60, "O intervalo precisa ser de no máximo 660 minutos."),
 });
 
@@ -51,6 +52,8 @@ interface Cycle {
   minutesAmount: number;
   startDate: Date;
   // isActive: boolean -> percorrer o ciclo e colocar como false
+  interruptedDate?: Date;
+  finishedDate?: Date;
 }
 
 export function Home() {
@@ -66,21 +69,42 @@ export function Home() {
   // const [task, setTask] = useState('');
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
 
+  const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0;
+
   useEffect(() => {
     let interval: number;
 
     if (activeCycle) {
       interval = setInterval(() => {
-        setAmountSecondsPassad(
-          differenceInSeconds(new Date(), activeCycle.startDate)
-        );
+        const secondsDifference = differenceInSeconds(new Date(), activeCycle.startDate)
+        
+        if (secondsDifference >= totalSeconds) {
+          setCycles(state => state.map(cycle => {
+            if (cycle.id === activeCycleId) {
+              return { ...cycle, finishedDate: new Date() }
+            }
+      
+            return cycle;
+          }))
+
+          setAmountSecondsPassad(
+            totalSeconds
+          );
+          clearInterval(interval)
+        } else {
+          setAmountSecondsPassad(
+            secondsDifference
+          );
+        }
+        
+        
       }, 1000);
     }
 
     return () => {
       clearInterval(interval);
     };
-  }, [activeCycle]);
+  }, [activeCycle, totalSeconds, activeCycleId]);
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const id = String(new Date().getTime());
@@ -100,7 +124,18 @@ export function Home() {
     reset();
   }
 
-  const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0;
+  function handleInterruptCycle() {
+    setCycles(state => state.map(cycle => {
+      if (cycle.id === activeCycleId) {
+        return { ...cycle, interruptedDate: new Date() }
+      }
+
+      return cycle;
+    }))
+    setActiveCycleId(null)
+  }
+
+  
   const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassad : 0;
 
   const minutesAmount = Math.floor(currentSeconds / 60);
@@ -134,6 +169,7 @@ export function Home() {
             list="task-suggestions"
             placeholder="Dê um nome para o seu projeto"
             style={{ textOverflow: "ellipsis" }}
+            disabled={!!activeCycle}
             // onChange={(e) => setTask(e.target.value)}
             // value={task}
             // spread-operator
@@ -152,8 +188,9 @@ export function Home() {
             type="number"
             id="minutesAmount"
             placeholder="00"
+            disabled={!!activeCycle}
             step={5}
-            min={5}
+            min={1}
             max={60}
             {...register("minutesAmount", { valueAsNumber: true })}
           />
@@ -169,10 +206,17 @@ export function Home() {
           <span>{seconds[1]}</span>
         </CountdownContainer>
 
-        <StartCountDownButton disabled={isSubmitDisabled} type="submit">
-          <Play size={24} />
-          Começar
-        </StartCountDownButton>
+        {activeCycle ? (
+          <StopCountDownButton onClick={handleInterruptCycle} type="button">
+            <HandPalm size={24} />
+            Interromper
+          </StopCountDownButton>
+        ) : (
+          <StartCountDownButton disabled={isSubmitDisabled} type="submit">
+            <Play size={24} />
+            Começar
+          </StartCountDownButton>
+        )}
       </form>
     </HomeContainer>
   );
