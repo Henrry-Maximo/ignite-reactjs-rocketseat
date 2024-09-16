@@ -11,5 +11,7 @@ export interface Cycle {
 export interface CyclesContextType {
   activeCycle: Cycle | undefined;
   activeCycleId: string | null;
+  amountSecondsPassad: number;
   markCurrentCycleAsFinished: () => void;
+  setSecondsPassed: (seconds:number) => void;
 }

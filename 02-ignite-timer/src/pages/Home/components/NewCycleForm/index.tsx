@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { TaskInput, MinutesAmountInput, FormContainer } from "./styles";
 import { CyclesContext } from "../..";
 import { useFormContext } from "react-hook-form";
+
+import { TaskInput, MinutesAmountInput, FormContainer } from "./styles";
 
 export function NewCycleForm() {
   const { activeCycle } = useContext(CyclesContext);
@@ -23,10 +24,10 @@ export function NewCycleForm() {
       />
 
       <datalist id="task-suggestions">
-        <option value="Projeto 1"></option>
-        <option value="Projeto 2"></option>
-        <option value="Projeto 3"></option>
-        <option value="Projeto 4"></option>
+        <option value="Projeto 1" />
+        <option value="Projeto 2" />
+        <option value="Projeto 3" />
+        <option value="Projeto 4" />
       </datalist>
 
       <label htmlFor="minutesAmount">durante</label>
