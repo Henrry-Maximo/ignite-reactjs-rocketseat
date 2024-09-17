@@ -1,3 +1,10 @@
+import { ReactNode } from "react";
+
+export interface CreateCycleData {
+  task: string;
+  minutesAmount: number;
+}
+
 export interface Cycle {
   id: string;
   task: string;
@@ -9,9 +16,16 @@ export interface Cycle {
 }
 
 export interface CyclesContextType {
+  cycles: Cycle[];
   activeCycle: Cycle | undefined;
   activeCycleId: string | null;
   amountSecondsPassad: number;
   markCurrentCycleAsFinished: () => void;
   setSecondsPassed: (seconds:number) => void;
+  createNewCycle: (data: CreateCycleData) => void;
+  interruptCurrentCycle: () => void;
+}
+
+interface CyclesContextProviderProps {
+  children: ReactNode
 }
