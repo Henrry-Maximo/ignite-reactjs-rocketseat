@@ -48,8 +48,6 @@ export function CyclesContextProvider({
     setActiveCycleId(id);
     setAmountSecondsPassad(0);
     // setCycles([...cycles, newCycle ])
-
-    // reset();
   }
 
   function interruptCurrentCycle() {
