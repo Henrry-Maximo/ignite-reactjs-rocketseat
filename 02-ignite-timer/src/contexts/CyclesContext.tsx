@@ -1,10 +1,12 @@
 import { createContext, useReducer, useState } from "react";
-import type {
-  CreateCycleData,
-  Cycle,
-  CyclesContextProviderProps,
-  CyclesContextType,
+import {
+  ActionTypes,
+  type CreateCycleData,
+  type Cycle,
+  type CyclesContextProviderProps,
+  type CyclesContextType,
 } from "../@types/cycle-interface";
+import { cycleReducer } from "../reducers/cycles";
 
 export const CyclesContext = createContext({} as CyclesContextType);
 
@@ -13,19 +15,17 @@ export function CyclesContextProvider({
 }: CyclesContextProviderProps) {
   // const [cycles, setCycles] = useState<Cycle[]>([]);
 
-  const [cycles, dispatch] = useReducer((state: Cycle[], action: any) => {
-    console.log(state);
-    console.log(action)
-
-    if (action.type === 'ADD_NEW_CYCLE') {
-      return [...state, action.payload.newCycle]
+  const [cyclesState, dispatch] = useReducer(cycleReducer,
+    {
+      cycles: [],
+      activeCycleId: null,
     }
+  );
 
-    return state
-  }, [])
-
-  const [activeCycleId, setActiveCycleId] = useState<string | null>(null);
+  // const [activeCycleId, setActiveCycleId] = useState<string | null>(null);
   const [amountSecondsPassad, setAmountSecondsPassad] = useState(0);
+
+  const { cycles, activeCycleId } = cyclesState;
 
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
 
@@ -35,11 +35,11 @@ export function CyclesContextProvider({
 
   function markCurrentCycleAsFinished() {
     dispatch({
-      type: 'MARK_CURRENT_CYCLE_AS_FINISHED',
+      type: ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED,
       payload: {
-        activeCycleId
-      }
-    })
+        activeCycleId,
+      },
+    });
 
     // setCycles((state) =>
     //   state.map((cycle) => {
@@ -63,26 +63,26 @@ export function CyclesContextProvider({
     };
 
     dispatch({
-      type: 'ADD_NEW_CYCLE',
+      type: ActionTypes.ADD_NEW_CYCLE,
       payload: {
-        newCycle
-      }
-    })
+        newCycle,
+      },
+    });
 
     // closure
     // setCycles((state) => [...state, newCycle]);
-    setActiveCycleId(id);
+    // setActiveCycleId(id);
     setAmountSecondsPassad(0);
     // setCycles([...cycles, newCycle ])
   }
 
   function interruptCurrentCycle() {
     dispatch({
-      type: 'INTERRUPT_CURRENT_CYCLE',
+      type: ActionTypes.INTERRUPT_CURRENT_CYCLE,
       payload: {
-        activeCycleId
-      }
-    })
+        activeCycleId,
+      },
+    });
 
     // setCycles((state) =>
     //   state.map((cycle) => {
@@ -93,13 +93,13 @@ export function CyclesContextProvider({
     //     return cycle;
     //   })
     // );
-    setActiveCycleId(null);
+    // setActiveCycleId(null);
   }
 
   return (
     <CyclesContext.Provider
       value={{
-				cycles,
+        cycles,
         activeCycle,
         activeCycleId,
         markCurrentCycleAsFinished,
@@ -108,6 +108,8 @@ export function CyclesContextProvider({
         createNewCycle,
         interruptCurrentCycle,
       }}
-    >{children}</CyclesContext.Provider>
+    >
+      {children}
+    </CyclesContext.Provider>
   );
 }
