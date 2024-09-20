@@ -35,5 +35,5 @@ export interface CyclesState {
   activeCycleId: string | null;
 }
 
-export type Actions = 
-| { type: string; payload: data }
+// export type Actions = 
+// | { type: string; payload: data }
