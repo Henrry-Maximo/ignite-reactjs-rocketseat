@@ -1,7 +1,7 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 import {
-  type CreateCycleData,
   type Cycle,
+  type CreateCycleData,
   type CyclesContextProviderProps,
   type CyclesContextType,
 } from "../@types/cycle-interface";
@@ -11,6 +11,7 @@ import {
   interruptCurrentCycleAction,
   markCurrentCycleAsFinishedAction,
 } from "../reducers/cycles/actions";
+import { differenceInSeconds } from "date-fns";
 
 export const CyclesContext = createContext({} as CyclesContextType);
 
@@ -19,34 +20,46 @@ export function CyclesContextProvider({
 }: CyclesContextProviderProps) {
   // const [cycles, setCycles] = useState<Cycle[]>([]);
 
-  const [cyclesState, dispatch] = useReducer(cycleReducer, {
-    cycles: [],
-    activeCycleId: null,
-  }, () => {
-    const storedStateAsJSON = localStorage.getItem('@ignite-timer:cycles-state-1.0.0');
-    
-    if (storedStateAsJSON) {
-      return JSON.parse(storedStateAsJSON);
-    }
-
-    return {
+  const [cyclesState, dispatch] = useReducer(
+    cycleReducer,
+    {
       cycles: [],
-      activeCycleId: null
+      activeCycleId: null,
+    },
+    (initialState) => {
+      const storedStateAsJSON = localStorage.getItem(
+        "@ignite-timer:cycles-state-1.0.0"
+      );
+
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON);
+      }
+
+      // return {
+      //   cycles: [],
+      //   activeCycleId: null,
+      // };
+      return initialState;
     }
-  });
+  );
+
+  const { cycles, activeCycleId } = cyclesState;
+  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
 
   // const [activeCycleId, setActiveCycleId] = useState<string | null>(null);
-  const [amountSecondsPassad, setAmountSecondsPassad] = useState(0);
+  const [amountSecondsPassad, setAmountSecondsPassad] = useState(() => {
+    if (activeCycle) {
+      return differenceInSeconds(new Date(), new Date(activeCycle.startDate));
+    }
+
+    return 0;
+  });
 
   useEffect(() => {
     const stateJSON = JSON.stringify(cyclesState);
 
-    localStorage.setItem('@ignite-timer:cycles-state-1.0.0', stateJSON);
-  }, [cyclesState])
-
-  const { cycles, activeCycleId } = cyclesState;
-
-  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
+    localStorage.setItem("@ignite-timer:cycles-state-1.0.0", stateJSON);
+  }, [cyclesState]);
 
   function setSecondsPassed(seconds: number) {
     setAmountSecondsPassad(seconds);
