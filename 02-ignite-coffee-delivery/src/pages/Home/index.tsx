@@ -6,42 +6,53 @@ import box from "../../assets/main-content/box.svg";
 import cart from "../../assets/main-content/cart.svg";
 import coffe from "../../assets/main-content/coffe.svg";
 import timer from "../../assets/main-content/timer.svg";
-import { HomeContainer } from "./styles";
+import {
+  HomeContainer,
+  LogoIntro,
+  Summary,
+  WidgetItems,
+  Wrapper,
+} from "./styles";
 
 // import expresstraditional from "../assets/products/coffe/express-traditional.png";
 
 export function Home() {
   return (
     <HomeContainer>
-      <div>
-        <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-        <p>
-          Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
-          hora
-        </p>
+      <Wrapper>
+        <Summary>
+          <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+          <p>
+            Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
+            hora
+          </p>
+        </Summary>
 
-        <label>
-          <img src={cart} alt="cart" />
-          Compra simples e segura
-        </label>
-        <label>
-          <img src={box} alt="box" />
-          Embalagem mantém o café intacto
-        </label>
-        <label>
-          <img src={timer} alt="timer" />
-          Entrega rápida e rastreada
-        </label>
-        <label>
-          <img src={coffe} alt="coffe" />O café chega fresquinho até você
-        </label>
-      </div>
+        <WidgetItems>
+          <label>
+            <img src={cart} alt="cart" />
+            Compra simples e segura
+          </label>
+          <label>
+            <img src={box} alt="box" />
+            Embalagem mantém o café intacto
+          </label>
+          <label>
+            <img src={timer} alt="timer" />
+            Entrega rápida e rastreada
+          </label>
+          <label>
+            <img src={coffe} alt="coffe" />O café chega fresquinho até você
+          </label>
+        </WidgetItems>
+      </Wrapper>
 
-      <div>
-        <img src={main} alt="main-logo"></img>
-      </div>
+      <LogoIntro src={main} alt="main-logo" />
+    </HomeContainer>
+  );
+}
 
-      {/* <div>
+{/* <div>
         <h2>Nossos cafés</h2>
 
         <div>
@@ -84,6 +95,3 @@ export function Home() {
           </div>
         </div>
       </div> */}
-    </HomeContainer>
-  );
-}
