@@ -39,16 +39,17 @@ export const Summary = styled.div`
 
 export const WidgetItems = styled.div`
   display: flex;
+  flex-wrap: wrap; /* Permite os itens quebrarem em múltiplas linhas */
 
   max-width: 38rem;
   margin: 15px;
   gap: 1rem;
 
-  /* text-align: center; */
   justify-content: center;
 
   label {
     display: flex;
+    flex-basis: calc(50% - 1rem);  /* Cada item ocupa 50% da largura menos o gap */
     gap: 1rem;
 
     img {
