@@ -1,11 +1,17 @@
 import styled from "styled-components";
+import coffe from '../../assets/background-coffe-delivery.svg';
 
 export const HomeContainer = styled.main`
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  margin: 10rem;
+  padding: 7rem;
+
+  background-image: url(${coffe});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 `;
 
 export const Wrapper = styled.div`
