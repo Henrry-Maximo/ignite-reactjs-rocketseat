@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import coffe from '../../assets/background-coffe-delivery.svg';
+import coffe from "../../assets/background-coffe-delivery.svg";
 
 export const HomeContainer = styled.main`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 2.5rem;
 
-  padding: 7rem;
+  /* text-align: center; */
+  justify-content: center;
+  /* align-items: center; */
 
   background-image: url(${coffe});
   background-repeat: no-repeat;
@@ -18,26 +20,29 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
+  
+  max-width: 32rem;
+
   gap: 2rem;
 `;
 
 export const Summary = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 
   margin: 1rem;
-  gap: 1rem;
+  /* gap: 1rem; */
 
   h1 {
     font-weight: 900;
-    font-size:48px;
-    font-family: 'Baloo 2', cursive;
-    color: ${(props) => props.theme['base-title'] };
+    font-size: 48px;
+    font-family: "Baloo 2", cursive;
+    color: ${(props) => props.theme["base-title"]};
   }
 
   p {
     font-size: 20px;
-    color: ${(props) => props.theme['base-subtitle']};
+    color: ${(props) => props.theme["base-subtitle"]};
 
     width: 38rem;
   }
@@ -45,7 +50,7 @@ export const Summary = styled.div`
 
 export const WidgetItems = styled.div`
   display: flex;
-  flex-wrap: wrap; /* Permite os itens quebrarem em múltiplas linhas */
+  flex-wrap: wrap;
 
   max-width: 38rem;
   margin: 15px;
@@ -55,7 +60,9 @@ export const WidgetItems = styled.div`
 
   label {
     display: flex;
-    flex-basis: calc(50% - 1rem);  /* Cada item ocupa 50% da largura menos o gap */
+    flex-basis: calc(
+      50% - 1rem
+    ); /* Cada item ocupa 50% da largura menos o gap */
     gap: 1rem;
 
     img {

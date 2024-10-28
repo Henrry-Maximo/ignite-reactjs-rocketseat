@@ -47,12 +47,15 @@ export function Home() {
         </WidgetItems>
       </Wrapper>
 
-      <LogoIntro src={main} alt="main-logo" />
+      <div>
+        <LogoIntro src={main} alt="main-logo" />
+      </div>
     </HomeContainer>
   );
 }
 
-{/* <div>
+{
+  /* <div>
         <h2>Nossos cafés</h2>
 
         <div>
@@ -94,4 +97,5 @@ export function Home() {
             </button>
           </div>
         </div>
-      </div> */}
+      </div> */
+}
