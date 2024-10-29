@@ -6,11 +6,14 @@ import cart from "../../assets/main-content/cart.svg";
 import coffe from "../../assets/main-content/coffe.svg";
 import timer from "../../assets/main-content/timer.svg";
 import {
+  Card,
   Container,
+  Description,
   LogoIntro,
   Main,
   Section,
   Summary,
+  Tags,
   WidgetItems,
   Wrapper,
 } from "./styles";
@@ -55,15 +58,18 @@ export function Home() {
       <Section>
         <h2>Nossos cafés</h2>
 
-        <div>
-          <span>TRADICIONAL</span>
+        <Card>
+          <Tags>
+            <span>TRADICIONAL</span>
+            <span>COM LEITE</span>
+          </Tags>
 
-          <div>
+          <Description>
             <h3>Expresso Tradicional</h3>
             <label>
               O tradicional café feito com água quente e grãos moídos
             </label>
-          </div>
+          </Description>
 
           <div>
             <label>R$ 9,90</label>
@@ -72,7 +78,7 @@ export function Home() {
               <ShoppingCart />
             </button>
           </div>
-        </div>
+        </Card>
       </Section>
     </Container>
   );

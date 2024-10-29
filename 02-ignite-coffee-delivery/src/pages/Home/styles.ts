@@ -78,11 +78,11 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
 
-  margin-top: 2rem;
-  padding: 0 12rem 0 12rem;
+  margin: 2rem 10rem 0rem 10rem;
+  gap: 1rem;
 
   h2 {
-    font-size: 42px;
+    font-size: 36px;
     font-family: "Baloo 2", cursive;
     color: ${(props) => props.theme["base-title"]};
   }
@@ -95,4 +95,41 @@ export const Section = styled.section`
   img {
     height: 150px;
   }
+`;
+
+export const Card = styled.div`
+  height: 256px;
+  width: 310px;
+
+  gap: 1rem;
+
+  background-color: ${(props) => props.theme['base-card']};
+  border-radius: 15px 50px;
+
+  padding: 1rem;
+  text-align: center;
+
+  span {
+    color: ${(props) => props.theme['yellow-dark']};
+    background-color: ${(props) => props.theme['yellow-light']};
+
+    border-radius: 16px;
+  }
+
+  div > input, button {
+    display: flex;
+    flex-direction: column;
+
+    height: 20px;
+    width: 20px;
+  }
+`;
+
+export const Tags = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Description = styled.div`
+
 `;
