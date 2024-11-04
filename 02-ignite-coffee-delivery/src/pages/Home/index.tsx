@@ -11,6 +11,7 @@ import {
   Description,
   LogoIntro,
   Main,
+  Price,
   Section,
   Summary,
   Tags,
@@ -59,9 +60,13 @@ export function Home() {
         <h2>Nossos cafés</h2>
 
         <Card>
+          <div>
+            Foto
+          </div>
+
           <Tags>
             <span>TRADICIONAL</span>
-            <span>COM LEITE</span>
+            {/* <span>COM LEITE</span> */}
           </Tags>
 
           <Description>
@@ -71,13 +76,13 @@ export function Home() {
             </label>
           </Description>
 
-          <div>
-            <label>R$ 9,90</label>
+          <Price>
+            <label>R$<span>9,90</span></label>
             <input />
             <button>
               <ShoppingCart />
             </button>
-          </div>
+          </Price>
         </Card>
       </Section>
     </Container>

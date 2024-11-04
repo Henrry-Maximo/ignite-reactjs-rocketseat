@@ -13,7 +13,7 @@ export const Main = styled.main`
 
   padding: 2.5rem;
   gap: 1rem;
-  
+
   background-image: url(${coffe});
   backdrop-filter: blur(4);
   background-repeat: no-repeat;
@@ -98,25 +98,22 @@ export const Section = styled.section`
 `;
 
 export const Card = styled.div`
+  display: flex;
+  flex-direction: row;
+
   height: 256px;
   width: 310px;
 
   gap: 1rem;
 
-  background-color: ${(props) => props.theme['base-card']};
+  background-color: ${(props) => props.theme["base-card"]};
   border-radius: 15px 50px;
 
   padding: 1rem;
   text-align: center;
 
-  span {
-    color: ${(props) => props.theme['yellow-dark']};
-    background-color: ${(props) => props.theme['yellow-light']};
-
-    border-radius: 16px;
-  }
-
-  div > input, button {
+  div > input,
+  button {
     display: flex;
     flex-direction: column;
 
@@ -127,9 +124,40 @@ export const Card = styled.div`
 
 export const Tags = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.25rem;
+
+  span {
+    color: ${(props) => props.theme["yellow-dark"]};
+    background-color: ${(props) => props.theme["yellow-light"]};
+
+    padding: 0.1rem 1rem 0.1rem 1rem;
+    border-radius: 16px;
+  }
 `;
 
 export const Description = styled.div`
+  margin-top: 0.25rem;
 
+  label {
+    font-weight: 200;
+  }
+`;
+
+export const Price = styled.div`
+  display: flex;
+  flex-direction: row !important;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.25rem;
+
+  button {
+    background-color: ${(props) => props.theme["purple-dark"]};
+  }
 `;
