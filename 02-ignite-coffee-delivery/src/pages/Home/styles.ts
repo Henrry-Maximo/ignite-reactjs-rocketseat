@@ -76,7 +76,7 @@ export const LogoIntro = styled.img`
 
 export const Section = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
 
   margin: 2rem 10rem 0rem 10rem;
   gap: 1rem;
@@ -87,20 +87,22 @@ export const Section = styled.section`
     color: ${(props) => props.theme["base-title"]};
   }
 
-  div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  img {
+  /* img {
     height: 150px;
-  }
+  } */
+`;
+
+export const RootCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 1rem;
+  margin: 1rem;
 `;
 
 export const Card = styled.div`
-  display: flex;
-  flex-direction: row;
-
   height: 256px;
   width: 310px;
 
@@ -141,7 +143,7 @@ export const Tags = styled.div`
 `;
 
 export const Description = styled.div`
-  margin-top: 0.25rem;
+  margin: 1rem;
 
   label {
     font-weight: 200;
@@ -152,12 +154,42 @@ export const Price = styled.div`
   display: flex;
   flex-direction: row !important;
 
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 
   gap: 0.25rem;
 
-  button {
-    background-color: ${(props) => props.theme["purple-dark"]};
+  label {
+    font-weight: 200;
+    font-size: 0.75rem;
+
+    display: flex;
+    gap: 0.5rem;
+
+    align-items: center;
+
+    span {
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+
+    gap: 0.5rem;
+
+    input {
+      width: 2rem;
+
+      text-align: center;
+      background-color: ${(props) => props.theme["base-input"]};
+    }
+
+    button {
+      background-color: ${(props) => props.theme["purple-dark"]};
+      color: ${(props) => props.theme["white"]};
+    }
   }
 `;

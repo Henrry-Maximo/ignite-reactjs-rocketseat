@@ -12,6 +12,7 @@ import {
   LogoIntro,
   Main,
   Price,
+  RootCard,
   Section,
   Summary,
   Tags,
@@ -59,31 +60,175 @@ export function Home() {
       <Section>
         <h2>Nossos cafés</h2>
 
-        <Card>
-          <div>
-            Foto
-          </div>
+        <RootCard>
+          <Card>
+            <div>Foto</div>
 
-          <Tags>
-            <span>TRADICIONAL</span>
-            {/* <span>COM LEITE</span> */}
-          </Tags>
+            <Tags>
+              <span>TRADICIONAL</span>
+              {/* <span>COM LEITE</span> */}
+            </Tags>
 
-          <Description>
-            <h3>Expresso Tradicional</h3>
-            <label>
-              O tradicional café feito com água quente e grãos moídos
-            </label>
-          </Description>
+            <Description>
+              <h3>Expresso Tradicional</h3>
+              <label>
+                O tradicional café feito com água quente e grãos moídos
+              </label>
+            </Description>
 
-          <Price>
-            <label>R$<span>9,90</span></label>
-            <input />
-            <button>
-              <ShoppingCart />
-            </button>
-          </Price>
-        </Card>
+            <Price>
+              <label>
+                R$<span>9,90</span>
+              </label>
+              <div>
+                <input type="number" min={1} max={10} value={1} />
+                <button>
+                  <ShoppingCart />
+                </button>
+              </div>
+            </Price>
+          </Card>
+
+          <Card>
+            <div>Foto</div>
+
+            <Tags>
+              <span>TRADICIONAL</span>
+              {/* <span>COM LEITE</span> */}
+            </Tags>
+
+            <Description>
+              <h3>Expresso Tradicional</h3>
+              <label>
+                O tradicional café feito com água quente e grãos moídos
+              </label>
+            </Description>
+
+            <Price>
+              <label>
+                R$<span>9,90</span>
+              </label>
+              <div>
+                <input type="number" min={1} max={10} value={1} />
+                <button>
+                  <ShoppingCart />
+                </button>
+              </div>
+            </Price>
+          </Card>
+          
+          <Card>
+            <div>Foto</div>
+
+            <Tags>
+              <span>TRADICIONAL</span>
+              {/* <span>COM LEITE</span> */}
+            </Tags>
+
+            <Description>
+              <h3>Expresso Tradicional</h3>
+              <label>
+                O tradicional café feito com água quente e grãos moídos
+              </label>
+            </Description>
+
+            <Price>
+              <label>
+                R$<span>9,90</span>
+              </label>
+              <div>
+                <input type="number" min={1} max={10} value={1} />
+                <button>
+                  <ShoppingCart />
+                </button>
+              </div>
+            </Price>
+          </Card>
+          
+          <Card>
+            <div>Foto</div>
+
+            <Tags>
+              <span>TRADICIONAL</span>
+              {/* <span>COM LEITE</span> */}
+            </Tags>
+
+            <Description>
+              <h3>Expresso Tradicional</h3>
+              <label>
+                O tradicional café feito com água quente e grãos moídos
+              </label>
+            </Description>
+
+            <Price>
+              <label>
+                R$<span>9,90</span>
+              </label>
+              <div>
+                <input type="number" min={1} max={10} value={1} />
+                <button>
+                  <ShoppingCart />
+                </button>
+              </div>
+            </Price>
+          </Card>
+
+          <Card>
+            <div>Foto</div>
+
+            <Tags>
+              <span>TRADICIONAL</span>
+              {/* <span>COM LEITE</span> */}
+            </Tags>
+
+            <Description>
+              <h3>Expresso Tradicional</h3>
+              <label>
+                O tradicional café feito com água quente e grãos moídos
+              </label>
+            </Description>
+
+            <Price>
+              <label>
+                R$<span>9,90</span>
+              </label>
+              <div>
+                <input type="number" min={1} max={10} value={1} />
+                <button>
+                  <ShoppingCart />
+                </button>
+              </div>
+            </Price>
+          </Card>
+
+          <Card>
+            <div>Foto</div>
+
+            <Tags>
+              <span>TRADICIONAL</span>
+              {/* <span>COM LEITE</span> */}
+            </Tags>
+
+            <Description>
+              <h3>Expresso Tradicional</h3>
+              <label>
+                O tradicional café feito com água quente e grãos moídos
+              </label>
+            </Description>
+
+            <Price>
+              <label>
+                R$<span>9,90</span>
+              </label>
+              <div>
+                <input type="number" min={1} max={10} value={1} />
+                <button>
+                  <ShoppingCart />
+                </button>
+              </div>
+            </Price>
+          </Card>
+        </RootCard>
       </Section>
     </Container>
   );
