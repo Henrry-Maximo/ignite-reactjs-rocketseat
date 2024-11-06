@@ -103,9 +103,7 @@ export const RootCard = styled.div`
 `;
 
 export const Card = styled.div`
-  height: 256px;
-  width: 310px;
-
+  width: 16rem;
   gap: 1rem;
 
   background-color: ${(props) => props.theme["base-card"]};
