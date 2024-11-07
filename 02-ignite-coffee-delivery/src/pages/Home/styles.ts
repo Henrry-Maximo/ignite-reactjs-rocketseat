@@ -95,6 +95,8 @@ export const Section = styled.section`
 export const RootCard = styled.div`
   display: flex;
   flex-direction: row;
+
+  gap: 1rem;
 `;
 
 export const Card = styled.div`
