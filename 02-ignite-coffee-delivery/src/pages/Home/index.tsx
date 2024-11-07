@@ -44,8 +44,8 @@ const coffes: PropsCoffes[] = [
     id: 2,
     photo: expressTradicional,
     tags: ["TRADICIONAL"],
-    title: "Expresso Gelado",
-    desc: "Bebida preparada com café expresso e cubos de gelo",
+    title: "Expresso Americano",
+    desc: "Expresso diluído, menos intenso que o tradicional",
     price: 10,
   },
 ];

@@ -96,6 +96,7 @@ export const RootCard = styled.div`
   display: flex;
   flex-direction: row;
 
+  margin: 2rem;
   gap: 1rem;
 `;
 
