@@ -1,5 +1,6 @@
 import { ShoppingCart } from "phosphor-react";
 import main from "../../assets/logo-main-coffe-delivery.svg";
+import expressTradicional from "../../assets/products/coffe/express-traditional.png";
 
 import box from "../../assets/main-content/box.svg";
 import cart from "../../assets/main-content/cart.svg";
@@ -13,12 +14,41 @@ import {
   Main,
   Price,
   RootCard,
+  RootImg,
   Section,
   Summary,
   Tags,
   WidgetItems,
   Wrapper,
 } from "./styles";
+
+type PropsCoffes = {
+  id: number;
+  photo: string;
+  tags: string[];
+  title: string;
+  desc: string;
+  price: number;
+};
+
+const coffes: PropsCoffes[] = [
+  {
+    id: 1,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL", "COM LEITE"],
+    title: "Expresso Gelado",
+    desc: "Bebida preparada com café expresso e cubos de gelo",
+    price: 10,
+  },
+  {
+    id: 2,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL"],
+    title: "Expresso Gelado",
+    desc: "Bebida preparada com café expresso e cubos de gelo",
+    price: 10,
+  },
+];
 
 export function Home() {
   return (
@@ -61,230 +91,39 @@ export function Home() {
         <h2>Nossos cafés</h2>
 
         <RootCard>
-          <Card>
-            <div>Foto</div>
+          {coffes.map((line) => {
+            return (
+              <Card key={line.id}>
+                <RootImg>
+                  <img src={line.photo} />
+                </RootImg>
 
-            <Tags>
-              <span>TRADICIONAL</span>
-              {/* <span>COM LEITE</span> */}
-            </Tags>
+                <Tags>
+                  {line.tags && 
+                    line.tags.map((tag, index) => (
+                      <span key={index}>{tag}</span>
+                    ))}
+                </Tags>
 
-            <Description>
-              <h3>Expresso Tradicional</h3>
-              <label>
-                O tradicional café feito com água quente e grãos moídos
-              </label>
-            </Description>
+                <Description>
+                  <h3>{line.title}</h3>
+                  <label>{line.desc}</label>
+                </Description>
 
-            <Price>
-              <label>
-                R$<span>9,90</span>
-              </label>
-              <div>
-                <input type="number" min={1} max={10} value={1} />
-                <button>
-                  <ShoppingCart />
-                </button>
-              </div>
-            </Price>
-          </Card>
-
-          <Card>
-            <div>Foto</div>
-
-            <Tags>
-              <span>TRADICIONAL</span>
-              {/* <span>COM LEITE</span> */}
-            </Tags>
-
-            <Description>
-              <h3>Expresso Tradicional</h3>
-              <label>
-                O tradicional café feito com água quente e grãos moídos
-              </label>
-            </Description>
-
-            <Price>
-              <label>
-                R$<span>9,90</span>
-              </label>
-              <div>
-                <input type="number" min={1} max={10} value={1} />
-                <button>
-                  <ShoppingCart />
-                </button>
-              </div>
-            </Price>
-          </Card>
-          
-          <Card>
-            <div>Foto</div>
-
-            <Tags>
-              <span>TRADICIONAL</span>
-              {/* <span>COM LEITE</span> */}
-            </Tags>
-
-            <Description>
-              <h3>Expresso Tradicional</h3>
-              <label>
-                O tradicional café feito com água quente e grãos moídos
-              </label>
-            </Description>
-
-            <Price>
-              <label>
-                R$<span>9,90</span>
-              </label>
-              <div>
-                <input type="number" min={1} max={10} value={1} />
-                <button>
-                  <ShoppingCart />
-                </button>
-              </div>
-            </Price>
-          </Card>
-          
-          <Card>
-            <div>Foto</div>
-
-            <Tags>
-              <span>TRADICIONAL</span>
-              {/* <span>COM LEITE</span> */}
-            </Tags>
-
-            <Description>
-              <h3>Expresso Tradicional</h3>
-              <label>
-                O tradicional café feito com água quente e grãos moídos
-              </label>
-            </Description>
-
-            <Price>
-              <label>
-                R$<span>9,90</span>
-              </label>
-              <div>
-                <input type="number" min={1} max={10} value={1} />
-                <button>
-                  <ShoppingCart />
-                </button>
-              </div>
-            </Price>
-          </Card>
-
-          <Card>
-            <div>Foto</div>
-
-            <Tags>
-              <span>TRADICIONAL</span>
-              {/* <span>COM LEITE</span> */}
-            </Tags>
-
-            <Description>
-              <h3>Expresso Tradicional</h3>
-              <label>
-                O tradicional café feito com água quente e grãos moídos
-              </label>
-            </Description>
-
-            <Price>
-              <label>
-                R$<span>9,90</span>
-              </label>
-              <div>
-                <input type="number" min={1} max={10} value={1} />
-                <button>
-                  <ShoppingCart />
-                </button>
-              </div>
-            </Price>
-          </Card>
-
-          <Card>
-            <div>Foto</div>
-
-            <Tags>
-              <span>TRADICIONAL</span>
-              {/* <span>COM LEITE</span> */}
-            </Tags>
-
-            <Description>
-              <h3>Expresso Tradicional</h3>
-              <label>
-                O tradicional café feito com água quente e grãos moídos
-              </label>
-            </Description>
-
-            <Price>
-              <label>
-                R$<span>9,90</span>
-              </label>
-              <div>
-                <input type="number" min={1} max={10} value={1} />
-                <button>
-                  <ShoppingCart />
-                </button>
-              </div>
-            </Price>
-          </Card>
-
-          <Card>
-            <div>Foto</div>
-
-            <Tags>
-              <span>TRADICIONAL</span>
-              {/* <span>COM LEITE</span> */}
-            </Tags>
-
-            <Description>
-              <h3>Expresso Tradicional</h3>
-              <label>
-                O tradicional café feito com água quente e grãos moídos
-              </label>
-            </Description>
-
-            <Price>
-              <label>
-                R$<span>9,90</span>
-              </label>
-              <div>
-                <input type="number" min={1} max={10} value={1} />
-                <button>
-                  <ShoppingCart />
-                </button>
-              </div>
-            </Price>
-          </Card>
-
-          <Card>
-            <div>Foto</div>
-
-            <Tags>
-              <span>TRADICIONAL</span>
-              {/* <span>COM LEITE</span> */}
-            </Tags>
-
-            <Description>
-              <h3>Expresso Tradicional</h3>
-              <label>
-                O tradicional café feito com água quente e grãos moídos
-              </label>
-            </Description>
-
-            <Price>
-              <label>
-                R$<span>9,90</span>
-              </label>
-              <div>
-                <input type="number" min={1} max={10} value={1} />
-                <button>
-                  <ShoppingCart />
-                </button>
-              </div>
-            </Price>
-          </Card>
-
+                <Price>
+                  <label>
+                    R$<span>{line.price}</span>
+                  </label>
+                  <div>
+                    <input type="number" min={1} max={10} value={1} />
+                    <button>
+                      <ShoppingCart />
+                    </button>
+                  </div>
+                </Price>
+              </Card>
+            );
+          })}
         </RootCard>
       </Section>
     </Container>

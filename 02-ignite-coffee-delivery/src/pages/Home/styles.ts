@@ -94,23 +94,20 @@ export const Section = styled.section`
 
 export const RootCard = styled.div`
   display: flex;
-  flex-wrap: wrap;
-
-  justify-content: center;
-
-  gap: 1rem;
-  margin: 1rem;
+  flex-direction: row;
 `;
 
 export const Card = styled.div`
-  width: 16rem;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  width: 18rem;
+  padding: 1rem;
+  border-radius: 15px 50px;
+  gap: 0.70rem;
 
   background-color: ${(props) => props.theme["base-card"]};
-  border-radius: 15px 50px;
-
-  padding: 1rem;
-  text-align: center;
 
   div > input,
   button {
@@ -119,6 +116,15 @@ export const Card = styled.div`
 
     height: 20px;
     width: 20px;
+  }
+`;
+
+export const RootImg = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    height: 5rem;
   }
 `;
 
@@ -142,7 +148,6 @@ export const Tags = styled.div`
 
 export const Description = styled.div`
   margin: 1rem;
-
   label {
     font-weight: 200;
   }
