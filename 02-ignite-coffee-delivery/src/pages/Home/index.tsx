@@ -7,10 +7,12 @@ import cart from "../../assets/main-content/cart.svg";
 import coffe from "../../assets/main-content/coffe.svg";
 import timer from "../../assets/main-content/timer.svg";
 import {
+  Button,
   Card,
   Container,
   Description,
-  LogoIntro,
+  Input,
+  Logo,
   Main,
   Price,
   RootCard,
@@ -21,6 +23,7 @@ import {
   WidgetItems,
   Wrapper,
 } from "./styles";
+import MainItem from "../../components/MainItem/MainItem";
 
 type PropsCoffes = {
   id: number;
@@ -64,27 +67,14 @@ export function Home() {
           </Summary>
 
           <WidgetItems>
-            <label>
-              <img src={cart} alt="cart" />
-              Compra simples e segura
-            </label>
-            <label>
-              <img src={box} alt="box" />
-              Embalagem mantém o café intacto
-            </label>
-            <label>
-              <img src={timer} alt="timer" />
-              Entrega rápida e rastreada
-            </label>
-            <label>
-              <img src={coffe} alt="coffe" />O café chega fresquinho até você
-            </label>
+            <MainItem src={cart} alt="cart" title="Compra simples e segura" />
+            <MainItem src={box} alt="box" title="Embalagem mantém o café intacto" />
+            <MainItem src={timer} alt="timer" title="Entrega rápida e rastreada" />
+            <MainItem src={coffe} alt="coffe" title="O café chega fresquinho até você" />
           </WidgetItems>
         </Wrapper>
 
-        <div>
-          <LogoIntro src={main} alt="main-logo" />
-        </div>
+        <Logo src={main} alt="main-logo" />
       </Main>
 
       <Section>
@@ -99,7 +89,7 @@ export function Home() {
                 </RootImg>
 
                 <Tags>
-                  {line.tags && 
+                  {line.tags &&
                     line.tags.map((tag, index) => (
                       <span key={index}>{tag}</span>
                     ))}
@@ -115,10 +105,10 @@ export function Home() {
                     R$<span>{line.price}</span>
                   </label>
                   <div>
-                    <input type="number" min={1} max={10} value={1} />
-                    <button>
+                    <Input type="number" min={1} max={10} />
+                    <Button>
                       <ShoppingCart />
-                    </button>
+                    </Button>
                   </div>
                 </Price>
               </Card>

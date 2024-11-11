@@ -70,7 +70,7 @@ export const WidgetItems = styled.div`
   }
 `;
 
-export const LogoIntro = styled.img`
+export const Logo = styled.img`
   width: 22.5rem;
 `;
 
@@ -108,7 +108,7 @@ export const Card = styled.div`
   width: 18rem;
   padding: 1rem;
   border-radius: 15px 50px;
-  gap: 0.70rem;
+  gap: 0.7rem;
 
   background-color: ${(props) => props.theme["base-card"]};
 
@@ -188,14 +188,23 @@ export const Price = styled.div`
 
     input {
       width: 2rem;
-
       text-align: center;
-      background-color: ${(props) => props.theme["base-input"]};
-    }
-
-    button {
-      background-color: ${(props) => props.theme["purple-dark"]};
-      color: ${(props) => props.theme["white"]};
     }
   }
+`;
+
+export const Input = styled.input`
+  background-color: ${(props) => props.theme["base-input"]};
+  color: ${(props) => props.theme["base-text"]};
+
+  border-radius: 0.16rem;
+`;
+
+export const Button = styled.button`
+  background-color: ${(props) => props.theme["purple-dark"]};
+  color: ${(props) => props.theme["white"]};
+
+  border-radius: 0.16rem;
+  /* border: none; */
+  
 `;
