@@ -190,6 +190,10 @@ export const Price = styled.div`
       width: 2rem;
       text-align: center;
     }
+
+    button {
+      width: 2rem;
+    }
   }
 `;
 
@@ -197,14 +201,33 @@ export const Input = styled.input`
   background-color: ${(props) => props.theme["base-input"]};
   color: ${(props) => props.theme["base-text"]};
 
+  border: 1px solid ${(props) => props.theme["base-border"]}; // contorno leve
   border-radius: 0.16rem;
+  
+  &:focus {
+    outline: none;
+    border-color: ${(props) => props.theme["purple-dark"]}; 
+    box-shadow: 0 0 0 2px ${(props) => props.theme["purple-light"]};
+  }
 `;
 
+// Estilização do Button
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: ${(props) => props.theme["purple-dark"]};
   color: ${(props) => props.theme["white"]};
 
+  border: none;
   border-radius: 0.16rem;
-  /* border: none; */
-  
+
+  &:hover {
+    background-color: ${(props) => props.theme["purple"]};
+  }
+
+  &:active {
+    transform: scale(0.95); // efeito de clique
+  }
 `;

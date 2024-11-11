@@ -1,5 +1,5 @@
 export const defaultTheme = {
-  white: "#FFFFF",
+  white: "#FFFFFF",
   background: "#FAFAFA",
 
   // product
