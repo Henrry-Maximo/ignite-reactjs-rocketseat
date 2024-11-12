@@ -201,7 +201,7 @@ export const Input = styled.input`
   background-color: ${(props) => props.theme["base-input"]};
   color: ${(props) => props.theme["base-text"]};
 
-  border: 1px solid ${(props) => props.theme["base-border"]}; // contorno leve
+  border: 1px solid ${(props) => props.theme["base-border"]};
   border-radius: 0.16rem;
   
   &:focus {
@@ -211,7 +211,6 @@ export const Input = styled.input`
   }
 `;
 
-// Estilização do Button
 export const Button = styled.button`
   display: flex;
   align-items: center;
