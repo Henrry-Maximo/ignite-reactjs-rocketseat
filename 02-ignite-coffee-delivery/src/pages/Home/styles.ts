@@ -94,10 +94,13 @@ export const Section = styled.section`
 
 export const RootCard = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
 
   margin: 2rem;
-  gap: 1rem;
+  gap: 2rem;
 `;
 
 export const Card = styled.div`
@@ -133,7 +136,7 @@ export const RootImg = styled.div`
 
 export const Tags = styled.div`
   display: flex;
-  flex-direction: row !important;
+  flex-wrap: wrap;
 
   justify-content: center;
   align-items: center;
@@ -183,15 +186,18 @@ export const Price = styled.div`
   div {
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     gap: 0.5rem;
 
     input {
-      width: 2rem;
+      height: 1.50rem;
+      width: 3.5rem;
       text-align: center;
     }
 
     button {
+      height: 1.50rem;
       width: 2rem;
     }
   }

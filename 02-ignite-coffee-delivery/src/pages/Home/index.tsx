@@ -1,4 +1,4 @@
-import { ShoppingCart } from "phosphor-react";
+import { ShoppingCartSimple } from "phosphor-react";
 import main from "../../assets/logo-main-coffe-delivery.svg";
 import expressTradicional from "../../assets/products/coffe/express-traditional.png";
 
@@ -31,17 +31,17 @@ type PropsCoffes = {
   tags: string[];
   title: string;
   desc: string;
-  price: number;
+  price: string;
 };
 
 const coffes: PropsCoffes[] = [
   {
     id: 1,
     photo: expressTradicional,
-    tags: ["TRADICIONAL", "COM LEITE"],
-    title: "Expresso Gelado",
-    desc: "Bebida preparada com café expresso e cubos de gelo",
-    price: 10,
+    tags: ["TRADICIONAL"],
+    title: "Expresso Tradicional",
+    desc: "O tradicional café feito com água quente e grãos moídos",
+    price: "9,90",
   },
   {
     id: 2,
@@ -49,7 +49,119 @@ const coffes: PropsCoffes[] = [
     tags: ["TRADICIONAL"],
     title: "Expresso Americano",
     desc: "Expresso diluído, menos intenso que o tradicional",
-    price: 10,
+    price: "9,90",
+  },
+  {
+    id: 3,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL"],
+    title: "Expresso Cremoso",
+    desc: "Café expresso tradicional com espuma cremosa",
+    price: "9,90",
+  },
+  {
+    id: 4,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL", "GELADO"],
+    title: "Expresso Gelado",
+    desc: "Bebida preparada com café expresso e cubos de gelo",
+    price: "9,90",
+  },
+  {
+    id: 5,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL"],
+    title: "Expresso Cremoso",
+    desc: "Café expresso tradicional com espuma cremosa",
+    price: "9,90",
+  },
+  {
+    id: 6,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL"],
+    title: "Café com Leite",
+    desc: "Meio a meio de expresso tradicional com leite vaporizado",
+    price: "9,90",
+  },
+  {
+    id: 7,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL"],
+    title: "Latte",
+    desc: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
+    price: "9,90",
+  },
+  {
+    id: 8,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL", "COM LEITE"],
+    title: "Capuccino",
+    desc: "Bebida com canela feita de doses iguais de café, leite e espuma",
+    price: "9,90",
+  },
+  {
+    id: 9,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL", "COM LEITE"],
+    title: "Macchiato",
+    desc: "Café expresso misturado com um pouco de leite quente e espuma",
+    price: "9,90",
+  },
+  {
+    id: 10,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL", "COM LEITE"],
+    title: "Macchiato",
+    desc: "Café expresso com calda de chocolate, pouco leite e espuma",
+    price: "9,90",
+  },
+  {
+    id: 11,
+    photo: expressTradicional,
+    tags: ["TRADICIONAL", "COM LEITE"],
+    title: "Macchiato",
+    desc: "Café expresso com calda de chocolate, pouco leite e espuma",
+    price: "9,90",
+  },
+  {
+    id: 12,
+    photo: expressTradicional,
+    tags: ["ESPECIAL", "COM LEITE"],
+    title: "Chocolate Quente",
+    desc: "Bebida feita com chocolate dissolvido no leite quente e café",
+    price: "9,90",
+  },
+  {
+    id: 13,
+    photo: expressTradicional,
+    tags: ["ESPECIAL", "ALCOÓLICO", "GELADO"],
+    title: "Cubano",
+    desc: "Drink gelado de café expresso com rum, creme de leite e hortelã",
+    price: "9,90",
+  },
+  {
+    id: 14,
+    photo: expressTradicional,
+    tags: ["ESPECIAL"],
+    title: "Havaiano",
+    desc: "Bebida adocicada preparada com café e leite de coco",
+    price: "9,90",
+  },
+  {
+    id: 15,
+    photo: expressTradicional,
+    tags: ["ESPECIAL"],
+    title: "Árabe",
+    desc: "Bebida preparada com grãos de café árabe e especiarias",
+    price: "9,90",
+  },
+  {
+    id: 16,
+    photo: expressTradicional,
+    tags: ["ESPECIAL", "ALCOÓLICO"],
+    title: "Irlandês",
+    desc: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
+    price: "9,90",
   },
 ];
 
@@ -107,7 +219,7 @@ export function Home() {
                   <div>
                     <Input type="number" min={1} max={10} />
                     <Button>
-                      <ShoppingCart />
+                      <ShoppingCartSimple />
                     </Button>
                   </div>
                 </Price>
