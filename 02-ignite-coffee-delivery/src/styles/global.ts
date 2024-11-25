@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body, input, textarea, button {
+  body {
     font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
