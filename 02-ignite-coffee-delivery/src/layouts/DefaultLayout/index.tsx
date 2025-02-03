@@ -3,7 +3,7 @@ import { Header } from "../../components/Header/Header";
 
 export function DefaultLayout() {
   return (
-    <div style={{ height: "100vh" }}>
+    <div>
       <Header />
       <Outlet />
     </div>  

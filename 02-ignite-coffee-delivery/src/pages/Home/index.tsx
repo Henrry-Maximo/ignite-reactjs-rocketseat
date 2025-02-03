@@ -197,25 +197,25 @@ export function Home() {
             return (
               <Card key={line.id}>
                 <RootImg>
-                  <img src={line.photo} />
+                  <img src={line.photo} alt="img of coffe" />
                 </RootImg>
 
                 <Tags>
-                  {line.tags &&
-                    line.tags.map((tag, index) => (
-                      <span key={index}>{tag}</span>
+                  {
+                    line?.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
                     ))}
                 </Tags>
 
                 <Description>
                   <h3>{line.title}</h3>
-                  <label>{line.desc}</label>
+                  <p>{line.desc}</p>
                 </Description>
 
                 <Price>
-                  <label>
+                  <p>
                     R$<span>{line.price}</span>
-                  </label>
+                  </p>
                   <div>
                     <Input type="number" min={1} max={10} />
                     <Button>
