@@ -95,8 +95,8 @@ export const Section = styled.section`
 `;
 
 export const RootCard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
   justify-content: center;
   align-items: center;
@@ -130,6 +130,7 @@ export const Card = styled.div`
 export const RootImg = styled.div`
   display: flex;
   justify-content: center;
+  position: relative;
 
   img {
     height: 5rem;
@@ -196,6 +197,9 @@ export const Price = styled.div`
       height: 1.50rem;
       width: 3.5rem;
       text-align: center;
+
+      border: none;
+      background-color: ${(props) => props.theme["base-input"]}
     }
 
     button {
@@ -225,13 +229,13 @@ export const Button = styled.button`
   justify-content: center;
 
   background-color: ${(props) => props.theme["purple-dark"]};
-  color: ${(props) => props.theme["white"]};
+  color: ${(props) => props.theme.white};
 
   border: none;
   border-radius: 0.16rem;
 
   &:hover {
-    background-color: ${(props) => props.theme["purple"]};
+    background-color: ${(props) => props.theme.purple};
   }
 
   &:active {

@@ -218,8 +218,8 @@ export function Home() {
                   </p>
                   <div>
                     <Input type="number" min={1} max={10} />
-                    <Button>
-                      <ShoppingCartSimple />
+                    <Button type="button">
+                      <ShoppingCartSimple color="#ffffff" weight="fill" />
                     </Button>
                   </div>
                 </Price>

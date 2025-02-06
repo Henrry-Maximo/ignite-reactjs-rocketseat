@@ -53,9 +53,9 @@ export function CheckOut() {
           </div>
 
           <div>
-            <button>CARTÃO DE CRÉDITO</button>
-            <button>CARTÃO DE DÉBITO</button>
-            <button>DINHEIRO</button>
+            <button type="button">CARTÃO DE CRÉDITO</button>
+            <button type="button">CARTÃO DE DÉBITO</button>
+            <button type="button">DINHEIRO</button>
           </div>
         </footer>
       </div>
@@ -73,8 +73,8 @@ export function CheckOut() {
             </div>
 
             <div>
-              <input type="number"></input>
-              <button>REMOVER</button>
+              <input type="number" />
+              <button type="button">REMOVER</button>
             </div>
           </div>
 
@@ -94,7 +94,7 @@ export function CheckOut() {
               <span>R$ 33,20</span>
             </div>
 
-            <button>CONFIRMAR</button>
+            <button type="button">CONFIRMAR</button>
           </div>
         </aside>
       </div>
