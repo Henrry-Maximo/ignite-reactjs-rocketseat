@@ -6,6 +6,7 @@ export function DefaultLayout() {
   return (
     <LayoutContainer>
       <Header />
+      {/* transicionar os conteúdos: espaço para inserir */}
       <Outlet />
     </LayoutContainer>
   )
