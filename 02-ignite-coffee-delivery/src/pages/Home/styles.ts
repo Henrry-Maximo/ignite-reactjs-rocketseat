@@ -5,7 +5,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  /* height: 100vh; */
+  overflow: auto;
+  scroll-behavior: smooth; /* suave */
 `;
 
 export const Main = styled.main`
@@ -15,6 +16,8 @@ export const Main = styled.main`
 
   padding: 2.5rem;
   gap: 1rem;
+
+  height: calc(100vh - 6rem);
 
   background-image: url(${coffe});
   backdrop-filter: blur(4);
@@ -88,29 +91,33 @@ export const Section = styled.section`
     font-family: "Baloo 2", cursive;
     color: ${(props) => props.theme["base-title"]};
   }
-
-  /* img {
-    height: 150px;
-  } */
 `;
 
-export const RootCard = styled.div`
+export const SquareProducts = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+`;
+
+export const RootCard = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
   justify-content: center;
-  align-items: center;
+  margin: 2rem auto;
 
   margin: 2rem;
   gap: 2rem;
 `;
 
-export const Card = styled.div`
+export const Card = styled.li`
   display: flex;
   flex-direction: column;
   text-align: center;
 
-  width: 18rem;
+  max-width: 18rem;
+  width: 100%;
   padding: 1rem;
   border-radius: 15px 50px;
   gap: 0.7rem;
