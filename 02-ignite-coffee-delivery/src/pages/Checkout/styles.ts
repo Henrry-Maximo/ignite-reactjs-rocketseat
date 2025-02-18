@@ -7,10 +7,8 @@ export const Main = styled.main`
   margin: 2rem 10rem 0rem;
   gap: 2rem;
 
-  height: calc(100vh - 8.6rem);
-
-  overflow: auto;
-  scroll-behavior: smooth;
+  min-height: calc(100vh - 8.6rem); /* Altura mínima ao invés de fixa */
+  overflow-y: auto; /* Apenas scroll vertical */  
 `;
 
 export const Form = styled.form`
