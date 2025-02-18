@@ -1,14 +1,16 @@
-import { Coffee } from "phosphor-react";
+import { Coffee, CurrencyDollar, MapPinLine } from "phosphor-react";
+import { Aside, Footer, Form, Main, Section, SectionChoice } from "./styles";
 
 export function CheckOut() {
   return (
-    <div>
-      <div>
+    <Main>
+      {/* endereço + pagamento */}
+      <Form>
         <h3>Complete seu pedido</h3>
 
-        <section style={{ background: "#F3F2F2", margin: "2rem" }}>
+        <Section>
           <div>
-            <img src="" alt="location" />
+            <MapPinLine />
             <span>Endereço de Entrega</span>
             <p>Informe o endereço onde deseja receber seu pedido</p>
           </div>
@@ -41,11 +43,11 @@ export function CheckOut() {
               <input placeholder="RS" />
             </div>
           </form>
-        </section>
+        </Section>
 
-        <footer style={{ background: "#F3F2F2", margin: "2rem" }}>
+        <Footer>
           <div>
-            <img src="" alt="price" />
+            <CurrencyDollar />
             <span>Pagamento</span>
             <p>
               O pagamento é feito na entrega. Escolha a forma que deseja pagar
@@ -57,13 +59,14 @@ export function CheckOut() {
             <button type="button">CARTÃO DE DÉBITO</button>
             <button type="button">DINHEIRO</button>
           </div>
-        </footer>
-      </div>
+        </Footer>
+      </Form>
 
-      <div>
+      {/* cafés selecionados */}
+      <SectionChoice>
         <h3>Cafés selecionados</h3>
 
-        <aside style={{ background: "#F3F2F2", margin: "2rem" }}>
+        <Aside>
           <div>
             <Coffee />
 
@@ -96,8 +99,8 @@ export function CheckOut() {
 
             <button type="button">CONFIRMAR</button>
           </div>
-        </aside>
-      </div>
-    </div>
+        </Aside>
+      </SectionChoice>
+    </Main>
   );
 }
