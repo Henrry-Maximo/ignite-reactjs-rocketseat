@@ -1,5 +1,6 @@
 import { Coffee, CurrencyDollar, MapPinLine } from "phosphor-react";
 import { Aside, Footer, Form, Main, Section, SectionChoice } from "./styles";
+import { DescriptionHeader, IconHeader, RootHeader } from "./components/Header";
 
 export function CheckOut() {
   return (
@@ -9,11 +10,22 @@ export function CheckOut() {
         <h3>Complete seu pedido</h3>
 
         <Section>
-          <div>
+          {/* <div>
             <MapPinLine />
             <span>Endereço de Entrega</span>
             <p>Informe o endereço onde deseja receber seu pedido</p>
-          </div>
+          </div> */}
+
+          <RootHeader>
+            <IconHeader>
+              <MapPinLine style={{ background: "yellow" }} />
+            </IconHeader>
+
+            <DescriptionHeader
+              title="Endereço de Entrega"
+              description="Informe o endereço onde deseja receber seu pedido"
+            />
+          </RootHeader>
 
           <form
             style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
