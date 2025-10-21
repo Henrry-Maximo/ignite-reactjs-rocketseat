@@ -1,0 +1,8 @@
+.button {
+  width: 100px;
+  height: 40px;
+}
+
+.primary {
+  background-color: rgb(140, 140, 166);
+}
