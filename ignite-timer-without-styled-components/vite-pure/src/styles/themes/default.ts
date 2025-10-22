@@ -1,10 +1,5 @@
-
-type ThemeProps = {
-  primary: string;
-  secondary: string;
-}
-
-export const defaultTheme: ThemeProps = {
+export const defaultTheme = {
   primary: '#8257e6',
-  secondary: '#2c9fb9ff'
+  secondary: '#2c9fb9ff',
+  white: '#ffff'
 };
