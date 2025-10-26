@@ -5,17 +5,10 @@ import { DescriptionHeader, IconHeader, RootHeader } from "./components/Header";
 export function CheckOut() {
   return (
     <Main>
-      {/* endereço + pagamento */}
       <Form>
         <h3>Complete seu pedido</h3>
 
         <Section>
-          {/* <div>
-            <MapPinLine />
-            <span>Endereço de Entrega</span>
-            <p>Informe o endereço onde deseja receber seu pedido</p>
-          </div> */}
-
           <RootHeader>
             <IconHeader>
               <MapPinLine style={{ background: "yellow" }} />
