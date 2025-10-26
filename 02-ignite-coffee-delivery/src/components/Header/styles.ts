@@ -37,3 +37,14 @@ export const HeaderContainer = styled.header`
     }
   }
 `;
+
+export const NumberCarrer = styled.div`
+  position: absolute;
+  top: 28px;
+  right: 184px;
+  width: 32px;
+
+  border-radius: 999px;
+  color: ${(props) => props.theme['white']};
+  background-color: ${(props) => props.theme['yellow']};
+`;
