@@ -1,12 +1,18 @@
-import { Coffee, CurrencyDollar, MapPinLine } from "phosphor-react";
+import {
+  Coffee,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+  Bank,
+} from "phosphor-react";
 import { DescriptionHeader, IconHeader, RootHeader } from "./components/Header";
 import {
   Aside,
+  CheckoutButton,
   CheckoutCard,
   CheckoutContainer,
-  CheckoutFooter,
   CheckoutFooterActions,
-  CheckoutFooterDescription,
   CheckoutInput,
   CheckoutRow,
   CheckoutSection,
@@ -49,21 +55,32 @@ export function CheckOut() {
           </FormAddress>
         </CheckoutSection>
 
-        <CheckoutFooter>
-          <CheckoutFooterDescription>
-            <CurrencyDollar />
-            <span>Pagamento</span>
-            <p>
-              O pagamento é feito na entrega. Escolha a forma que deseja pagar
-            </p>
-          </CheckoutFooterDescription>
+        <CheckoutSection>
+          <RootHeader>
+            <IconHeader>
+              <CurrencyDollar />
+            </IconHeader>
+
+            <DescriptionHeader
+              title="Pagamento"
+              description="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
+            />
+          </RootHeader>
 
           <CheckoutFooterActions>
-            <button type="button">CARTÃO DE CRÉDITO</button>
-            <button type="button">CARTÃO DE DÉBITO</button>
-            <button type="button">DINHEIRO</button>
+            <CheckoutButton type="button">
+              <CreditCard /> CARTÃO DE CRÉDITO
+            </CheckoutButton>
+            <CheckoutButton type="button">
+              <Bank />
+              CARTÃO DE DÉBITO
+            </CheckoutButton>
+            <CheckoutButton type="button">
+              <Money />
+              DINHEIRO
+            </CheckoutButton>
           </CheckoutFooterActions>
-        </CheckoutFooter>
+        </CheckoutSection>
       </CheckoutCard>
 
       {/* cafés selecionados */}

@@ -4,6 +4,7 @@ export const CheckoutContainer = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+  height: 100vh;
   margin: 2rem 10rem 0rem;
   gap: 2rem;
 
@@ -71,21 +72,44 @@ export const CheckoutRow = styled.div`
   gap: 0.75rem;
 `;
 
-export const CheckoutFooter = styled.footer`
-  display: flex;
-  background-color: #f3f2f2;
-  /* border: 1px solid purple; */
-  border-radius: 4px;
-
-  padding: 2rem;
-`;
-
 export const CheckoutFooterDescription = styled.div`
   display: flex;
 `;
 
 export const CheckoutFooterActions = styled.div`
   display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+`;
+
+export const CheckoutButton = styled.button`
+  display: flex;
+  background-color: ${(props) => props.theme["base-button"]};
+
+  gap: 0.6rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.5rem;
+  letter-spacing: 0.1cap;
+  text-transform: lowercase;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  svg {
+    color: ${(props) => props.theme["purple"]};
+    font-size: 1.2rem;
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme["base-hover"]};
+    transition: background-color 0.2s;
+  }
 `;
 
 export const SectionChoice = styled.section`

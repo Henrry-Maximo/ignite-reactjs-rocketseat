@@ -25,6 +25,7 @@ export const HeaderContainer = styled.header`
     }
 
     a {
+      position: relative;
       display: flex;
       text-align: center;
       align-items: center;
@@ -40,11 +41,19 @@ export const HeaderContainer = styled.header`
 
 export const NumberCarrer = styled.div`
   position: absolute;
-  top: 28px;
-  right: 184px;
-  width: 32px;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
 
-  border-radius: 999px;
-  color: ${(props) => props.theme['white']};
-  background-color: ${(props) => props.theme['yellow']};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.75rem;
+  font-weight: bold;
+
+  border-radius: 50%;
+  color: ${(props) => props.theme["white"]};
+  background-color: ${(props) => props.theme["yellow-dark"]};
 `;
