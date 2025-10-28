@@ -1,12 +1,12 @@
 import type { ComponentProps } from "react";
-import { Icon, InforHeader } from "../styles";
+import { CheckoutHeader, CheckoutIcon } from "../styles";
 
 export function RootHeader({ ...props }: ComponentProps<"div">) {
-  return <InforHeader {...props} />;
+  return <CheckoutHeader {...props} />;
 }
 
-export function IconHeader({ ...props }: ComponentProps<"span">) {
-  return <Icon {...props} />;
+export function IconHeader({ ...props }: ComponentProps<"div">) {
+  return <CheckoutIcon {...props} />;
 }
 
 export function DescriptionHeader({

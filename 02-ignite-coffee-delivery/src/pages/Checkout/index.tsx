@@ -1,17 +1,29 @@
 import { Coffee, CurrencyDollar, MapPinLine } from "phosphor-react";
-import { Aside, Footer, Form, Main, Section, SectionChoice } from "./styles";
 import { DescriptionHeader, IconHeader, RootHeader } from "./components/Header";
+import {
+  Aside,
+  CheckoutCard,
+  CheckoutContainer,
+  CheckoutFooter,
+  CheckoutFooterActions,
+  CheckoutFooterDescription,
+  CheckoutInput,
+  CheckoutRow,
+  CheckoutSection,
+  CheckoutTitle,
+  FormAddress,
+} from "./styles";
 
 export function CheckOut() {
   return (
-    <Main>
-      <Form>
-        <h3>Complete seu pedido</h3>
+    <CheckoutContainer>
+      <CheckoutCard>
+        <CheckoutTitle>Complete seu pedido</CheckoutTitle>
 
-        <Section>
+        <CheckoutSection>
           <RootHeader>
             <IconHeader>
-              <MapPinLine style={{ background: "yellow" }} />
+              <MapPinLine />
             </IconHeader>
 
             <DescriptionHeader
@@ -20,55 +32,42 @@ export function CheckOut() {
             />
           </RootHeader>
 
-          <form
-            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-          >
-            <div>
-              <input placeholder="90250-440" />
-            </div>
+          <FormAddress>
+            <CheckoutInput placeholder="CEP" />
+            <CheckoutInput placeholder="Rua" />
 
-            <div>
-              <input placeholder="Rua João Daniel Martinelli" />
-            </div>
+            <CheckoutRow>
+              <CheckoutInput placeholder="Número" />
+              <CheckoutInput placeholder="Complemento" />
+            </CheckoutRow>
 
-            <div>
-              <input placeholder="102" />
-            </div>
+            <CheckoutRow>
+              <CheckoutInput placeholder="Bairro" />
+              <CheckoutInput placeholder="Cidade" />
+              <CheckoutInput placeholder="UF" />
+            </CheckoutRow>
+          </FormAddress>
+        </CheckoutSection>
 
-            <div>
-              <input placeholder="Complemento" />
-            </div>
-            <div>
-              <input placeholder="Ferrapos" />
-            </div>
-            <div>
-              <input placeholder="Porto Alegre" />
-            </div>
-            <div>
-              <input placeholder="RS" />
-            </div>
-          </form>
-        </Section>
-
-        <Footer>
-          <div>
+        <CheckoutFooter>
+          <CheckoutFooterDescription>
             <CurrencyDollar />
             <span>Pagamento</span>
             <p>
               O pagamento é feito na entrega. Escolha a forma que deseja pagar
             </p>
-          </div>
+          </CheckoutFooterDescription>
 
-          <div>
+          <CheckoutFooterActions>
             <button type="button">CARTÃO DE CRÉDITO</button>
             <button type="button">CARTÃO DE DÉBITO</button>
             <button type="button">DINHEIRO</button>
-          </div>
-        </Footer>
-      </Form>
+          </CheckoutFooterActions>
+        </CheckoutFooter>
+      </CheckoutCard>
 
       {/* cafés selecionados */}
-      <SectionChoice>
+      <CheckoutSection>
         <h3>Cafés selecionados</h3>
 
         <Aside>
@@ -105,7 +104,7 @@ export function CheckOut() {
             <button type="button">CONFIRMAR</button>
           </div>
         </Aside>
-      </SectionChoice>
-    </Main>
+      </CheckoutSection>
+    </CheckoutContainer>
   );
 }
