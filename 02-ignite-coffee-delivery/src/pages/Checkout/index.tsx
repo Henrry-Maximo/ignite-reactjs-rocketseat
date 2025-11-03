@@ -5,6 +5,7 @@ import {
   MapPinLine,
   Money,
   Bank,
+  Trash,
 } from "phosphor-react";
 import { DescriptionHeader, IconHeader, RootHeader } from "./components/Header";
 import {
@@ -85,20 +86,54 @@ export function CheckOut() {
 
       {/* cafés selecionados */}
       <CheckoutSection>
-        <h3>Cafés selecionados</h3>
+        <CheckoutTitle>Cafés selecionados</CheckoutTitle>
 
         <Aside>
           <div>
             <Coffee />
 
             <div>
-              <span>Expresso Traficional</span>
-              <span>R$ 9,90</span>
+              <div>
+                <span>Expresso Traficional</span>
+                <span>R$ 9,90</span>
+              </div>
+
+              <div>
+                <div>
+                  <button>-</button>
+                  <input type="number" />
+                  <button>+</button>
+                </div>
+
+                <button type="button">
+                  <Trash size={16} />
+                  REMOVER
+                </button>
+              </div>
             </div>
+          </div>
+
+          <div>
+            <Coffee />
 
             <div>
-              <input type="number" />
-              <button type="button">REMOVER</button>
+              <div>
+                <span>Latte</span>
+                <span>R$ 19,80</span>
+              </div>
+
+              <div>
+                <div>
+                  <button>-</button>
+                  <input type="number" />
+                  <button>+</button>
+                </div>
+
+                <button type="button">
+                  <Trash size={16} />
+                  REMOVER
+                </button>
+              </div>
             </div>
           </div>
 
