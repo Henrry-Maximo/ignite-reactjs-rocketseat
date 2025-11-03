@@ -1,5 +1,4 @@
 import {
-  Coffee,
   CreditCard,
   CurrencyDollar,
   MapPinLine,
@@ -9,12 +8,13 @@ import {
 } from "phosphor-react";
 import { DescriptionHeader, IconHeader, RootHeader } from "./components/Header";
 import {
-  Aside,
   CheckoutButton,
   CheckoutCard,
   CheckoutContainer,
+  CheckoutDescriptionItem,
   CheckoutFooterActions,
   CheckoutInput,
+  CheckoutItem,
   CheckoutRow,
   CheckoutSection,
   CheckoutTitle,
@@ -84,13 +84,12 @@ export function CheckOut() {
         </CheckoutSection>
       </CheckoutCard>
 
-      {/* cafés selecionados */}
-      <CheckoutSection>
+      <CheckoutCard>
         <CheckoutTitle>Cafés selecionados</CheckoutTitle>
 
-        <Aside>
-          <div>
-            <Coffee />
+        <CheckoutSection>
+          <CheckoutItem>
+            {/* <Coffee /> */}
 
             <div>
               <div>
@@ -111,10 +110,10 @@ export function CheckOut() {
                 </button>
               </div>
             </div>
-          </div>
+          </CheckoutItem>
 
-          <div>
-            <Coffee />
+          <CheckoutItem>
+            {/* <Coffee /> */}
 
             <div>
               <div>
@@ -135,28 +134,28 @@ export function CheckOut() {
                 </button>
               </div>
             </div>
-          </div>
+          </CheckoutItem>
 
-          <div>
+          <CheckoutDescriptionItem>
             <div>
-              <span>Total de itens</span>
+              <span>Total de itens:</span>
               <span>R$ 29,70</span>
             </div>
 
             <div>
-              <span>Entrega</span>
+              <span>Entrega:</span>
               <span>R$ 3,50</span>
             </div>
 
             <div>
-              <span>Total</span>
+              <span>Tota:</span>
               <span>R$ 33,20</span>
             </div>
 
             <button type="button">CONFIRMAR</button>
-          </div>
-        </Aside>
-      </CheckoutSection>
+          </CheckoutDescriptionItem>
+        </CheckoutSection>
+      </CheckoutCard>
     </CheckoutContainer>
   );
 }

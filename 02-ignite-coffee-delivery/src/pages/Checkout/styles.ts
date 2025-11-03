@@ -118,11 +118,30 @@ export const SectionChoice = styled.section`
 
   gap: 2rem;
 `;
+
 export const Aside = styled.aside`
   display: flex;
   background-color: #f3f2f2;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   border-radius: 4px;
 
   padding: 2rem;
+`;
+
+export const CheckoutItem = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  gap: 2rem;
+`;
+
+export const CheckoutDescriptionItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
