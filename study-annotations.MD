@@ -121,3 +121,95 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 // document.getElementById('root')! : pegar o elemento raiz do documento afirmando que existe
 ```
+
+### React - CSS Modules
+- Solução para evitar conflitos de CSS entre componentes (escopo local)
+- Cada classe CSS é automaticamente renomeada com um hash único
+- Nomenclatura: `ComponentName.module.css`
+
+#### Como funciona:
+```css
+/* Button.module.css */
+.container {
+  background: blue;
+  padding: 1rem;
+}
+
+.primary {
+  background: green;
+}
+```
+
+```jsx
+// Button.jsx
+import styles from './Button.module.css'
+
+export function Button() {
+  return (
+    <button className={styles.container}>
+      Botão
+    </button>
+  )
+}
+```
+
+#### Vantagens:
+- **Escopo local**: estilos não vazam para outros componentes
+- **Nomes únicos**: classes são renomeadas automaticamente (ex: `Button_container__2x3kl`)
+- **Composição**: `className={`${styles.container} ${styles.primary}`}`
+- **Conditional styling**: `className={isActive ? styles.active : styles.inactive}`
+
+#### Convenções:
+- Use camelCase para nomes de classes: `.primaryButton` em vez de `.primary-button`
+- Organize por componente: cada componente tem seu próprio arquivo `.module.css`
+- Combine com CSS global quando necessário
+
+## CSS Global no React
+- Estilos compartilhados entre todos os componentes
+- Arquivo: `global.css` (importado no `main.tsx`)
+
+### Reset CSS básico:
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding/border não aumentam largura/altura */
+}
+```
+
+### Variáveis CSS (Custom Properties):
+```css
+:root {
+  --white: #fff;
+  --gray-100: #e1e1e6;
+  --gray-300: #c4c4cc;
+  --green-500: #00875f;
+}
+
+body {
+  background-color: var(--gray-900);
+  color: var(--gray-300);
+}
+```
+
+### Fontes externas (Google Fonts):
+1. **HTML**: adicionar links de preconnect ANTES de outros recursos
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+```
+
+2. **CSS**: aplicar em elementos que não herdam do body
+```css
+body, input, textarea, button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem; /* unidade relativa para acessibilidade */
+}
+```
+
+### Dicas importantes:
+- **Unidades relativas**: use `rem` em vez de `px` para acessibilidade
+- **Font smoothing**: `-webkit-font-smoothing: antialiased` para fontes mais nítidas
+- **Nomenclatura de cores**: sistema numérico (100-900) do claro ao escuro
+- **Preconnect**: otimiza carregamento de fontes externas

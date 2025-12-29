@@ -8,10 +8,17 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    color: ${(props) => props.theme['base-text']};
+    background-color: ${(props) => props.theme['background']};
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body, input, textarea, button {
     font-family: 'DM Sans', sans-serif;
+    
+    font-weight: 400;
     font-size: 1rem;
     line-height: 1.6;
-    height: 100vh;
   }
 
   img {

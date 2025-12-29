@@ -18,6 +18,7 @@ import {
   CheckoutRow,
   CheckoutSection,
   CheckoutTitle,
+  ConfirmButton,
   FormAddress,
 } from "./styles";
 
@@ -152,7 +153,7 @@ export function CheckOut() {
               <span>R$ 33,20</span>
             </div>
 
-            <button type="button">CONFIRMAR</button>
+            <ConfirmButton type="button">CONFIRMAR</ConfirmButton>
           </CheckoutDescriptionItem>
         </CheckoutSection>
       </CheckoutCard>

@@ -32,7 +32,7 @@ export const CheckoutSection = styled.section`
 
   background-color: #f3f2f2;
   /* border: 1px solid purple; */
-  border-radius: 4px;
+  border-radius: 6px 44px 6px 44px;
 
   gap: 1rem;
 
@@ -94,7 +94,7 @@ export const CheckoutButton = styled.button`
 
   padding: 0.5rem;
   letter-spacing: 0.1cap;
-  text-transform: lowercase;
+  text-transform: uppercase;
 
   border: none;
   border-radius: 8px;
@@ -143,5 +143,17 @@ export const CheckoutDescriptionItem = styled.div`
   div {
     display: flex;
     justify-content: space-between;
+  }
+`;
+
+export const ConfirmButton = styled.button`
+  background-color: ${(props) => props.theme['yellow']};
+  color: ${(props) => props.theme['white']};
+
+  border: none;
+  border-radius: 0.375rem;
+
+  &:hover {
+    background-color: ${(props) => props.theme['purple']};
   }
 `;
