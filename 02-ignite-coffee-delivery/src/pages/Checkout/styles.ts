@@ -147,8 +147,104 @@ export const Aside = styled.aside`
 export const CheckoutItem = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  width: 100%;
 
   gap: 2rem;
+
+  img {
+    height: 64px;
+    width: 64px;
+  }
+`;
+
+export const CheckoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  gap: 0.4rem;
+`;
+
+export const CheckoutItemHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CheckoutItemHeaderTitle = styled.div`
+  font-size: 1rem;
+  font-weight: 500;
+`;
+
+export const CheckoutItemHeaderPrice = styled.div`
+  font-weight: bold;
+`;
+
+export const CheckoutButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  gap: 0.4rem;
+`;
+
+export const CheckoutItemInput = styled.div`
+  display: flex;
+  background-color: ${(props) => props.theme['base-button']};
+  border-radius: 4px;
+  text-align: center;
+  margin: auto 0;
+  
+
+  input {
+    text-align: center;
+    border: none;
+    background-color: ${(props) => props.theme['base-button']};
+  }
+
+  button {
+    padding: 0rem 0.4rem;
+    border: none;
+    background-color: transparent;
+    color: ${(props) => props.theme["purple"]}
+  }
+`;
+
+export const CheckoutItemButton = styled.button`
+  display: flex;
+  background-color: ${(props) => props.theme["base-button"]};
+
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.5rem;
+  letter-spacing: 0.1cap;
+  text-transform: uppercase;
+
+  border: none;
+  border-radius: 8px;
+  font-size: 0.5rem !important;
+
+  cursor: pointer;
+
+  svg {
+    color: ${(props) => props.theme["purple"]};
+    font-size: 1.2rem;
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme["base-hover"]};
+    transition: background-color 0.2s;
+  }
+`;
+
+export const LineDivisor = styled.span`
+  width: 100%;
+  height: 0.1rem;
+  
+  margin: 1rem 0;
+
+  background-color: ${(props) => props.theme['base-button']};
 `;
 
 export const CheckoutDescriptionItem = styled.div`
@@ -160,6 +256,10 @@ export const CheckoutDescriptionItem = styled.div`
     display: flex;
     justify-content: space-between;
   }
+`;
+
+export const CheckoutSpecialTitle = styled.div`
+  font-weight: bold;
 `;
 
 export const ConfirmButton = styled.button`

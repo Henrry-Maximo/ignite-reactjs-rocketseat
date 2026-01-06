@@ -9,18 +9,27 @@ import {
 import { DescriptionHeader, IconHeader, RootHeader } from "./components/Header";
 import {
   CheckoutButton,
+  CheckoutButtons,
   CheckoutCard,
   CheckoutContainer,
   CheckoutDescriptionItem,
-  CheckoutFooterActions,
-  CheckoutInput,
+  CheckoutFooterActions, CheckoutInput,
   CheckoutItem,
+  CheckoutItemButton,
+  CheckoutItemHeader,
+  CheckoutItemHeaderPrice,
+  CheckoutItemHeaderTitle,
+  CheckoutItemInput,
   CheckoutRow,
   CheckoutSection,
+  CheckoutSpecialTitle,
   CheckoutTitle,
+  CheckoutWrapper,
   ConfirmButton,
   FormAddress,
+  LineDivisor
 } from "./styles";
+import coffe from "./../../assets/products/coffe/express-traditional.png";
 
 export function CheckOut() {
   return (
@@ -90,53 +99,32 @@ export function CheckOut() {
         <CheckoutTitle>Cafés selecionados</CheckoutTitle>
 
         <CheckoutSection>
-          <CheckoutItem>
-            {/* <Coffee /> */}
-
-            <div>
-              <div>
-                <span>Expresso Traficional</span>
-                <span>R$ 9,90</span>
-              </div>
-
-              <div>
-                <div>
-                  <button>-</button>
-                  <input type="number" />
-                  <button>+</button>
-                </div>
-
-                <button type="button">
-                  <Trash size={16} />
-                  REMOVER
-                </button>
-              </div>
-            </div>
-          </CheckoutItem>
 
           <CheckoutItem>
-            {/* <Coffee /> */}
+            <img src={coffe} />
 
-            <div>
-              <div>
-                <span>Latte</span>
-                <span>R$ 19,80</span>
-              </div>
+            <CheckoutWrapper>
+              <CheckoutItemHeader>
+                <CheckoutItemHeaderTitle>Expresso Traficional</CheckoutItemHeaderTitle>
+                <CheckoutItemHeaderPrice>R$ 9,90</CheckoutItemHeaderPrice>
+              </CheckoutItemHeader>
 
-              <div>
-                <div>
+              <CheckoutButtons>
+                <CheckoutItemInput>
                   <button>-</button>
-                  <input type="number" />
+                  <input type="number" value={1} />
                   <button>+</button>
-                </div>
+                </CheckoutItemInput>
 
-                <button type="button">
+                <CheckoutItemButton type="button">
                   <Trash size={16} />
                   REMOVER
-                </button>
-              </div>
-            </div>
+                </CheckoutItemButton>
+              </CheckoutButtons>
+            </CheckoutWrapper>
           </CheckoutItem>
+
+          <LineDivisor />
 
           <CheckoutDescriptionItem>
             <div>
@@ -149,12 +137,12 @@ export function CheckOut() {
               <span>R$ 3,50</span>
             </div>
 
-            <div>
+            <CheckoutSpecialTitle>
               <span>Tota:</span>
               <span>R$ 33,20</span>
-            </div>
+            </CheckoutSpecialTitle>
 
-            <ConfirmButton type="button">CONFIRMAR</ConfirmButton>
+            <ConfirmButton type="button">CONFIRMAR PEDIDO</ConfirmButton>
           </CheckoutDescriptionItem>
         </CheckoutSection>
       </CheckoutCard>
