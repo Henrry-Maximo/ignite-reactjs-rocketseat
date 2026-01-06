@@ -71,7 +71,8 @@ export function CheckOut() {
 
           <CheckoutFooterActions>
             <CheckoutButton type="button">
-              <CreditCard /> CARTÃO DE CRÉDITO
+              <CreditCard /> 
+              CARTÃO DE CRÉDITO
             </CheckoutButton>
             <CheckoutButton type="button">
               <Bank />

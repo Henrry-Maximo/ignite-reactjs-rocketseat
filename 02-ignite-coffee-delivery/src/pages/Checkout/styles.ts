@@ -113,6 +113,7 @@ export const CheckoutButton = styled.button`
 
   border: none;
   border-radius: 8px;
+  font-size: 0.5rem !important;
 
   cursor: pointer;
 
@@ -167,6 +168,8 @@ export const ConfirmButton = styled.button`
 
   border: none;
   border-radius: 0.375rem;
+
+  height: 2.6rem;
 
   &:hover {
     background-color: ${(props) => props.theme['purple']};
