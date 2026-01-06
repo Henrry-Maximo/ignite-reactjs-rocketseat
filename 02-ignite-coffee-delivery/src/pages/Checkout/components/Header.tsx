@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react";
-import { CheckoutHeader, CheckoutIcon } from "../styles";
+import { CheckoutHeader, CheckoutIcon, ContainerHeaderDescription, ContainerHeaderSections, ContainerHeaderTitle } from "../styles";
 
 export function RootHeader({ ...props }: ComponentProps<"div">) {
   return <CheckoutHeader {...props} />;
@@ -14,10 +14,10 @@ export function DescriptionHeader({
   description,
 }: HeaderDescriptionProps) {
   return (
-    <div>
-      <h2>{title}</h2>
-      <p>{description}</p>
-    </div>
+    <ContainerHeaderSections>
+      <ContainerHeaderTitle>{title}</ContainerHeaderTitle>
+      <ContainerHeaderDescription>{description}</ContainerHeaderDescription>
+    </ContainerHeaderSections>
   );
 }
 

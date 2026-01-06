@@ -20,7 +20,7 @@ export const CheckoutCard = styled.div`
 `;
 
 export const CheckoutTitle = styled.h3`
-  font-size: 1.8rem;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1.3;
   color: ${(props) => props.theme["base-subtitle"]};
@@ -41,13 +41,28 @@ export const CheckoutSection = styled.section`
 
 export const CheckoutHeader = styled.div`
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   gap: 0.8rem;
 `;
 
 export const CheckoutIcon = styled.span`
   color: ${(props) => props.theme["yellow-dark"]};
-  font-size: 1.6rem;
+  font-size: 1.1rem;
+`;
+
+export const ContainerHeaderSections = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ContainerHeaderTitle = styled.div`
+  font-size: 0.9rem;
+  font-weight: 500;
+`;
+
+export const ContainerHeaderDescription = styled.div`
+  font-size: 0.8rem;
+  font-weight: 500;
 `;
 
 export const FormAddress = styled.form`
