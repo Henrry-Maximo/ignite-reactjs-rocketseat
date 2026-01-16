@@ -1,4 +1,4 @@
-import { HeaderContainer, HeaderContent } from "./styles";
+import { HeaderContainer, HeaderContent, NewTransactionButton } from "./styles";
 
 export const Header = () => {
   return (
@@ -6,7 +6,7 @@ export const Header = () => {
       <HeaderContent>
         <img src="" alt="" />
 
-        <button>Nova transação</button>
+        <NewTransactionButton>Nova transação</NewTransactionButton>
       </HeaderContent>
     </HeaderContainer>
   )
