@@ -1,21 +1,14 @@
-import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { SearchForm } from "../../components/SearchForm";
 import { Summary } from "../../components/Summarry";
+import { TransactionsContext } from "../../contexts/TransactionsContext";
+import { dateFormatter, priceFormatter } from "../../utils/formatter";
 import { PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
+import { useContext } from "react";
 
-interface Transaction {
-  id: number;
-  description: string;
-  type: 'income' | 'outcome';
-  // type: string;
-  price: number;
-  category: string;
-  createdAt: string;
-}
 
 export const Transactions = () => {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const { transactions } = useContext(TransactionsContext);
 
   /*
   useEffect(() => {
@@ -46,17 +39,6 @@ export const Transactions = () => {
   }, [])
   */
 
-  async function loadTransactions() {
-    const response = await fetch("http://localhost:3000/transactions");
-    const data = await response.json();
-
-    setTransactions(data);
-  }
-
-  useEffect(() => {
-    loadTransactions();
-  }, [])
-
   // será executado toda vez que o componente for inicializado
   // fetch("http://localhost:3333/transactions").then(response => {
   //   console.log(response);
@@ -79,11 +61,12 @@ export const Transactions = () => {
                     <td width="50%">{transation.description}</td>
                     <td>
                       <PriceHighlight variant={transation.type}>
-                        {transation.type}
+                        {transation.type === 'outcome' && '- '}
+                        {priceFormatter.format(transation.price)}
                       </PriceHighlight>
                     </td>
                     <td>{transation.category}</td>
-                    <td>{transation.createdAt}</td>
+                    <td>{dateFormatter.format(new Date(transation.createdAt))}</td>
                   </tr>
                 );
               })
