@@ -4,11 +4,13 @@ import { Summary } from "../../components/Summarry";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
 import { dateFormatter, priceFormatter } from "../../utils/formatter";
 import { PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
-import { useContext } from "react";
+import { useContextSelector } from "use-context-selector";
 
 
 export const Transactions = () => {
-  const { transactions } = useContext(TransactionsContext);
+  const transactions = useContextSelector(TransactionsContext, (context) => {
+    return context.transactions;
+  });
 
   /*
   useEffect(() => {
