@@ -4,6 +4,8 @@ import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
 import * as z from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { TransactionsContext } from "../../contexts/TransactionsContext";
 
 /* 
   * Sempre que precisarmos inluir um valor e o mesmo não vem de um input (elemento nativo)
@@ -20,13 +22,16 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>;
 
 export function NewTransactionModal() {
+  const { createTransaction } = useContext(TransactionsContext);
+
   const {
     control,
     register,
     handleSubmit,
     formState: {
       isSubmitting
-    }
+    },
+    reset
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
     defaultValues: {
@@ -35,9 +40,36 @@ export function NewTransactionModal() {
   });
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // await new Promise(resolve => setTimeout(resolve, 2000));
+    // console.log(data);
 
-    console.log(data);
+    const { description, price, category, type } = data;
+    // const response = await api.post("/transactions", {
+    //   /* 
+    //     * Método #01
+    //         description: data.description,
+    //         category: data.category,
+    //         price: data.price,
+    //         type: data.type
+
+    //     * Método #02
+    //         ...data
+    //   */
+    //  description,
+    //  price,
+    //  category,
+    //  type,
+    //  createdAt: new Date()
+    // });
+
+    await createTransaction({
+      description,
+      category,
+      price,
+      type
+    });
+
+    reset();
   }
 
   return (

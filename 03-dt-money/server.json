@@ -23,6 +23,22 @@
       "category": "Educação",
       "price": 1500,
       "createdAt": "2026-01-17T19:24:44.505Z"
+    },
+    {
+      "description": "teste",
+      "price": 50,
+      "category": "teste",
+      "type": "income",
+      "createdAt": "2026-01-25T00:32:36.126Z",
+      "id": 4
+    },
+    {
+      "description": "Maçã",
+      "price": 15,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2026-01-25T00:50:13.848Z",
+      "id": 5
     }
   ]
 }
