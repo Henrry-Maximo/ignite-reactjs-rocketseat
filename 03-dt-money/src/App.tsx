@@ -15,3 +15,5 @@ export const App = () => {
     </ThemeProvider>
   );
 };
+
+// Acessibilidade, modal, requisição HTTP, conexão com API, gerenciamento de estados via contexto, performance.
