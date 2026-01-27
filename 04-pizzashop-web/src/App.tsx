@@ -7,5 +7,5 @@ export function App() {
       <Button>Enviar</Button>
     </div>
   )
-};
+}
 
