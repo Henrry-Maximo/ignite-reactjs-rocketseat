@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
+import { useSearchParams } from 'react-router';
+import z from 'zod';
 
 import { getOrders } from '@/api/get-orders';
 import { Pagination } from '@/components/pagination';
@@ -15,10 +17,26 @@ import { OrderTableFilters } from './order-table-filters';
 import { OrderTableRow } from './order-table-row';
 
 export function Orders() {
+  const [searchParams, setSarchParams] = useSearchParams();
+
+  // const pageIndex = searchParams.get('page') ?? 0;
+  const pageIndex = z.coerce
+    .number()
+    .transform((page) => page - 1)
+    .parse(searchParams.get('page') ?? '1');
+
   const { data: result } = useQuery({
-    queryKey: ['orders'],
-    queryFn: getOrders,
+    queryKey: ['orders', pageIndex],
+    queryFn: () => getOrders({ pageIndex }),
   });
+
+  function handlePaginate(pageIndex: number) {
+    setSarchParams((state) => {
+      state.set('page', (pageIndex + 1).toString());
+
+      return state;
+    });
+  }
 
   return (
     <>
@@ -55,7 +73,14 @@ export function Orders() {
             </Table>
           </div>
 
-          <Pagination pageIndex={0} totalCount={105} perPage={10} />
+          {result && (
+            <Pagination
+              onPageChange={handlePaginate}
+              pageIndex={result.meta.pageIndex}
+              totalCount={result.meta.totalCount}
+              perPage={result.meta.perPage}
+            />
+          )}
         </div>
       </div>
     </>
