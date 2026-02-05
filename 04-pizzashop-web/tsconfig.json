@@ -9,9 +9,14 @@
     }
   ],
   "compilerOptions": {
+    "types": [
+      "vitest/globals"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   }
 }
