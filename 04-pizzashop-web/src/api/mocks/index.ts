@@ -2,7 +2,9 @@ import { setupWorker } from 'msw/browser';
 
 import { env } from '@/env';
 
-export const worker = setupWorker();
+import { signInMock } from './sign-in-mock';
+
+export const worker = setupWorker(signInMock);
 
 // Apenas quando for chamado, aí os mocks entraram em ação
 export async function enableMSW() {
