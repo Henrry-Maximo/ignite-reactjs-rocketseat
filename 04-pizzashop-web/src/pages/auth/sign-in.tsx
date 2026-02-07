@@ -82,7 +82,7 @@ export function SignIn() {
           {/* high order function pattern */}
           <form onSubmit={handleSubmit(handleSignIn)} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Seu e-mail: </Label>
+              <Label htmlFor="email">Seu e-mail:</Label>
               <Input
                 id="email"
                 type="email"

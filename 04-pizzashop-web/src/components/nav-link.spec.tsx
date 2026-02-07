@@ -19,9 +19,14 @@ describe('NavLink', () => {
       },
     );
 
-    console.log(wrapper);
+    // console.log(wrapper);
 
     expect(wrapper.getByText('Home').dataset.current).toEqual('false');
     expect(wrapper.getByText('About').dataset.current).toEqual('true');
   });
 });
+
+/*
+- Desafio:
+  - Componente de filtros
+*/

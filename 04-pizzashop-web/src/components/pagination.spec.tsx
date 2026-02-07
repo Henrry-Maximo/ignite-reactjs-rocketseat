@@ -49,7 +49,7 @@ describe('Pagination', () => {
   it('should be able to navigate to the previous page', async () => {
     const user = userEvent.setup();
 
-    console.log(onPageChangeCallback.mock.calls);
+    // console.log(onPageChangeCallback.mock.calls);
 
     const wrapper = render(
       <Pagination
