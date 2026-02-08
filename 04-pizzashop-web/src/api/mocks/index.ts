@@ -3,13 +3,16 @@ import { setupWorker } from 'msw/browser';
 import { env } from '@/env';
 
 import { getDailyRevenueInPeriodMock } from './get-daily-revenue-in-period-mock';
-import { getDayOrdersAmountMock } from './get-day-orders-amout';
-import { getMonthCanceledOrdersAmountMock } from './get-month-canceled-orders-amount';
-import { getMonthOrdersAmountMock } from './get-month-orders-amount';
-import { getMonthRevenueMock } from './get-month-revenue';
+import { getDayOrdersAmountMock } from './get-day-orders-amout-mock';
+import { getManagedRestaurantMock } from './get-managed-restaurant';
+import { getMonthCanceledOrdersAmountMock } from './get-month-canceled-orders-amount-mock';
+import { getMonthOrdersAmountMock } from './get-month-orders-amount-mock';
+import { getMonthRevenueMock } from './get-month-revenue-mock';
 import { getPopularProductsMock } from './get-popular-products-mock';
+import { getProfileMock } from './get-profile-mock';
 import { registerRestaurantMock } from './register-restaurant-mock';
 import { signInMock } from './sign-in-mock';
+import { updateProfileMock } from './update-profile-mock';
 
 export const worker = setupWorker(
   signInMock,
@@ -20,6 +23,9 @@ export const worker = setupWorker(
   getMonthRevenueMock,
   getDailyRevenueInPeriodMock,
   getPopularProductsMock,
+  getProfileMock,
+  getManagedRestaurantMock,
+  updateProfileMock,
 );
 
 // Apenas quando for chamado, aí os mocks entraram em ação
