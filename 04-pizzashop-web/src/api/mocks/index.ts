@@ -2,6 +2,10 @@ import { setupWorker } from 'msw/browser';
 
 import { env } from '@/env';
 
+import { approveOrderMock } from './approve-order-mock';
+import { cancelOrderMock } from './cancel-order-mock';
+import { deliverOrderMock } from './deliver-order-mock';
+import { dispatchOrderMock } from './dispatch-order-mock';
 import { getDailyRevenueInPeriodMock } from './get-daily-revenue-in-period-mock';
 import { getDayOrdersAmountMock } from './get-day-orders-amout-mock';
 import { getManagedRestaurantMock } from './get-managed-restaurant';
@@ -30,6 +34,10 @@ export const worker = setupWorker(
   updateProfileMock,
   getOrdersMock,
   getOrderDetailsMock,
+  approveOrderMock,
+  cancelOrderMock,
+  deliverOrderMock,
+  dispatchOrderMock,
 );
 
 // Apenas quando for chamado, aí os mocks entraram em ação
