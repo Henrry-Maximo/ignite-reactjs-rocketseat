@@ -27,3 +27,11 @@ test('sign in with wrong credentials', async ({ page }) => {
 
   await page.waitForTimeout(2000);
 });
+
+test('navigate to new restaurant page', async ({ page }) => {
+  await page.goto('/sign-in', { waitUntil: 'networkidle' });
+
+  await page.getByRole('link', { name: 'Novo estabelecimento' }).click();
+
+  expect(page.url()).toContain('sign-up');
+});
