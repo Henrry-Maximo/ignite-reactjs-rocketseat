@@ -10,7 +10,7 @@
   ],
   "compilerOptions": {
     "types": [
-      "vitest/globals"
+      "vitest/globals",
     ],
     "baseUrl": ".",
     "paths": {

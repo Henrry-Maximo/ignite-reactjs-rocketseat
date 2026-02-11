@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test('list orders', async ({ page }) => {
   await page.goto('/orders', { waitUntil: 'networkidle' });
@@ -71,7 +71,8 @@ test('filter by status', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Filtrar resultados' }).click();
 
-  const tableRows = await page.getByRole('cell', { name: 'Pendente' }).all();
-
-  expect(tableRows).toHaveLength(10);
+  await expect(page.getByRole('cell', { name: 'Pendente' })).toHaveCount(10);
 });
+
+// const tableRows = page.getByRole('cell', { name: 'Pendente' }).all();
+// await expect(tableRows).toHaveCount(10);
