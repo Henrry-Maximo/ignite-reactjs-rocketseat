@@ -13,7 +13,8 @@
     "keen-slider": "^6.8.6",
     "next": "16.1.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "stripe": "^20.3.1"
   },
   "devDependencies": {
     "@types/node": "^25.2.3",
