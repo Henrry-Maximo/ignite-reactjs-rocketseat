@@ -12,6 +12,7 @@ import camiseta3 from '../assets/camisetas/3.png';
 
 import 'keen-slider/keen-slider.min.css';
 import Stripe from "stripe";
+import Link from "next/link";
 
 interface HomeProps {
   products: {
@@ -48,14 +49,16 @@ export default function Home({ products }: HomeProps) {
       {
         products.map((product) => {
           return (
-            <Product key={product.id} className="keen-slider__slide">
-              <Image src={product.imageUrl} width={520} height={480} alt="Uma camisa bonita e suave, em cores fortes." />
+            <Link key={product.id} href={`/product/${product.id}`}>
+              <Product  className="keen-slider__slide">
+                <Image src={product.imageUrl} width={520} height={480} alt="Uma camisa bonita e suave, em cores fortes." />
 
-              <footer>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
-              </footer>
-            </Product>
+                <footer>
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                </footer>
+              </Product>
+            </Link>
           )
         })
       }
@@ -94,7 +97,7 @@ export default function Home({ products }: HomeProps) {
 // getServerSideProps -> getStaticProps
 export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
-    expand: ['data.default_price'],
+    expand: ['data.default_price'], // dados que possuem relacionamentos
   });
 
   // console.log(response.data);
