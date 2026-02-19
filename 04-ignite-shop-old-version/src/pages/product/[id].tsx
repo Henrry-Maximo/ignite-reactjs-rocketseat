@@ -1,6 +1,6 @@
 import { ImageContainer, ProductContainer, ProductDetails } from "../../styles/pages/product";
 import Image from "next/image";
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { stripe } from "../../lib/stripe";
 import Stripe from "stripe";
 
@@ -36,6 +36,18 @@ export default function Product({ product }: ProductProps) {
   )
 }
 
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [
+      { params: { id: 'prod_TzBTxBCn8AXAUL' }}
+    ],
+    fallback: false,
+  }
+}
+
+// getStaticProps: GetStaticProps - depois de 1 hora, será atualizado o conteúdo
+// - npm run build: gera todas as funções que são static (método)
+// getServerSideProps: GetServerSideProps - 1 Milhão de requisições: será executado um milhão de vezes
 export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ params }) => {
   // const productId = String(params.id);
   const productId = params.id;
