@@ -6,6 +6,7 @@ import Stripe from "stripe";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useState } from "react";
+import Head from "next/head";
 
 interface ProductProps {
   product: {
@@ -34,16 +35,16 @@ export default function Product({ product }: ProductProps) {
 
   async function handleBuyProduct() {
     try {
-        setIsCreatingCheckoutSession(true);
+      setIsCreatingCheckoutSession(true);
 
-        const response = await axios.post('/api/checkout', {
-          priceId: product.defaultPriceId,
-        });
+      const response = await axios.post('/api/checkout', {
+        priceId: product.defaultPriceId,
+      });
 
-        const { checkoutUrl } = response.data;
+      const { checkoutUrl } = response.data;
 
-        // router.push('/checkout') // rota interna
-        window.location.href = checkoutUrl; // rota externa
+      // router.push('/checkout') // rota interna
+      window.location.href = checkoutUrl; // rota externa
     } catch (err) {
       // Conectar com uma ferramenta de observabilidade (Datadog / Sentry)
 
@@ -54,21 +55,27 @@ export default function Product({ product }: ProductProps) {
   }
 
   return (
-    <ProductContainer>
-      <ImageContainer>
-        <Image src={product.imageUrl} width={520} height={480} alt="" />
-      </ImageContainer>
+    <>
+      <Head>
+        <title>{product.name} | Ignite Shop</title>
+      </Head>
 
-      <ProductDetails>
-        <h1>{product.name}</h1>
-        <span>{product.price}</span>
-        <p>{product.description}</p>
+      <ProductContainer>
+        <ImageContainer>
+          <Image src={product.imageUrl} width={520} height={480} alt="" />
+        </ImageContainer>
 
-        <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>
-          Comprar agora
-        </button>
-      </ProductDetails>
-    </ProductContainer>
+        <ProductDetails>
+          <h1>{product.name}</h1>
+          <span>{product.price}</span>
+          <p>{product.description}</p>
+
+          <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>
+            Comprar agora
+          </button>
+        </ProductDetails>
+      </ProductContainer>
+    </>
   )
 }
 
@@ -77,7 +84,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: [
-      { params: { id: 'prod_TzBTxBCn8AXAUL' }}
+      { params: { id: 'prod_TzBTxBCn8AXAUL' } }
     ], // criado estaticamente no momento da build (manter enxuto)
     fallback: true,
     // fallback: 'blocking' tela em branco até ter algo pra mostrar (experiência visual para o usuário)

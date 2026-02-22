@@ -1,14 +1,11 @@
 import { GetStaticProps } from "next";
+import Head from 'next/head';
 import Image from "next/image";
 
 import { useKeenSlider } from 'keen-slider/react';
 
 import { stripe } from "../lib/stripe";
 import { HomeContainer, Product } from "../styles/pages/home";
-
-import camiseta1 from '../assets/camisetas/1.png';
-import camiseta2 from '../assets/camisetas/2.png';
-import camiseta3 from '../assets/camisetas/3.png';
 
 import 'keen-slider/keen-slider.min.css';
 import Stripe from "stripe";
@@ -42,28 +39,33 @@ export default function Home({ products }: HomeProps) {
   // }, [])
 
   return (
-    <HomeContainer ref={sliderRef} className="keen-slider">
-      {/* <pre>{JSON.stringify(list)}</pre> */}
-      {/* <pre>{JSON.stringify(products)}</pre> */}
+    <>
+      <Head>
+        <title>Home | Ignite Shop</title>
+      </Head>
 
-      {
-        products.map((product) => {
-          return (
-            <Link key={product.id} href={`/product/${product.id}`} prefetch={false}>
-              <Product  className="keen-slider__slide">
-                <Image src={product.imageUrl} width={520} height={480} alt="Uma camisa bonita e suave, em cores fortes." />
+      <HomeContainer ref={sliderRef} className="keen-slider">
+        {/* <pre>{JSON.stringify(list)}</pre> */}
+        {/* <pre>{JSON.stringify(products)}</pre> */}
 
-                <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
-                </footer>
-              </Product>
-            </Link>
-          )
-        })
-      }
+        {
+          products.map((product) => {
+            return (
+              <Link key={product.id} href={`/product/${product.id}`} prefetch={false}>
+                <Product className="keen-slider__slide">
+                  <Image src={product.imageUrl} width={520} height={480} alt="Uma camisa bonita e suave, em cores fortes." />
 
-      {/* <Product className="keen-slider__slide">
+                  <footer>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </footer>
+                </Product>
+              </Link>
+            )
+          })
+        }
+
+        {/* <Product className="keen-slider__slide">
         <Image src={camiseta2} width={520} height={480} alt="Uma camisa bonita e suave, em cores fortes." />
 
         <footer>
@@ -90,7 +92,8 @@ export default function Home({ products }: HomeProps) {
         </footer>
       </Product> */}
 
-    </HomeContainer>
+      </HomeContainer>
+    </>
   )
 };
 
