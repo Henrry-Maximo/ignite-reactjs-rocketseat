@@ -15,7 +15,7 @@ interface SuccessProps {
   }
 }
 
-export default function Success({ customerName, product }) {
+export default function Success({ customerName, product }: SuccessProps) {
   return (
     <>
       <Head>
