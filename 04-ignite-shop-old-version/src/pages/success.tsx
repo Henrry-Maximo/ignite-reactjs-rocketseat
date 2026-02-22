@@ -35,11 +35,22 @@ export default function Success({ customerName, product }) {
 // Client-side (useEffect/Axios) / getServerSideProps / getStaticProps
 
 export const getServerSideProps: GetServerSideProps = async ({ query, params }) => {
+  if (!query.session_id) {
+    return {
+      // notFound: true // erro 404
+      redirect: {
+        destination: '/',
+        permanent: false, // não é sempre
+      }
+    }
+  }
+
   const sessionId = String(query.session_id);
   // const { session_id: sessionId } = query;
 
-  console.log(query);
-  console.log(params);
+  // console.log(query);
+  // console.log(params);
+  console.log(sessionId);
 
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
     expand: [ 'line_items', 'line_items.data.price.product' ]
@@ -48,8 +59,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query, params }) 
   const customerName = session.customer_details.name;
   const product = session.line_items.data[0].price.product as Stripe.Product;
 
-  console.log(session); // dados da transação
-  console.log(session.line_items); // 
+  // console.log(session); // dados da transação
+  // console.log(session.line_items); // 
 
   return {
     props: {
