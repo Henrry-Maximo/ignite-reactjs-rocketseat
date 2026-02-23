@@ -26,3 +26,4 @@
 - npm i -D typescript (instalar typescript pra criar tsconfig)
 - npx tsc --init (criar tsconfig)
 - npx tsc (gerar build - js)
+- npm i tsup -D (gerar build - mas pode gerar em vários formatos: aplicações antigas e novas)

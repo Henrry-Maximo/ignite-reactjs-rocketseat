@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "build": "tsup src/index.ts --format esm,cjs --dts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -10,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }
 }
