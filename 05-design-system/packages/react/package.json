@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src/**/*.ts* --fix"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@ignite-ui/tokens": "*",
     "@ignite-ui/ts-config": "*",
+    "@ignite-ui/eslint-config": "*",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }

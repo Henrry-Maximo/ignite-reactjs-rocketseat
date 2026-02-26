@@ -1,5 +1,5 @@
 // reexportar o que tem dentro de colors
-export * from './colors';
+export * from './colors'
 
 export * from './space'
 export * from './radii'
