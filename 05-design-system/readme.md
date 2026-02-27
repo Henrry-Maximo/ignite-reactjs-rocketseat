@@ -27,3 +27,8 @@
 - npx tsc --init (criar tsconfig)
 - npx tsc (gerar build - js)
 - npm i tsup -D (gerar build - mas pode gerar em vários formatos: aplicações antigas e novas)
+- npm i -D eslint @rocketseat/eslint-config
+- npm run lint
+- npm i -D react @types/react @types/react-dom
+- npm i @stitches/react (configurações dos arquivos de estilização)
+- npx sb init --builder vite --type react (storybook)
