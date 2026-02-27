@@ -6,7 +6,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
     "lint": "eslint src/**/*.ts* --fix"
   },
   "keywords": [],
@@ -14,9 +14,12 @@
   "license": "MIT",
   "description": "",
   "devDependencies": {
+    "@ignite-ui/eslint-config": "*",
     "@ignite-ui/tokens": "*",
     "@ignite-ui/ts-config": "*",
-    "@ignite-ui/eslint-config": "*",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.4",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }
