@@ -32,3 +32,4 @@
 - npm i -D react @types/react @types/react-dom
 - npm i @stitches/react (configurações dos arquivos de estilização)
 - npx sb init --builder vite --type react (storybook)
+- npm i turbo@latest -D (executar scripts para todos os pacotes / acelerar processo de build (cache))
