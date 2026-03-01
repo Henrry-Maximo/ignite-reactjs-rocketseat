@@ -16,8 +16,8 @@ export const Page: StoryObj = {
     return (
       <>
         <h1>Space</h1>
-        
-        <TokensGrid tokens={space} />
+
+        <TokensGrid tokens={space} hasRemValue />
       </>
     )
   },
