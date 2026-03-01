@@ -2,7 +2,7 @@ import type { StoryObj, Meta } from '@storybook/react-vite'
 import { Button, type ButtonProps } from "@ignite-ui/react";
 
 export default {
-  title: 'Button',
+  title: 'Form/Button',
   component: Button,
 
   // padrão para todos
