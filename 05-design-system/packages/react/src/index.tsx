@@ -1,4 +1,6 @@
 export * from './components/Box';
+export * from './components/Text';
+
 /*
 import { ComponentProps } from 'react';
 import { styled } from './styles';
