@@ -1,3 +1,5 @@
+export * from './components/Box';
+/*
 import { ComponentProps } from 'react';
 import { styled } from './styles';
 
@@ -46,3 +48,4 @@ export type ButtonProps = ComponentProps<typeof Button>;
 //     <Button>Hello World!</Button>
 //   )
 // }
+*/
