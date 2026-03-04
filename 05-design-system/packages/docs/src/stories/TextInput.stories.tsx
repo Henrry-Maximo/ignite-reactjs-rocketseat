@@ -8,11 +8,11 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Box>
-          <Text 
-            as='label' 
-            css={{ display: 'flex', flexDirection: 'column', gap: '$2' }}
-          >
+        <Box 
+          as='label' 
+          css={{ display: 'flex', flexDirection: 'column', gap: '$2' }}
+        >
+          <Text>
             Email address
           </Text>
           {Story()}

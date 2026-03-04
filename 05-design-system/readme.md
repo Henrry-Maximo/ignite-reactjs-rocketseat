@@ -34,3 +34,4 @@
 - npx sb init --builder vite --type react (storybook)
 - npm i turbo@latest -D (executar scripts para todos os pacotes / acelerar processo de build (cache))
 - npm install @radix-ui/react-avatar
+- npm install @radix-ui/react-checkbox
