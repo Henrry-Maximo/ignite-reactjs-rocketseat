@@ -1,0 +1,37 @@
+
+name: Deploy docs
+
+# escutar toda vez que houver um push na branch main
+on:
+  push:
+    branches:
+      - main
+
+# serviço
+jobs:
+  # nome do serviço
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    # passo pra execução
+    steps:
+      # pegar o código
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.jobs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # instalação dos pacotes / npm ci é feito para instalação no ambiente de ci, não mexe no package-lock / somente dependências de produção
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Deploy storybook
+        working-directory: ./packages/docs
+        run: npm run deploy-storybook -- --ci --existing-dir=storybook-static
+        env:
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+
