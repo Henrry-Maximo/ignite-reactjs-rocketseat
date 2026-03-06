@@ -7,10 +7,13 @@
   "scripts": {
     "dev:vite": "vite",
     "build:vite": "tsc -b && vite build",
+    
     "lint": "eslint .",
     "preview": "vite preview",
+
     "dev": "storybook dev -p 6006",
-    "build": "storybook build"
+    "build": "storybook build",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
     "phosphor-react": "^1.4.1",
@@ -29,6 +32,7 @@
     "@storybook/addon-onboarding": "^10.2.13",
     "@storybook/addon-vitest": "^10.2.13",
     "@storybook/react-vite": "^10.2.13",
+    "@storybook/storybook-deployer": "^2.8.16",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",

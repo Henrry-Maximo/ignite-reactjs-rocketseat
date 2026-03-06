@@ -36,3 +36,4 @@
 - npm install @radix-ui/react-avatar
 - npm install @radix-ui/react-checkbox
 - npm install @storybook/addon-a11y --dev
+- npm i @storybook/storybook-deployer --save-dev
