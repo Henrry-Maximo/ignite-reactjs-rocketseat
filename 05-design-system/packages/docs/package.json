@@ -24,7 +24,7 @@
     "@ignite-ui/eslint-config": "*",
     "@ignite-ui/react": "*",
     "@ignite-ui/tokens": "*",
-    "@storybook/addon-a11y": "^10.2.13",
+    "@storybook/addon-a11y": "^10.2.16",
     "@storybook/addon-docs": "^10.2.13",
     "@storybook/addon-onboarding": "^10.2.13",
     "@storybook/addon-vitest": "^10.2.13",
