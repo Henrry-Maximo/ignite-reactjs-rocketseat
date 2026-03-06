@@ -7,7 +7,14 @@ export default {
   args: {
     src: 'https://github.com/henrry-maximo.png',
     alt: "show de bola de perfil"
-   },
+  },
+  argTypes: {
+    src: {
+      control: {
+        type: 'text'
+      },
+    },
+  },
 } as Meta<AvatarProps>;
 
 export const Primary: StoryObj<AvatarProps> = { };
