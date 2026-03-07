@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { TokensGrid } from '../../components/TokensGrid'
-import { space } from '@ignite-ui/tokens'
+import { space } from '@ignite-ui-repo/tokens'
 
 export default {
   title: 'Tokens/Spaces',

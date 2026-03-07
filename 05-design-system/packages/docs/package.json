@@ -1,5 +1,5 @@
 {
-  "name": "@ignite-ui/docs",
+  "name": "@ignite-ui-repo/docs",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,10 +7,8 @@
   "scripts": {
     "dev:vite": "vite",
     "build:vite": "tsc -b && vite build",
-    
     "lint": "eslint .",
     "preview": "vite preview",
-
     "dev": "storybook dev -p 6006",
     "build": "storybook build",
     "deploy-storybook": "storybook-to-ghpages --ci --existing-dir=storybook-static"
@@ -24,9 +22,9 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
     "@eslint/js": "^9.39.1",
-    "@ignite-ui/eslint-config": "*",
-    "@ignite-ui/react": "*",
-    "@ignite-ui/tokens": "*",
+    "@ignite-ui-repo/eslint-config": "*",
+    "@ignite-ui-repo/react": "*",
+    "@ignite-ui-repo/tokens": "*",
     "@storybook/addon-a11y": "^10.2.16",
     "@storybook/addon-docs": "^10.2.13",
     "@storybook/addon-onboarding": "^10.2.13",

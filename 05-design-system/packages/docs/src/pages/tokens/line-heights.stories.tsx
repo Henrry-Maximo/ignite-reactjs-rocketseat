@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { TokensGrid } from '../../components/TokensGrid'
-import { lineHeights } from '@ignite-ui/tokens'
+import { lineHeights } from '@ignite-ui-repo/tokens'
 
 export default {
   title: 'Tokens/Line Heights',

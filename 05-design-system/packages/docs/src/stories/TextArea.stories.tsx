@@ -1,5 +1,5 @@
 import type { StoryObj, Meta } from '@storybook/react-vite'
-import { Box, Text, TextArea, type TextAreaProps } from "@ignite-ui/react";
+import { Box, Text, TextArea, type TextAreaProps } from "@ignite-ui-repo/react";
 
 export default {
   title: 'Form/Text Area',

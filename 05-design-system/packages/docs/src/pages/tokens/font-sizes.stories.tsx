@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { TokensGrid } from '../../components/TokensGrid'
-import { fontSizes } from '@ignite-ui/tokens'
+import { fontSizes } from '@ignite-ui-repo/tokens'
 
 export default {
   title: 'Tokens/Font Sizes',

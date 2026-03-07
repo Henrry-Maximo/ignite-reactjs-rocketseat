@@ -37,3 +37,7 @@
 - npm install @radix-ui/react-checkbox
 - npm install @storybook/addon-a11y --dev
 - npm i @storybook/storybook-deployer --save-dev
+- npm i @changesets/cli
+- npx changeset init
+- npm login
+- npm whoami
