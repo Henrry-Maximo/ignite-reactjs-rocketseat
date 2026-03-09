@@ -8,6 +8,8 @@ export * from './components/TextArea';
 export * from './components/Checkbox';
 export * from './components/MultiStep';
 
+export * from './styles'; // ter acesso as variáveis do stitches
+
 /*
 import { ComponentProps } from 'react';
 import { styled } from './styles';

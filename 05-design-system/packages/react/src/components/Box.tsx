@@ -2,7 +2,7 @@ import { ComponentProps, ElementType } from "react";
 import { styled } from "../styles";
 
 export const Box = styled('div', {
-  padding: '$4',
+  padding: '$6', // 32px
   borderRadius: '$md',
   backgroundColor: '$gray800',
   color: '#fff',
