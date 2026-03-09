@@ -27,12 +27,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       # instalação dos pacotes / npm ci é feito para instalação no ambiente de ci, não mexe no package-lock / somente dependências de produção
       - run: npm ci
 
       - name: Build Storybook
         run: npm run build
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
       # - name: Deploy storybook
       #   working-directory: ./packages/docs
