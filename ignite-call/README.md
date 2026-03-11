@@ -1,4 +1,5 @@
 
 ## Comandos
 
-- npx create-next-app@latest --use-npm
+- npx create-next-app@13.0.6 --use-npm
+- npm i @ignite-ui/react@latest
