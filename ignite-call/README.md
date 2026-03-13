@@ -5,3 +5,4 @@
 - npm i @ignite-ui/react@latest
 - npm i @rocketseat/eslint-config -D
 - npm i phosphor-react
+- npm i react-hook-form @hookform/resolvers zod
