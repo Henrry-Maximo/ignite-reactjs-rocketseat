@@ -234,6 +234,7 @@ declare const Text: _stitches_react_types_styled_component.StyledComponent<"p", 
         ignite500: string;
         ignite700: string;
         ignite900: string;
+        test: string;
     };
     fontSizes: {
         xxs: string;
@@ -441,6 +442,7 @@ declare const Heading: _stitches_react_types_styled_component.StyledComponent<"h
         ignite500: string;
         ignite700: string;
         ignite900: string;
+        test: string;
     };
     fontSizes: {
         xxs: string;
@@ -1276,6 +1278,7 @@ declare const TextArea: _stitches_react_types_styled_component.StyledComponent<"
         ignite500: string;
         ignite700: string;
         ignite900: string;
+        test: string;
     };
     fontSizes: {
         xxs: string;

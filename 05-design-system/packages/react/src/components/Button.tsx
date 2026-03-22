@@ -32,10 +32,10 @@ export const Button = styled('button', {
     boxShadow: '0 0 0 2px $colors$gray100'
   },
 
-  variants: {
+  variants: { 
     variant: {
       primary: {
-        color: '$white',
+            color: '$white',
         background: '$ignite500',
 
         '&:not(:disabled):hover': {
