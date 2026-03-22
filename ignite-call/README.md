@@ -11,6 +11,7 @@
 - npx prisma init --datasource-provider SQLITE
 - npx prisma migrate dev
 - npx prisma studio
+- npm install axios
 
 # 📚 Next.js API Routes & Backend Concepts
 
