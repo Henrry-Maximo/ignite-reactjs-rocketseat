@@ -476,7 +476,7 @@ export function OrderStatus({ status }: { status: OrderStatus }) {
 ```tsx
 try {
   await authenticate({ email: data.email });
-  toast.success('Sucesso!');
+  .success('Sucesso!');
 } catch {
   toast.error('Erro!');
 }

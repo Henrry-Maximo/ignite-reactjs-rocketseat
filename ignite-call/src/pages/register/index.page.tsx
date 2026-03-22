@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { api } from "../../lib/axios";
+import { AxiosError } from "axios";
+import { toast } from "sonner";
 
 const registerFormSchema = z.object({
   username: z.string()
@@ -46,9 +48,16 @@ export default function Register() {
       await api.post('/users', {
         name: data.name,
         username: data.username
-      })
+      });
+
+      toast.success("User registration with successfully.");
     } catch (err) {
-      console.log(err);
+      if (err instanceof AxiosError && err?.response?.data?.message) {
+        toast.error(err.response.data.message);
+        return;
+      }
+
+      console.error(err);
     }
   };
 

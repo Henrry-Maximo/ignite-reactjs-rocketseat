@@ -12,6 +12,8 @@
 - npx prisma migrate dev
 - npx prisma studio
 - npm install axios
+- npm install nookies
+- npm install @types/cookie -D
 
 # 📚 Next.js API Routes & Backend Concepts
 
