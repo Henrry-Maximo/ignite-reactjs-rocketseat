@@ -14,6 +14,7 @@
 - npm install axios
 - npm install nookies
 - npm install @types/cookie -D
+- npm install next-auth
 
 # 📚 Next.js API Routes & Backend Concepts
 
