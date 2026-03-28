@@ -1,6 +1,8 @@
 import { Adapter } from "next-auth/adapters"
 import { prisma } from "../prisma"
 
+import { Account } from 'next-auth'
+
 export function PrismaAdapter(): Adapter {
   return {
     async createUser(user) {
@@ -88,10 +90,10 @@ export function PrismaAdapter(): Adapter {
       };
     },
 
-    async linkAccount(account) {
+    async linkAccount(account: Account) {
       await prisma.account.create({
         data: {
-          user_id: account.userId,
+          user_id: account.userId!,
           type: account.type,
           provider: account.provider,
           provider_account_id: account.providerAccountId,
@@ -166,6 +168,6 @@ export function PrismaAdapter(): Adapter {
         expires: PrismaSession.expires
       };
     },
-    
+
   }
 }
