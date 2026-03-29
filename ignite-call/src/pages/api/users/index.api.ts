@@ -15,6 +15,9 @@ export default async function handler(
   // req.cookies
   // res.setHeader('Set-Cookie', []);
 
+  // req sempre pra acessar (ler)
+  // res sempre pra modificar (atualizar)
+
   const { name, username } = req.body;
 
   const userExists = await prisma.user.findUnique({
