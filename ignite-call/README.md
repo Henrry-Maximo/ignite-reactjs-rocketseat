@@ -16,6 +16,8 @@
 - npm install @types/cookie -D
 - npm install next-auth
 
+- https://next-auth.js.org/configuration/initialization
+
 # 📚 Next.js API Routes & Backend Concepts
 
 ## 🚀 API Routes (Next.js)
