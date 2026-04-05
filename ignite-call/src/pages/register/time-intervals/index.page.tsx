@@ -2,11 +2,12 @@ import { Button, Checkbox, Heading, MultiStep, Text, TextInput } from "@ignite-u
 import { Container, FormError, Header } from "../styles";
 import { IntervalBox, IntervalDay, IntervalInputs, IntervalItem, IntervalsContainer } from "./styles";
 import { ArrowRight } from "phosphor-react";
-import { Controller, Form, useFieldArray, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import z from "zod";
 import { getWeekDays } from "../../../utils/get-week-days";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { convertTimeStringToMinutes } from "../../../utils/convert-time-string-to-minutes";
+import { api } from "../../../lib/axios";
 
 const timeIntervalsFormSchema = z.object({
   intervals: z.array(
@@ -79,6 +80,10 @@ export default function TimeIntervals() {
 
   async function handleSetTimeIntervals(data: TimeIntervalsFormOutput) {
     console.log(data);
+
+    await api.post('/users/time-intervals', {
+      intervals
+    })
   }
 
   const weekDays = getWeekDays();
