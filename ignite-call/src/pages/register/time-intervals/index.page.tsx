@@ -82,7 +82,7 @@ export default function TimeIntervals() {
     console.log(data);
 
     await api.post('/users/time-intervals', {
-      intervals
+      intervals: data.intervals
     })
   }
 
