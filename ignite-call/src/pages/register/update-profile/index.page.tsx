@@ -4,6 +4,8 @@ import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Container, Header } from "../styles";
 import { FormAnnotation, ProfileBox } from "./styles";
+import { useSession } from "next-auth/react";
+import { GetServerSideProps } from "next";
 
 const updateProfileSchema = z.object({
   bio: z.string()
@@ -12,14 +14,18 @@ const updateProfileSchema = z.object({
 type UpdateProfileData = z.infer<typeof updateProfileSchema>
 
 export default function UpdateProfile() {
-  const { register, handleSubmit, formState: { 
+  const { register, handleSubmit, formState: {
     isSubmitting
   } } = useForm<UpdateProfileData>({
     resolver: zodResolver(updateProfileSchema),
-   });
+  });
+
+  const session = useSession();
+
+  console.log(session);
 
   async function handleUpdateProfile(data: UpdateProfileData) {
-    
+
   };
 
   return (
@@ -34,15 +40,15 @@ export default function UpdateProfile() {
       </Header>
 
       <ProfileBox as="form" onSubmit={handleSubmit(handleUpdateProfile)}>
-        
+
         <label>
           <Text>Foto de Perfil</Text>
         </label>
 
         <label>
           <Text size="sm">Sobre você</Text>
-          <TextArea 
-            {...register("bio")} 
+          <TextArea
+            {...register("bio")}
           />
           <FormAnnotation size="sm">
             Fale um pouco sobre você. Isto será exibido em sua página pessoal.
@@ -55,4 +61,15 @@ export default function UpdateProfile() {
       </ProfileBox>
     </Container>
   )
+}
+
+// values default
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  return {
+    props: {
+      session: {
+        hello: 'test'
+      }
+    }
+  }
 }
