@@ -2,11 +2,11 @@
 // rota parametrizada (express): http://localhost:3000/api/auth/:param
 
 import NextAuth, { NextAuthOptions } from "next-auth"
-import GoogleProvider, {  GoogleProfile } from "next-auth/providers/google"
+import GoogleProvider, { GoogleProfile } from "next-auth/providers/google"
 import { PrismaAdapter } from "../../../lib/auth/prisma-adapter";
-import type { NextApiRequest, NextApiResponse } from "next"
+import { NextApiRequest, NextApiResponse, NextPageContext } from "next"
 
-export function buildNextAuthOptions(req: NextApiRequest, res:NextApiResponse): NextAuthOptions {
+export function buildNextAuthOptions(req: NextApiRequest | NextPageContext['req'], res: NextApiResponse | NextPageContext['res']): NextAuthOptions {
   return {
     adapter: PrismaAdapter(req, res),
 
@@ -21,14 +21,14 @@ export function buildNextAuthOptions(req: NextApiRequest, res:NextApiResponse): 
         },
 
         profile(profile: GoogleProfile) {
-            // profile.
-            return {
-              id: profile.sub, // identifica o usuário como algo único
-              name: profile.name,
-              username: '',
-              email: profile.email,
-              avatar_url:profile.picture 
-            }
+          // profile.
+          return {
+            id: profile.sub, // identifica o usuário como algo único
+            name: profile.name,
+            username: '',
+            email: profile.email,
+            avatar_url: profile.picture
+          }
         }
       }),
     ],
@@ -42,7 +42,7 @@ export function buildNextAuthOptions(req: NextApiRequest, res:NextApiResponse): 
         return true;
       },
 
-      async session({ session, user}) {
+      async session({ session, user }) {
         return {
           ...session,
           user,

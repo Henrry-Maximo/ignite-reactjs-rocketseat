@@ -6,6 +6,8 @@ import { Container, Header } from "../styles";
 import { FormAnnotation, ProfileBox } from "./styles";
 import { useSession } from "next-auth/react";
 import { GetServerSideProps } from "next";
+import { getServerSession } from "next-auth";
+import { buildNextAuthOptions } from "../../api/auth/[...nextauth].api";
 
 const updateProfileSchema = z.object({
   bio: z.string()
@@ -65,11 +67,17 @@ export default function UpdateProfile() {
 
 // values default
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getServerSession(req, res, buildNextAuthOptions(req, res));
+  
   return {
+    // props: {
+    //   session: {
+    //     hello: 'test'
+    //   }
+    // }
+
     props: {
-      session: {
-        hello: 'test'
-      }
+      session
     }
   }
 }
