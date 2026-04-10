@@ -16,7 +16,11 @@ export default function Register() {
   const isSignedIn = session.status === 'authenticated';
 
   async function handleConnectCalendar() {
-    await signIn('google')
+    await signIn('google');
+  };
+
+  async function handleNavigateToNextStep() {
+    await router.push(`/register/time-intervals`);
   };
 
   return (
@@ -51,7 +55,7 @@ export default function Register() {
           {JSON.stringify(session.data)}
         </pre> */}
 
-        <Button type="submit" disabled={!isSignedIn} >Próximo passo<ArrowRight /></Button>
+        <Button onClick={handleNavigateToNextStep} type="submit" disabled={!isSignedIn} >Próximo passo<ArrowRight /></Button>
       </ConnectBox>
     </Container>
   )
