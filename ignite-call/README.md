@@ -15,6 +15,7 @@
 - npm install nookies
 - npm install @types/cookie -D
 - npm install next-auth
+- npm i dayjs
 
 - https://next-auth.js.org/configuration/initialization
 
