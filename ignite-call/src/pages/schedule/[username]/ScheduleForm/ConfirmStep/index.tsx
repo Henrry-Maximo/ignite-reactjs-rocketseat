@@ -14,6 +14,7 @@ export function ConfirmStep() {
           <CalendarBlank />
           22 de Setembro de 2022
         </Text>
+        
         <Text>
           <Clock />
           18:00h
