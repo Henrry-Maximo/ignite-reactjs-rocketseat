@@ -1,7 +1,7 @@
 import { CalendarActions, CalendarBody, CalendarContainer, CalendarDay, CalendarHeader, CalendarTitle } from "./styles";
 import { CaretLeft, CaretRight } from "phosphor-react";
 import { getWeekDays } from "../../utils/get-week-days";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import dayjs from "dayjs";
 
 export function Calendar() {
@@ -21,8 +21,8 @@ export function Calendar() {
     const previousMonthDate = currentDate.add(1, 'month'); // mês atual adicionando mais um, ou seja, sempre retorna o próximo mês em relação ao atual
 
     setCurrentDate(previousMonthDate);
-  }; 
-  
+  };
+
   const shortWeekDays = getWeekDays({ short: true });
 
   /*
@@ -31,6 +31,29 @@ export function Calendar() {
   */
   const currentMonth = currentDate.format('MMMM');
   const currentYear = currentDate.format('YYYY');
+
+  // um array com cada uma das semanas do mês
+  // [[ 1, 2, 3], [4, 5, 6, 7, 8, 9, 10]]
+  const calendarWeeks = useMemo(() => {
+    const daysInMonth = Array.from({
+      length: currentDate.daysInMonth(),
+    }).map((_, i) => {
+      return currentDate.set('date', i + 1) // o dia
+    });
+
+    // o dia da semana do primeiro dia da semana do mês
+    const firstWeekDay = currentDate.get('day'); // dia da semana
+
+    const previousMonthFillArray = Array.from({
+      length: firstWeekDay
+    }).map((_, i) => {
+      return currentDate.subtract(i + 1, 'day')
+    }).reverse();
+
+    return [...previousMonthFillArray, ...daysInMonth];
+  }, [currentDate]);
+
+  console.log(calendarWeeks);
 
   return (
     <CalendarContainer>
