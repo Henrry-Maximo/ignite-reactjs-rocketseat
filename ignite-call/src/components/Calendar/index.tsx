@@ -50,6 +50,16 @@ export function Calendar() {
       return currentDate.subtract(i + 1, 'day')
     }).reverse();
 
+    // capturar último dia do mês
+    const lastWeekDay = currentDate.set(
+      'date', // seta o dia do mês para o último - 31
+      currentDate.daysInMonth() // retorna quantidade de dias no mês - 2025/01/31
+    ).get('day') // retorna dia da semana desse último dia - 5 (sexta-feira)
+
+    const nextMonthFillArray = Array.from({
+      length: 7 - (lastWeekDay + 1)
+    })
+
     return [...previousMonthFillArray, ...daysInMonth];
   }, [currentDate]);
 
