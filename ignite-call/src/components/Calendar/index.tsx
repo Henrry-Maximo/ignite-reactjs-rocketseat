@@ -86,7 +86,7 @@ export function Calendar() {
       ...daysInMonth.map((date) => {
         return {
           date,
-          disabled: false
+          disabled: date.endOf('day').isBefore(new Date())
         }
       }),
       ...nextMonthFillArray.map((date) => {
@@ -135,7 +135,7 @@ export function Calendar() {
             <CaretLeft />
           </button>
 
-          <button onClick={handlePreviousMonth} title="Next Month">
+          <button onClick={handleNextMonth} title="Next Month">
             <CaretRight />
           </button>
         </CalendarActions>
