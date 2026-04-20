@@ -15,7 +15,12 @@ interface CalendarWeek {
 // Um array de objetos que armazenam a semana com seus respectivos dias
 type CalendarWeeks = CalendarWeek[];
 
-export function Calendar() {
+interface CalendarProps {
+  selectedDate: Date | null,
+  onDateSelected: (date: Date) => void
+}
+
+export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
   // const [ ] = useState(new Date()) // API de Datas (javascript)
   const [currentDate, setCurrentDate] = useState(() => {
     return dayjs()
@@ -157,7 +162,7 @@ export function Calendar() {
                 {days.map(({ date, disabled }) => {
                   return (
                     <td key={date.toString()}>
-                      <CalendarDay disabled={disabled}>{date.get('date')}</CalendarDay>
+                      <CalendarDay onClick={() => onDateSelected(date.toDate())} disabled={disabled}>{date.get('date')}</CalendarDay>
                     </td>
                   )
                 })}
