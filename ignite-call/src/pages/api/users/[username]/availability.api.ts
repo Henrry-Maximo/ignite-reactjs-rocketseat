@@ -36,5 +36,28 @@ export default async function handler(
     return res.json({ availability: [] });
   };
 
-  
+  const userAvailability = await prisma.userTimeInterval.findFirst({
+    where: {
+      user_id: user.id,
+      week_day: referenceDate.get('day'),
+    }
+  });
+
+  if (!userAvailability) {
+    return res.json({ availability: [] });
+  };
+
+  const { time_start_in_minutes, time_end_in_minutes } = userAvailability;
+
+  // converter para horas (hora p/ hora)
+  const startHour = time_start_in_minutes / 60; // retorno 10
+  const endHour = time_end_in_minutes / 60; // retorno 18
+  // objetivo: [10, 11, 12, 13, 14, 15, 16, 17...] (array - todas as horas disponíveis)
+
+  const possibleTimes = Array.from({ length: endHour - startHour }).map((_, i) => {
+    return startHour + i;
+  });
+
+  return res.json({ possibleTimes });
+
 };
