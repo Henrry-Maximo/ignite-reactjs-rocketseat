@@ -58,6 +58,27 @@ export default async function handler(
     return startHour + i;
   });
 
-  return res.json({ possibleTimes });
+  // gte - greater than or equal
+  const blockedTimes = await prisma.scheduling.findMany({
+    select: {
+      date: true // trazer somente data
+    },
+    where: {
+      // retornar somente agendamentos que forem do usuário logado e que a data esteja entre o start e o end hour
+      user_id: user.id,
+      date: {
+        gte: referenceDate.set('hour', startHour).toDate(),
+        lte: referenceDate.set('hour', endHour).toDate(),
+      },
+    },
+  });
+
+  // possibleTimes = [8, 9, 10]
+
+  const availableTimes = possibleTimes.filter((time) => {
+    return !blockedTimes.some((blockedTimes) => blockedTimes.date.getHours() === time)
+  })
+
+  return res.json({ possibleTimes, availableTimes });
 
 };
