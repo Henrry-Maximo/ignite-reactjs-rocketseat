@@ -67,18 +67,21 @@ export default async function handler(
       // retornar somente agendamentos que forem do usuário logado e que a data esteja entre o start e o end hour
       user_id: user.id,
       date: {
+        // data comece (gte) procurando por todos os valores que sejam maior ou igual
         gte: referenceDate.set('hour', startHour).toDate(),
+        // data comece antes (lte) procurando por todos os valores que sejam menor ou igual
         lte: referenceDate.set('hour', endHour).toDate(),
       },
     },
   });
 
-  // possibleTimes = [8, 9, 10]
-
+  // possibleTimes = [8, 9, 10] 
+  // cross de valores - interseção (percorrer todos os horários possíveis)
   const availableTimes = possibleTimes.filter((time) => {
+    // quando não existir e tendo pelo menos um, onde blockedTime sendo a hora seja igual a time 
     return !blockedTimes.some((blockedTimes) => blockedTimes.date.getHours() === time)
-  })
+  });
 
+  // sempre salvar a data UTC no banco de dados
   return res.json({ possibleTimes, availableTimes });
-
 };
