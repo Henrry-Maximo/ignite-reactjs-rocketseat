@@ -25,7 +25,14 @@ de conteúdo para quem estava acessando. A partir de 2000, houve-se o nascimento
 - JSON (JavaScript Object Notation)
 - Trafegar dados entre duas pontas
 
+## SSR (server side rendering):
+- Padrão tradicional utilizado na web;
+- O browser realiza a solicitação da página (requisição), e o servidor processa
+e encaminha os arquivos montados (compilados) para o navegador do cliente;
+- Devolve um html com os dados solicitados;
+
 ## SPA (single page application):
+- introduzido em AngularJS, VueJS, ReactJS, Svelte, Aurelia, ...
 - O browser solicita a página, porém o backend (sevidor) se encarrega apenas de
 processar os dados e encaminhar, em um formato específico, para a segunda aplicação,
 sendo o frontend. Ou seja, duas aplicações, uma para processar os dados e a segunda
@@ -34,16 +41,12 @@ para obter e converter os dados para HTML.
 que construir o front para o cliente.
 - O JavaScript é o responsável pela construção do frontend, tendo total controle da 
 interface.
-- Se desativar o JavaScript, a interface ficará em branco totalmente.
-
-## SSR (single page application):
-- Padrão tradicional utilizado na web;
-- O browser realiza a solicitação da página (requisição), e o servidor processa
-e encaminha os arquivos montados (compilados) para o navegador do cliente;
+- Se desativar o JavaScript, a interface ficará em branco totalmente;
+- A resposta do backend é através de JSON (JavaScript Object Notation - Estrutura de dados)
 
 ## Compilers (compiladores):
 - Converter o código de um formato para outro, por exemplo, o navegador não suporta
-alguma funcionalidade existe na última versão do JavaScript, nesta etapa, precisamos
+algumas funcionalidades que existem na última versão do JavaScript, nesta etapa, precisamos
 converter o código para uma versão que o Browser consiga compreender
 - Babel is A JavaScript Compiler: https://babeljs.io/
   - Converte o código fonte para ser compatível com todos os navegadores.
@@ -78,6 +81,12 @@ de público.
 ## Gerenciamento de versões do NPM
 - https://github.com/tj/n
 - https://github.com/nvm-sh/nvm
+- Pacote para realizar o gerenciamento de versões do NodeJS da máquina.
+
+## Comando para iniciar o projeto
+- pnpm create vite@latest
+- pnpm install
+- pnpm run dev
 
 ## React - Conceitos:
 - Fast Refresh: permite que você visualize em tempo real as alterações no código
@@ -86,13 +95,17 @@ que esteja utilizando para realizar o acesso (https://reactnative.dev/docs/fast-
 
 ## React - Limpeza do Projeto:
 - Dentro de "src", apagar todos os arquivos com extensão: css e svg. Mantendo apenas
-"App"e "main";
+"App" e "main";
 - Dentro do "main", remove importação do css;
 - Dentro de "App" remove a importação do css/svg;
 - Dentro de "App", remover todo o HTML dentro do return e inserir o que deseja;
 - Dentro de "App", remover useState ou qualquer outro código relacionado;
 
 ## React - Renderização de Conteúdo:
+- O index.html é o primeiro arquivo carregado pela aplicação web;
+- a div com id "root" serve para injetar
+- type="module" é fundamental para o vitejs, pois o mesmo utiliza ecmascripts models nativos (formato de exportação/importação dos browsers)
+- src="/src/main.tsx" sinaliza o primeiro arquivo que será carregado.
 ```
 <body>
   <div id="root"></div>
@@ -102,6 +115,8 @@ que esteja utilizando para realizar o acesso (https://reactnative.dev/docs/fast-
 </body>
 ```
 
+- A importação do React serve para estabelecer todas as funções comuns que são compartilhadas entre diferentes dispositivos como web, tv, mobile, etc... é o coração do react;
+- O react dom é a integração da árvore dom (document object model) do navegador com o react, representação do html através do JavaScript;
 ```
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -122,10 +137,30 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 // document.getElementById('root')! : pegar o elemento raiz do documento afirmando que existe
 ```
 
+### Componentes
+- React introduziu o conceito de componentização;
+- Um pedaço da aplicação que pode ser repetido várias vezes com informações diferentes;
+
+### Formato JSX
+- Todos os componentes precisam ter a extensão "JSX" = JavaScript + XML (HTML), o que significa que dentro deste arquivo sempre terá uma função javascript que retornará um html.
+
+### Export Defaults vs Named Exports
+- Permite exportar apenas uma coisa principal por arquivo;
+- Dá flexibilidade para renomear o componente no arquivo de destino;
+- Pode dificultar a refatoração automática de nomes pelo VS Code;
+
+- Permite exportar múltiplas coisas do mesmo arquivo usando seus nomes exatos;
+- Garante consistência (o componente tem o mesmo nome em todo o projeto);
+- Facilita o auto-import e a refatoração automática no VS Code;
+
 ### React - CSS Modules
 - Solução para evitar conflitos de CSS entre componentes (escopo local)
 - Cada classe CSS é automaticamente renomeada com um hash único
 - Nomenclatura: `ComponentName.module.css`
+
+### Passando 'props' para o componente
+- Será enviado como um objeto contendo as propriedades passadas;
+- Exemolo: { props: { author: "henrique, content: "i love books." }}
 
 #### Como funciona:
 ```css
