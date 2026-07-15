@@ -153,14 +153,43 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 - Garante consistência (o componente tem o mesmo nome em todo o projeto);
 - Facilita o auto-import e a refatoração automática no VS Code;
 
-### React - CSS Modules
-- Solução para evitar conflitos de CSS entre componentes (escopo local)
-- Cada classe CSS é automaticamente renomeada com um hash único
-- Nomenclatura: `ComponentName.module.css`
-
 ### Passando 'props' para o componente
 - Será enviado como um objeto contendo as propriedades passadas;
 - Exemolo: { props: { author: "henrique, content: "i love books." }}
+
+### React - CSS Global
+- Criá-se o arquivo CSS e realiza a importação no arquivo desejado;
+- Estilos são aplicados também nos componentes;
+
+### Nome de componentes
+- Deve se utilizar nomes com a primeira letra em maiúsculo, pois assim evita confundir com os elementos do próprio HTML.
+
+```jsx
+export function Header() {
+  return (
+    <></>
+  );
+}
+
+<Header /> // Componente criado
+<header /> // Elemento nativo do HTML
+```
+
+### React - CSS Modules (scoped css)
+- Solução para evitar conflitos de CSS entre componentes (escopo local);
+- Cada classe CSS é automaticamente renomeada com um hash único ();
+- Nomenclatura: `ComponentName.module.css`;
+- Tentar utilizar apenas classes no css;
+
+### Estrutura
+- Para utilizar, basta apenas utilizar o objeto styles selecionando o valor desejado;
+```
+{
+  styles: {
+    header: "_header_1lv9s_1"
+  }
+}
+```
 
 #### Como funciona:
 ```css
