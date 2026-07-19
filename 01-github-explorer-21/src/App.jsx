@@ -1,6 +1,8 @@
 
 export function App() {
+  throw new Error("Catch me");
+
   return (
-    <h1>Helllo 1</h1>
+    <h1>Helllo</h1>
   )
 }
