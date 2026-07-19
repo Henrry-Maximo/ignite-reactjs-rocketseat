@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "webpack --mode development",
     "dev:watch": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "dev:course": "webpack serve",
+    "build:course": "cross-env NODE_ENV=production webpack"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +24,7 @@
     "@babel/preset-env": "^8.0.2",
     "@babel/preset-react": "^8.0.1",
     "babel-loader": "^10.1.1",
+    "cross-env": "7.0.3",
     "html-webpack-plugin": "^5.6.7",
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1",

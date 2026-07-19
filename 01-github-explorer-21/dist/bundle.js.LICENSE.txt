@@ -23,7 +23,7 @@ object-assign
  */
 
 /** @license React v17.0.1
- * react-jsx-dev-runtime.production.min.js
+ * react-jsx-runtime.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
