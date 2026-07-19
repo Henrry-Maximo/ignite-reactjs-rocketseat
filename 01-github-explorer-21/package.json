@@ -23,15 +23,17 @@
     "@babel/core": "^8.0.1",
     "@babel/preset-env": "^8.0.2",
     "@babel/preset-react": "^8.0.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.2",
     "babel-loader": "^10.1.1",
     "cross-env": "7.0.3",
     "css-loader": "^7.1.4",
     "html-webpack-plugin": "^5.6.7",
     "node-sass": "^9.0.0",
+    "react-refresh": "^0.18.0",
     "sass-loader": "10.1.1",
     "style-loader": "^4.0.0",
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1",
-    "webpack-dev-server": "^6.0.0"
+    "webpack-dev-server": "^4.15.2"
   }
 }
