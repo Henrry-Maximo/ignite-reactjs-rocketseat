@@ -10,7 +10,7 @@ export function App() {
     // <h1>Helllo</h1>
     <>
       <RepositoryList />
-      <Counter />
+      {/* <Counter /> */}
     </>
   )
 }
