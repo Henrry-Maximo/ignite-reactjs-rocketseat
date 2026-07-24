@@ -14,7 +14,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', 'tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   devServer: {
     static: path.resolve(__dirname, 'public'),
@@ -30,7 +30,7 @@ module.exports = {
     rules: [
       {
         test: /\.(j|t)sx$/,
-        exclude: /node_module/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: /node_module/,
+        exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
